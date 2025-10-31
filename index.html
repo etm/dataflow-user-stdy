@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dataflow Questionnaire</title>
+<link rel="stylesheet" href="index.css" type="text/css"/>
+<style>
+  body {
+    width: 35em;
+  }
+  .loader {
+    width: 24px;
+    height: 80px;
+    display: block;
+    margin: 50vh auto 0;
+    border: 1px solid #fff;
+    border-radius: 0 0 50px 50px;
+    position: relative;
+    box-shadow: 0px 0px #FF3D00 inset;
+    background-image: linear-gradient(#FF3D00 100px, transparent 0);
+    background-position: 0px 0px;
+    background-size: 22px 80px;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    animation: animloader 6s linear infinite;
+  }
+  .loader::after {
+    content: '';
+    box-sizing: border-box;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    width: 28px;
+    height: 6px;
+  }
+  .loader::before {
+    content: '';
+    box-sizing: border-box;
+    left: 0;
+    bottom: -4px;
+    border-radius: 50%;
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    animation: animloader1 6s linear infinite;
+  }
+
+  @keyframes animloader {
+    0% {
+      background-position: 0px 80px;
+    }
+    100% {
+      background-position: 0px 0px;
+    }
+  }
+
+  @keyframes animloader1 {
+    0% {
+      box-shadow: 4px -10px rgba(255, 255, 255, 0), 6px 0px rgba(255, 255, 255, 0), 8px -15px rgba(255, 255, 255, 0), 12px 0px rgba(255, 255, 255, 0);
+    }
+    20% {
+      box-shadow: 4px -20px rgba(255, 255, 255, 0), 8px -10px rgba(255, 255, 255, 0), 10px -30px rgba(255, 255, 255, 0.5), 15px -5px rgba(255, 255, 255, 0);
+    }
+    40% {
+      box-shadow: 2px -40px rgba(255, 255, 255, 0.5), 8px -30px rgba(255, 255, 255, 0.4), 8px -60px rgba(255, 255, 255, 0.5), 12px -15px rgba(255, 255, 255, 0.5);
+    }
+    60% {
+      box-shadow: 4px -60px rgba(255, 255, 255, 0.5), 6px -50px rgba(255, 255, 255, 0.4), 10px -90px rgba(255, 255, 255, 0.5), 15px -25px rgba(255, 255, 255, 0.5);
+    }
+    80% {
+      box-shadow: 2px -80px rgba(255, 255, 255, 0.5), 4px -70px rgba(255, 255, 255, 0.4), 8px -120px rgba(255, 255, 255, 0), 12px -35px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+      box-shadow: 4px -100px rgba(255, 255, 255, 0), 8px -90px rgba(255, 255, 255, 0), 10px -120px rgba(255, 255, 255, 0), 15px -45px rgba(255, 255, 255, 0);
+    }
+  }
+  .shield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+</style>
+<script>
+  function start() {
+    document.getElementById('shield').style.display = 'block';
+    const init = document.getElementsByName("init")[0];
+    const qid =  [...crypto.getRandomValues(new Uint8Array(10))].map(m=>('0'+m.toString(16)).slice(-2)).join('');
+    init.value = JSON.stringify({ "qid": qid});
+    (async () => {
+      const rawResponse = await fetch(document.getElementById('form').attributes['action'].value, {
+        method: document.getElementById('form').attributes['method'].value,
+        body: new FormData(document.getElementById("form"))
+      });
+      const content = await rawResponse.json();
+
+      setTimeout(()=>{window.location.href = 'https://cpee.org/out/frames/' + qid + '/';},8000);
+    })();
+    return false;
+  }
+</script>
+</head>
+<body>
+  <h1>Welcome!</h1>
+  <form id="form" action="https://cpee.org/flow/start/url/" method="post">
+    <input type="hidden" name="behavior" value="fork_running"/>
+    <input type="hidden" name="url" value="https://cpee.org/hub/server/Papers.dir/Dataflow.dir/Quest.xml"/>
+    <input type="hidden" name="init" value=""/>
+  </form>
+  <p>Participate in this questionnaire about BPMN dataflow modelling and
+  visualization. Please <a href="#" onclick="return start()">proceed</a> for a
+  series of questions and tasks.</p>
+  <div id='shield' class="shield" style='display: none'>
+    <span id='loader' class="loader"></span>
+  </div>
+</body>
+</html>

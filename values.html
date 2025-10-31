@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Buttons</title>
+    <script type="text/javascript" src="/js_libs/jquery.min.js"></script>
+    <script type="text/javascript" src="/js_libs/marked.min.js"></script>
+    <script type="text/javascript" src="/js_libs/parsequery.js"></script>
+
+    <link rel="stylesheet" href="index.css" type="text/css"/>
+
+    <style>
+      a.button {
+        cursor: pointer;
+        user-select: none;
+        background: -moz-linear-gradient(top, var(--x-custom-background-color), var(--x-custom-content-light-background));
+        background: -webkit-linear-gradient(top, var(--x-custom-background-color), var(--x-custom-content-light-background));
+        border-radius: 0.2em;
+        border-top: solid 0.1em var(--x-custom-content-border-left-color);
+        border-left: solid 0.1em var(--x-custom-content-border-left-color);
+        border-bottom: solid 0.1em var(--x-custom-content-border-right-color);
+        border-right: solid 0.1em var(--x-custom-content-border-right-color);
+        padding: 0.1em 0.4em;
+      }
+      a.button.down {
+        background: -moz-linear-gradient(bottom, var(--x-custom-background-color), var(--x-custom-content-active-background));
+        background: -webkit-linear-gradient(bottom, var(--x-custom-background-color), var(--x-custom-content-active-background));
+        border-top: solid 0.1em var(--x-custom-content-border-right-color);
+        border-left: solid 0.1em var(--x-custom-content-border-right-color);
+        border-bottom: solid 0.1em var(--x-custom-content-border-left-color);
+        border-right: solid 0.1em var(--x-custom-content-border-left-color);
+      }
+      #buttons {
+        line-height: 2em;
+      }
+    </style>
+
+    <script>
+      function doit(data) {
+        console.log(data);
+        $.ajax({
+          type: "PUT",
+          url: window.name,
+          contentType: "application/json",
+          data: JSON.stringify(data),
+          success: function (data) { }
+        });
+      }
+
+      $(document).ready(function() {
+        let q = $.parseQuerySimple();
+        $('#head').html(marked.parse(q.text));
+        q.buttons.split(',').forEach((ele)=>{
+          ele = ele.trim();
+          let but = $('<a class="button">');
+          but.text(ele);
+          $('#buttons').append(but);
+          $('#buttons').append(' ');
+        });
+        $('a.button').click(function() { $(this).toggleClass("down") });
+      });
+    </script>
+  </head>
+  <body>
+    <p id='head'></p>
+
+    <p id="buttons">
+    </p>
+
+    <p>
+      <button onclick="doit($('#buttons').serializeArray())" value="ok">Submit</button>
+    </p>
+  </body>
+</html>
