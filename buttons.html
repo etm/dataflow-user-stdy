@@ -52,7 +52,7 @@
 
       $(document).ready(function() {
         let q = $.parseQuerySimple();
-        $('#head').html(marked.parse(q.text));
+        $('#head').html(marked.parseInline(q.text.replace(/\\n/g,'<br>')));
         q.buttons.split(',').forEach((ele)=>{
           ele = ele.trim();
           let but = $('<a class="button">');

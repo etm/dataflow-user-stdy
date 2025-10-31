@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Buttons</title>
+    <script type="text/javascript" src="/js_libs/jquery.min.js"></script>
+    <script type="text/javascript" src="/js_libs/marked.min.js"></script>
+    <script type="text/javascript" src="/js_libs/parsequery.js"></script>
+
+    <link rel="stylesheet" href="index.css" type="text/css"/>
+
+    <script>
+      $(document).ready(function() {
+        let q = $.parseQuerySimple();
+        console.log(q.text);
+        $('#text').html(marked.parseInline(q.text.replace(/\\n/g,'<br>')));
+      });
+    </script>
+  </head>
+  <body>
+    <p id='text'></p>
+  </body>
+</html>
