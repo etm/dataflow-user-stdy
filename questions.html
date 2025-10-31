@@ -65,8 +65,12 @@
       function doit(data) {
         let ret = {};
         for (let i=0; i<data.length; i++) {
-          let dat = $(data[i]);
-          ret[dat.text()] = (dat.hasClass('down')) ? true : false;
+          let ma;
+          if  ($('.down',data[i]).length > 0) {
+            ret[$(data[i]).attr('id')] = $('.down',data[i]).attr('data-val');
+          } else if ($('.feedback textarea',data[i]).length > 0) {
+            ret[$(data[i]).attr('id')] = $('.feedback textarea',data[i]).val();
+          }
         };
         $.ajax({
           type: "PUT",
@@ -84,12 +88,12 @@
             $('#head').html(marked.parseInline(ele.value.replace(/\\n/g,'<br>')));
           } else if (ma = ele.name.match(/^scale_(.*)/)) {
             let clone = document.importNode(document.querySelector('template#scale').content,true);
-            $('p[id]',clone).attr('id',ele.name);
+            $('.container',clone).attr('id',ele.name);
             $('.text',clone).html(marked.parseInline(ele.value.replace(/\\n/g,'<br>')));
             $('#content').append(clone);
           } else if (ma = ele.name.match(/^feedback_(.*)/)) {
             let clone = document.importNode(document.querySelector('template#feedback').content,true);
-            $('p[id]',clone).attr('id',ele.name);
+            $('.container',clone).attr('id',ele.name);
             $('.text',clone).html(marked.parseInline(ele.value.replace(/\\n/g,'<br>')));
             $('#content').append(clone);
           }
@@ -107,7 +111,7 @@
     <template id="scale">
       <div class='container' id=''>
         <div class='text'></div>
-        <div class='scale'><a class="button">++</a><a class="button">+</a><a class="button">0</a><a class="button">-</a><a class="button">--</a></div>
+        <div class='scale'><a class="button" data-val="2">++</a><a class="button" data-val="1">+</a><a class="button" data-val="0">0</a><a class="button" data-val="-1">-</a><a class="button" data-val="-2">--</a></div>
       </div>
     </template>
     <template id="feedback">
@@ -124,7 +128,7 @@
     <p id="content"></p>
 
     <p>
-      <button onclick="doit($('.button'))" value="ok">Submit</button>
+      <button onclick="doit($('.container'))" value="ok">Submit</button>
     </p>
   </body>
 </html>
