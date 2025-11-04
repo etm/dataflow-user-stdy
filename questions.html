@@ -10,19 +10,19 @@
     <link rel="stylesheet" href="index.css" type="text/css"/>
 
     <style>
-      a.button:first-child {
+      .scale a.button:first-child {
         border-top-left-radius: 0.2em;
         border-bottom-left-radius: 0.2em;
         border-left: solid 1px var(--x-custom-content-border-left-color);
       }
-      a.button:last-child {
+      .scale a.button:last-child {
         border-top-right-radius: 0.2em;
         border-bottom-right-radius: 0.2em;
       }
-      a.button.down:first-child {
+      .scale a.button.down:first-child {
         border-left: solid 1px var(--x-custom-content-border-right-color);
       }
-      a.button {
+      .scale a.button {
         cursor: pointer;
         display: inline-block;
         text-align: center;
@@ -35,15 +35,36 @@
         border-right: solid 1px var(--x-custom-content-border-right-color);
         padding: 0.1em 0.4em;
       }
-      a.button.down {
+      .scale a.button.down {
         background: -moz-linear-gradient(bottom, var(--x-custom-background-color), var(--x-custom-content-active-background));
         background: -webkit-linear-gradient(bottom, var(--x-custom-background-color), var(--x-custom-content-active-background));
         border-top: solid 1px var(--x-custom-content-border-right-color);
         border-bottom: solid 1px var(--x-custom-content-border-left-color);
         border-right: solid 1px var(--x-custom-content-border-left-color);
       }
-      #buttons {
+
+      .buttons {
         line-height: 2em;
+      }
+      .buttons a.button {
+        cursor: pointer;
+        user-select: none;
+        background: -moz-linear-gradient(top, var(--x-custom-background-color), var(--x-custom-content-light-background));
+        background: -webkit-linear-gradient(top, var(--x-custom-background-color), var(--x-custom-content-light-background));
+        border-radius: 0.2em;
+        border-top: solid 0.1em var(--x-custom-content-border-left-color);
+        border-left: solid 0.1em var(--x-custom-content-border-left-color);
+        border-bottom: solid 0.1em var(--x-custom-content-border-right-color);
+        border-right: solid 0.1em var(--x-custom-content-border-right-color);
+        padding: 0.1em 0.4em;
+      }
+      .buttons a.button.down {
+        background: -moz-linear-gradient(bottom, var(--x-custom-background-color), var(--x-custom-content-active-background));
+        background: -webkit-linear-gradient(bottom, var(--x-custom-background-color), var(--x-custom-content-active-background));
+        border-top: solid 0.1em var(--x-custom-content-border-right-color);
+        border-left: solid 0.1em var(--x-custom-content-border-right-color);
+        border-bottom: solid 0.1em var(--x-custom-content-border-left-color);
+        border-right: solid 0.1em var(--x-custom-content-border-left-color);
       }
 
       .container {
@@ -72,9 +93,15 @@
       function doit(data) {
         let ret = {};
         for (let i=0; i<data.length; i++) {
-          let ma;
-          if  ($('.down',data[i]).length > 0) {
+          if  ($('.scale .down',data[i]).length > 0) {
             ret[$(data[i]).attr('id')] = $('.down',data[i]).attr('data-val');
+          } else if ($('.buttons .down',data[i]).length > 0) {
+            const dat = $('.buttons .button',data[i]);
+            ret[$(data[i]).attr('id')] = {};
+            for (let j=0; j<dat.length; j++) {
+              const d = $(dat[j]);
+              ret[$(data[i]).attr('id')][d.text()] = (d.hasClass('down')) ? true : false;
+            };
           } else if ($('.feedback textarea',data[i]).length > 0) {
             ret[$(data[i]).attr('id')] = $('.feedback textarea',data[i]).val();
           } else if ($('.input input[type=text]',data[i]).length > 0) {
@@ -83,40 +110,40 @@
             ret[$(data[i]).attr('id')] = $('.select input:checked',data[i]).val();
           }
         };
-        $.ajax({
-          type: "PUT",
-          url: window.name,
-          contentType: "application/json",
-          data: JSON.stringify(ret)
-        });
+        console.log(ret);
+
+        // $.ajax({
+        //   type: "PUT",
+        //   url: window.name,
+        //   contentType: "application/json",
+        //   data: JSON.stringify(ret)
+        // });
       }
 
       $(document).ready(function() {
         let q = $.parseQuery();
         q.forEach((ele,_) => {
-          let ma;
-          console.log(ele);
           if (ele.name.match(/^text_(.*)/)) {
             let clone = document.importNode(document.querySelector('template#text').content,true);
             $('.container',clone).attr('id',ele.name);
             $('.text',clone).html(marked.parseInline(ele.value.replace(/\\n/g,'<br>')));
             $('#content').append(clone);
-          } else if (ma = ele.name.match(/^scale_(.*)/)) {
+          } else if (ele.name.match(/^scale_(.*)/)) {
             let clone = document.importNode(document.querySelector('template#scale').content,true);
             $('.container',clone).attr('id',ele.name);
             $('.text',clone).html(marked.parseInline(ele.value.replace(/\\n/g,'<br>')));
             $('#content').append(clone);
-          } else if (ma = ele.name.match(/^input_(.*)/)) {
+          } else if (ele.name.match(/^input_(.*)/)) {
             let clone = document.importNode(document.querySelector('template#input').content,true);
             $('.container',clone).attr('id',ele.name);
             $('.text',clone).html(marked.parseInline(ele.value.replace(/\\n/g,'<br>')));
             $('#content').append(clone);
-          } else if (ma = ele.name.match(/^feedback_(.*)/)) {
+          } else if (ele.name.match(/^feedback_(.*)/)) {
             let clone = document.importNode(document.querySelector('template#feedback').content,true);
             $('.container',clone).attr('id',ele.name);
             $('.text',clone).html(marked.parseInline(ele.value.replace(/\\n/g,'<br>')));
             $('#content').append(clone);
-          } else if (ma = ele.name.match(/^select_(.*)/)) {
+          } else if (ele.name.match(/^select_(.*)/)) {
             let clone = document.importNode(document.querySelector('template#select').content,true);
             $('.container',clone).attr('id',ele.name);
             ele.value.split(';').forEach((o)=>{
@@ -131,12 +158,29 @@
               $('.select',clone).append(opt);
             });
             $('#content').append(clone);
+          } else if (ele.name.match(/^buttons_(.*)/)) {
+            let clone = document.importNode(document.querySelector('template#buttons').content,true);
+            $('.container',clone).attr('id',ele.name);
+            ele.value.split(';').forEach((o)=>{
+              o = o.trim();
+              o = marked.parseInline(o.replace(/\\n/g,'<br>'));
+              let opt = document.importNode(document.querySelector('template#button').content,true);
+              $('.button',opt).text(o);
+              $('.buttons',clone).append(opt);
+            });
+            $('#content').append(clone);
           }
+
         });
 
-        $('a.button').click(function() {
+        $('.scale a.button').click(function() {
           let n = $(this).parents('.container');
           $('a.button',n).removeClass('down');
+          $(this).toggleClass("down")
+        });
+
+        $('.buttons a.button').click(function() {
+          let n = $(this).parents('.container');
           $(this).toggleClass("down")
         });
       });
@@ -175,10 +219,16 @@
     </template>
     <template id="select">
       <div class='container' id=''>
-        <div class='select'>
-
-        </div>
+        <div class='select'></div>
       </div>
+    </template>
+    <template id="button">
+      <a class='button'/>
+    </template>
+    <template id="buttons">
+      <div class='container' id=''>
+        <div class='buttons'></div>
+       </div>
     </template>
 
     <p id="content"></p>
