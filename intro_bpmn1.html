@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Intro BPMN 1</title>
+    <script type="text/javascript" src="/js_libs/jquery.min.js"></script>
+    <script type="text/javascript" src="/js_libs/marked.min.js"></script>
+    <script type="text/javascript" src="/js_libs/parsequery.js"></script>
+
+    <link rel="stylesheet" href="index.css" type="text/css"/>
+
+    <style>
+      .red {
+        color: red;
+      }
+    </style>
+
+    <script>
+      function doit(data) {
+        $.ajax({
+          type: "PUT",
+          url: window.name,
+          contentType: "application/json",
+          data: "{}"
+        });
+      }
+    </script>
+  </head>
+  <body>
+    The dataflow modeling aspect of <strong>BPMN</strong> is depicted on the
+    left.
+
+    <p>
+
+    <strong>BPMN</strong> uses two different modeling elements for basic
+    dataflow modeling.
+
+    <ul>
+
+      <li>A database symbol do describe that data is saved in an external
+      system, where it might persist beyond the scope of a single instance.
+      <strong>For the purpose of this evaluation we will ignore this
+      symbol.</strong></li>
+
+      <li>A dataelement symbol that looks like a piece of paper, and describes
+      basically a variable that is potentially accessible by all tasks in a
+      process.</li>
+
+    </ul>
+
+    If a user wants to model that a task <span class='red'>writes data</span>, <strong>a dotted arrow
+    from the task to the dataelement</strong> has to be drawn.
+
+    <p>
+
+    If a user wants to model that a task <span class='red'>reads data</span>, <strong>a dotted arrow
+    from the task to the dataelement</strong> has to be drawn.
+
+    <p>
+
+    <div>
+      <img src='address.png' style='width: 3em'/>
+      <img src='existing.png' style='width: 3em'/>
+    </div>
+
+    The process on the left contains two data elements, <span class='red'>address</span> and <span class='red'>existing</span>.
+
+    The task <strong>"Collect Data"</strong> <span class='red'>writes</span> to
+    <strong>address</strong>, while the task <strong>"Check
+    Data"</strong> <span class='red'>reads</span> <strong>address</strong> and
+    then <span class='red'>writes</span> <strong>existing</strong>.
+
+    <p>
+
+    The address can be either a text, or a complex data structure like JSON, (for example {
+    "street": "Bolzmanngasse 3", "town": "Garching"}). <strong>It does not
+    matter.</strong>
+
+    <p>
+
+    What matter is that <strong>every decisions</strong> depends on one or many
+    data elements, a fact which is not visualized in BPMN. In this case the
+    decision depends on <span class='red'>existing</span>, which can be
+    interpreted from the text.
+
+    <p>
+
+    A BPMN is a static diagram. It is not foreseen that parts of it are
+    highlighted to help the user identify coherences.
+
+    <p>
+
+    <button onclick="doit($('.button'))">Continue</button>
+  </body>
+</html>

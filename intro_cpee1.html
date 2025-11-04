@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Intro BPMN 1</title>
+    <script type="text/javascript" src="/js_libs/jquery.min.js"></script>
+    <script type="text/javascript" src="/js_libs/marked.min.js"></script>
+    <script type="text/javascript" src="/js_libs/parsequery.js"></script>
+
+    <link rel="stylesheet" href="index.css" type="text/css"/>
+
+    <style>
+      .red { color: red; }
+      .orange { color: #ffa500; }
+      .green { color: #008000; }
+      .blue { color: #0000ff; }
+      .bar { color: #ebd1d1; }
+    </style>
+
+    <script>
+      function doit(data) {
+        $.ajax({
+          type: "PUT",
+          url: window.name,
+          contentType: "application/json",
+          data: "{}"
+        });
+      }
+    </script>
+  </head>
+  <body>
+
+    On the left you can see tee dataflow modeling extension for <strong>CPEE
+    BPMN</strong> in comparison.
+
+    <p>
+
+    <strong>CPEE BPMN</strong> automatically layouts each modeling element
+    (tasks, gateways, events), into their own <span class='red'>line</span>.
+    IDs, labels and the <span class='red'>dataflow</span> are in the <span
+    class='red'>columns</span> next to the diagram, associated with each line.
+
+    <p>
+
+    Regarding dataflow:
+
+    <ul>
+
+      <li><span class='orange'>▶</span> signifies that a task writes data.</li>
+
+      <li><span class='green'>◀</span> signifies that a task reads data.</li>
+
+      <li><span class='blue'>●</span> signifies that a task reads data.</li>
+
+      <li><span class='orange'>▶</span> and <span class='green'>◀</span>
+      symbols are on vertical bars <span class='bar'>▮</span>. Each vertical
+      bar <span class='bar'>▮</span> connects all reads and writes for a single
+      data element.</li>
+
+    </ul>
+
+    Hovering over a BPMN element, label, id, bar <span class='bar'>▮</span> or
+    icon (<span class='orange'>▶</span>,<span class='green'>◀</span>,<span
+    class='blue'>●</span>) shows the <span class='red'>name of the data
+    element</span>. When you hover over a bar <span class='bar'>▮</span>, it
+    highlights the bar <span class='bar'>▮</span>, and you can see easily which
+    tasks are involved with a data element. Try it!
+
+    <p>
+
+    <img src="cpee-label.png" style="width:30em"/>
+
+    <p>
+
+    The process is exactly the same as the BPMN before.
+
+    <p>
+
+    The process on the left contains two data elements, <span class='red'>Address</span> and <span class='red'>Existing</span>.
+
+    The task <strong>"Collect Data"</strong> <span class='red'>writes</span> to
+    <strong>Address</strong>, while the task <strong>"Check
+    Data"</strong> <span class='red'>reads</span> <strong>Address</strong> and
+    then <span class='red'>writes</span> <strong>Existing</strong>.
+
+    <p>
+
+    An important <span class='red'>difference</span> is close to the <span class='red'>gateway</span>. The first
+    branch of the decision shows needs to have a condition. Dataflow shows that as part of the condition <span class='red'>Existing</span> <span class='green'>◀</span> is read. Its not up to interpretation, its <span class='red'>explicit</span>.
+
+    <p>
+
+    <button onclick="doit($('.button'))">Continue</button>
+  </body>
+</html>

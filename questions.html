@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Buttons</title>
+    <title>Questions</title>
     <script type="text/javascript" src="/js_libs/jquery.min.js"></script>
     <script type="text/javascript" src="/js_libs/marked.min.js"></script>
     <script type="text/javascript" src="/js_libs/parsequery.js"></script>
@@ -59,6 +59,13 @@
         resize: none;
         height: 12em;
       }
+      .container .input input {
+        box-sizing: border-box;
+        width: 100%;
+      }
+      input[type=radio] {
+        vertical-align: top;
+      }
     </style>
 
     <script>
@@ -70,6 +77,10 @@
             ret[$(data[i]).attr('id')] = $('.down',data[i]).attr('data-val');
           } else if ($('.feedback textarea',data[i]).length > 0) {
             ret[$(data[i]).attr('id')] = $('.feedback textarea',data[i]).val();
+          } else if ($('.input input[type=text]',data[i]).length > 0) {
+            ret[$(data[i]).attr('id')] = $('.input input',data[i]).val();
+          } else if ($('.select input:radio',data[i]).length > 0) {
+            ret[$(data[i]).attr('id')] = $('.select input:checked',data[i]).val();
           }
         };
         $.ajax({
@@ -91,10 +102,30 @@
             $('.container',clone).attr('id',ele.name);
             $('.text',clone).html(marked.parseInline(ele.value.replace(/\\n/g,'<br>')));
             $('#content').append(clone);
+          } else if (ma = ele.name.match(/^input_(.*)/)) {
+            let clone = document.importNode(document.querySelector('template#input').content,true);
+            $('.container',clone).attr('id',ele.name);
+            $('.text',clone).html(marked.parseInline(ele.value.replace(/\\n/g,'<br>')));
+            $('#content').append(clone);
           } else if (ma = ele.name.match(/^feedback_(.*)/)) {
             let clone = document.importNode(document.querySelector('template#feedback').content,true);
             $('.container',clone).attr('id',ele.name);
             $('.text',clone).html(marked.parseInline(ele.value.replace(/\\n/g,'<br>')));
+            $('#content').append(clone);
+          } else if (ma = ele.name.match(/^select_(.*)/)) {
+            let clone = document.importNode(document.querySelector('template#select').content,true);
+            $('.container',clone).attr('id',ele.name);
+            ele.value.split(';').forEach((o)=>{
+              o = o.trim();
+              o = marked.parseInline(o.replace(/\\n/g,'<br>'));
+              let opt = document.importNode(document.querySelector('template#option').content,true);
+              $('input',opt).attr('name',ele.name);
+              $('input',opt).attr('value',o);
+              $('input',opt).attr('id',o);
+              $('label',opt).text(o);
+              $('label',opt).attr('for',o);
+              $('.select',clone).append(opt);
+            });
             $('#content').append(clone);
           }
         });
@@ -122,13 +153,31 @@
         </div>
       </div>
     </template>
+    <template id="input">
+      <div class='container' id=''>
+        <div class='text'></div>
+        <div class='input'>
+          <input type="text"></input>
+        </div>
+      </div>
+    </template>
+    <template id="option">
+      <input type='radio' name='' value=''/><label for=""></label><br/>
+    </template>
+    <template id="select">
+      <div class='container' id=''>
+        <div class='select'>
+
+        </div>
+      </div>
+    </template>
 
     <p id='head'></p>
 
     <p id="content"></p>
 
     <p>
-      <button onclick="doit($('.container'))" value="ok">Submit</button>
+      <button onclick="doit($('.container'))" value="ok">Save & Continue</button>
     </p>
   </body>
 </html>
