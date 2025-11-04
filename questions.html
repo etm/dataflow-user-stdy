@@ -95,8 +95,12 @@
         let q = $.parseQuery();
         q.forEach((ele,_) => {
           let ma;
-          if (ele.name == 'text') {
-            $('#head').html(marked.parseInline(ele.value.replace(/\\n/g,'<br>')));
+          console.log(ele);
+          if (ele.name.match(/^text_(.*)/)) {
+            let clone = document.importNode(document.querySelector('template#text').content,true);
+            $('.container',clone).attr('id',ele.name);
+            $('.text',clone).html(marked.parseInline(ele.value.replace(/\\n/g,'<br>')));
+            $('#content').append(clone);
           } else if (ma = ele.name.match(/^scale_(.*)/)) {
             let clone = document.importNode(document.querySelector('template#scale').content,true);
             $('.container',clone).attr('id',ele.name);
@@ -139,6 +143,11 @@
     </script>
   </head>
   <body>
+    <template id="text">
+      <div class='container' id=''>
+        <div class='text'></div>
+      </div>
+    </template>
     <template id="scale">
       <div class='container' id=''>
         <div class='text'></div>
@@ -171,8 +180,6 @@
         </div>
       </div>
     </template>
-
-    <p id='head'></p>
 
     <p id="content"></p>
 
