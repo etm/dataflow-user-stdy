@@ -53,7 +53,7 @@ def get_buttons(what,io,sol) #{{{
   [duration,dat,dat==sol]
 end #}}}
 
-def get_select(what,io) #{{{
+def get_select(what,io,sol) #{{{
   yaml = YAML.load_stream io
 
   begin
@@ -69,11 +69,11 @@ def get_select(what,io) #{{{
   if dat.empty?
     dat = ''
   else
-    dat = dat.first.last
+    dat = dat.first.last.to_s
   end
 
   io.rewind
-  [duration,dat]
+  [duration,dat,dat == sol]
 end #}}}
 
 def get_name(io) #{{{
@@ -106,8 +106,9 @@ def find_solution(what,solution)
   s1 = sol.dig('task','element','input').to_a.uniq.sort.join(',')
   s2 = sol.dig('task','element','output').to_a.uniq.sort.join(',')
   s3 = (sol.dig('task','dataobject','read').to_a +  sol.dig('task','dataobject','write').to_a).uniq.sort.join(',')
+  s4 = sol.dig('task','dataobject','conn').to_s
 
-  [s0,s1,s2,s3]
+  [s0,s1,s2,s3,s4]
 end
 
 # results = CSV.open('results.csv','wb')
@@ -130,32 +131,26 @@ Dir.glob('finished/*.xes.yaml') do |f|
 
     next if bpmn.nil? || cpee.nil?
 
-    s0, s1, s2, s3 = find_solution(bpmn,solution)
+    s0, s1, s2, s3, s4 = find_solution(bpmn,solution)
     item1 << get_buttons('BPMN Simple Questions 0', io, s0) rescue []
     item1 << get_buttons('BPMN Simple Questions 1', io, s1) rescue []
     item1 << get_buttons('BPMN Simple Questions 2', io, s2) rescue []
     item1 << get_buttons('BPMN Simple Questions 3', io, s3) rescue []
     item1 << get_select( 'BPMN Simple Questions 4', io, 'I cant be sure') rescue []
 
-    s0, s1, s2, s3 = find_solution(cpee,solution)
+    s0, s1, s2, s3, s4 = find_solution(cpee,solution)
     item2 << get_buttons('CPEE Simple Questions 0', io, s0) rescue []
     item2 << get_buttons('CPEE Simple Questions 1', io, s1) rescue []
     item2 << get_buttons('CPEE Simple Questions 2', io, s2) rescue []
     item2 << get_buttons('CPEE Simple Questions 3', io, s3) rescue []
-    item2 << get_select( 'CPEE Simple Questions 4', io, 'Yes') rescue []
+    item2 << get_select( 'CPEE Simple Questions 4', io, s4) rescue []
 
     item3 << get_scales( 'Final Questions', io, 3) rescue []
-
-    p item1
-    p item2
-
-    exit
 
     results << item1.flatten
     results << item2.flatten
 
     satis << item3.flatten
-    exit
   end
   io.close
 end
