@@ -1,0 +1,25 @@
+#!/usr/bin/ruby
+require 'typhoeus'
+
+File.open('save.list') do |f|
+  f.readlines.each do |l|
+    url = l.strip
+    cdir = Dir.pwd
+
+    res = Typhoeus.get(url)
+
+    Dir.chdir 'all'
+    `cpee-logging-xes-yaml copy #{url}`
+    Dir.chdir cdir
+
+    if res.response_body.match /finished/
+      Dir.chdir 'finished'
+      `cpee-logging-xes-yaml copy #{url}`
+      Dir.chdir cdir
+    else
+      Dir.chdir 'unfinished'
+      `cpee-logging-xes-yaml copy #{url}`
+      Dir.chdir cdir
+    end
+  end
+end

@@ -1,0 +1,3283 @@
+---
+log:
+  namespaces:
+    stream: https://cpee.org/datastream/
+    ssn: http://www.w3.org/ns/ssn/
+    sosa: http://www.w3.org/ns/sosa/
+  xes:
+    creator: cpee.org
+    features: nested-attributes
+  extension:
+    time: http://www.xes-standard.org/time.xesext
+    concept: http://www.xes-standard.org/concept.xesext
+    id: http://www.xes-standard.org/identity.xesext
+    lifecycle: http://www.xes-standard.org/lifecycle.xesext
+    cpee: http://cpee.org/cpee.xesext
+    stream: https://cpee.org/datastream/datastream.xesext
+  global:
+    trace:
+      concept:name: __NOTSPECIFIED__
+      cpee:name: __NOTSPECIFIED__
+    event:
+      concept:instance: -1
+      concept:name: __NOTSPECIFIED__
+      concept:endpoint: __NOTSPECIFIED__
+      id:id: __NOTSPECIFIED__
+      cpee:uuid: __NOTSPECIFIED__
+      lifecycle:transition: complete
+      cpee:lifecycle:transition: activity/calling
+      time:timestamp: ''
+  trace:
+    concept:name: 5336
+    cpee:name: QuestSub
+    cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+---
+event:
+  concept:instance: 5336
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: state/change
+  cpee:state: ready
+  time:timestamp: '2025-11-04T12:28:03.452492+01:00'
+---
+event:
+  concept:instance: 5336
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: endpoints/change
+  data:
+  - name: frames_display
+    value: https-put://cpee.org/out/frames/
+  - name: timeout
+    value: https-post://cpee.org/services/timeout.php
+  time:timestamp: '2025-11-04T12:28:03.461820+01:00'
+---
+event:
+  concept:instance: 5336
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: attributes/change
+  data:
+  - name: guarded
+    value: none
+  - name: info
+    value: QuestSub
+  - name: modeltype
+    value: CPEE
+  - name: theme
+    value: extended
+  - name: creator
+    value: Christine Ashcreek
+  - name: guarded_id
+    value: ''
+  - name: author
+    value: Christine Ashcreek
+  - name: model_uuid
+    value: ff71cf54-13f5-455e-8546-64267be4093a
+  - name: model_version
+    value: ''
+  - name: design_dir
+    value: Papers.dir/Dataflow.dir
+  - name: design_stage
+    value: development
+  time:timestamp: '2025-11-04T12:28:03.465019+01:00'
+---
+event:
+  concept:instance: 5336
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: qid
+    value: 544cbf765aae5275e413
+  - name: d
+    value:
+      cpee: https://cpee.org/flow/graph.html?monitor=https://cpee.org/flow/engine/5100/
+      bpmn: https://cpee.org/quests/dataflow/bpmn/s1.html
+      bpmn_task: Confirm Coffee Preferences
+      bpmn_do: emails
+      bpmn_tasks: a1;a2;a4;a6;a7
+      bpmn_dos: refill;emails;order;items
+      cpee_task: Get Sun Data
+      cpee_do: hour
+      cpee_tasks: a1;a2;a3;a4;a5;a6;a7;a8;a9
+      cpee_dos: date;hour;sunrise;sunset;angle
+      time: 30
+  time:timestamp: '2025-11-04T12:28:03.456772+01:00'
+---
+event:
+  concept:instance: 5336
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: description/change
+  cpee:description: |
+    <?xml version="1.0"?>
+    <description xmlns="http://cpee.org/ns/description/1.0">
+      <manipulate id="a13" label="">data.res = []</manipulate>
+      <call id="a8" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Clear </label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls/>
+            <default/>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a7" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Left</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>0</lx>
+            <ly>1</ly>
+            <x_amount>3</x_amount>
+            <y_amount>9</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>!data.d['bpmn']</url>
+              </urls_item>
+            </urls>
+            <default/>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a6" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Prep</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>1</ly>
+            <x_amount>2</x_amount>
+            <y_amount>1</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/text.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text>!"**Familiarize yourself with the model**\\n\\nIn about " + data.d['time'].to_s + " seconds, tasks will be shown below. Solve them as **quickly** as possible."</text>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a5" endpoint="timeout">
+        <parameters>
+          <label>BPMN  Simple Wait</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <timeout>!data.d['time'].to_s</timeout>
+            <data/>
+          </arguments>
+        </parameters>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+        </documentation>
+      </call>
+      <call id="a4" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Solve</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>1</ly>
+            <x_amount>2</x_amount>
+            <y_amount>1</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/text.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text>Now solve the tasks as **quickly** as possible.</text>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a3" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Questions 0</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_0>!"Which data object(s) is task \"" + data.d['bpmn_task'] + "\" connected with?"</text_0>
+              <buttons_0>!data.d['bpmn_dos']</buttons_0>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a9" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Questions 1</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_1>!"Which data object(s) are read by task \"" + data.d['bpmn_task'] + "\"?"</text_1>
+              <buttons_1>!data.d['bpmn_dos']</buttons_1>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a10" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Questions 2</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_2>!"Which data object(s) are written by task \"" + data.d['bpmn_task'] + "\"?"</text_2>
+              <buttons_2>!data.d['bpmn_dos']</buttons_2>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a11" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Questions 3</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_3>!"Which tasks read and/or write the data object \"" + data.d['bpmn_do'] + "\"?"</text_3>
+              <buttons_3>!data.d['bpmn_tasks']</buttons_3>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a12" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Questions 4</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_4>!"Is the data object \"" + data.d['bpmn_do'] + "\" used in conditions (as part of loops or decision branches)?"</text_4>
+              <select_4>Yes;No;I cant be sure</select_4>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a23" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Clear </label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls/>
+            <default/>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a22" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Left</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>0</lx>
+            <ly>1</ly>
+            <x_amount>3</x_amount>
+            <y_amount>9</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>!data.d['cpee']</url>
+              </urls_item>
+            </urls>
+            <default/>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a21" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Prep</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>1</ly>
+            <x_amount>2</x_amount>
+            <y_amount>1</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/text.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text>!"**Familiarize yourself with the model**\\n\\nIn about " + data.d['time'].to_s + " seconds, tasks will be shown below. Solve them as **quickly** as possible."</text>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a20" endpoint="timeout">
+        <parameters>
+          <label>Simple Wait</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <timeout>!data.d['time'].to_s</timeout>
+            <data/>
+          </arguments>
+        </parameters>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+        </documentation>
+      </call>
+      <call id="a19" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Solve</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>1</ly>
+            <x_amount>2</x_amount>
+            <y_amount>1</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/text.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text>Now solve the tasks as **quickly** as possible.</text>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a18" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Questions 0</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_0>!"Which data object(s) is task \"" + data.d['cpee_task'] + "\" connected with?"</text_0>
+              <buttons_0>!data.d['cpee_dos']</buttons_0>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a17" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Questions 1</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_1>!"Which data object(s) are read by task \"" + data.d['cpee_task'] + "\"?"</text_1>
+              <buttons_1>!data.d['cpee_dos']</buttons_1>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a16" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Questions 2</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_2>!"Which data object(s) are written by task \"" + data.d['cpee_task'] + "\"?"</text_2>
+              <buttons_2>!data.d['cpee_dos']</buttons_2>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a15" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Questions 3</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_3>!"Which tasks read and/or write the data object \"" + data.d['cpee_do'] + "\"?"</text_3>
+              <buttons_3>!data.d['cpee_tasks']</buttons_3>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a14" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Questions 4</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_4>!"Is the data object \"" + data.d['cpee_do'] + "\" used in conditions (as part of loops or decisions)?"</text_4>
+              <select_4>Yes;No;I cant be sure</select_4>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a2" endpoint="frames_display">
+        <parameters>
+          <label>Simple Resolve</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>1</ly>
+            <x_amount>2</x_amount>
+            <y_amount>1</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/text.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text>Now answer the questions and give feedback.</text>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a1" endpoint="frames_display">
+        <parameters>
+          <label>Final Questions</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <scale_0>How easy was using the traditional BPMN? _(Easy ++ to Hard --)_</scale_0>
+              <scale_1>How easy was using the CPEE BPMN? _(Easy ++ to Hard --)_</scale_1>
+              <feedback_0>Did you have any specific problems with one/or both of the approaches?</feedback_0>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+    </description>
+  cpee:change_uuid: bf034e014bfd2178ffab720879bb8138c7993032
+  time:timestamp: '2025-11-04T12:28:03.499736+01:00'
+---
+event:
+  concept:instance: 5336
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: state/change
+  cpee:state: running
+  time:timestamp: '2025-11-04T12:28:03.837371+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: ''
+  id:id: a13
+  cpee:activity: a13
+  cpee:activity_uuid: e9ee431bb2e1ea3ac25c7917d3732c77
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:28:03.995890+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: ''
+  id:id: a13
+  cpee:activity: a13
+  cpee:activity_uuid: e9ee431bb2e1ea3ac25c7917d3732c77
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value: []
+  time:timestamp: '2025-11-04T12:28:03.995666+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: 'BPMN Simple Clear '
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a8
+  cpee:activity: a8
+  cpee:activity_uuid: 12f310908324f08635ee3af6a1c0e037
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+  - name: default
+    value:
+  time:timestamp: '2025-11-04T12:28:04.093329+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: 'BPMN Simple Clear '
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a8
+  cpee:activity: a8
+  cpee:activity_uuid: 12f310908324f08635ee3af6a1c0e037
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T12:28:04.139376+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: 'BPMN Simple Clear '
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a8
+  cpee:activity: a8
+  cpee:activity_uuid: 12f310908324f08635ee3af6a1c0e037
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:28:04.187601+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Left
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a7
+  cpee:activity: a7
+  cpee:activity_uuid: 123837c19e3ad808c6e893a866794d4b
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:28:04.364737+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Prep
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a6
+  cpee:activity: a6
+  cpee:activity_uuid: aed10614ec27f306ea0253ab8437eda0
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '1'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/text.html
+  - name: default
+    value:
+      text: "**Familiarize yourself with the model**\\n\\nIn about 30 seconds, tasks
+        will be shown below. Solve them as **quickly** as possible."
+  time:timestamp: '2025-11-04T12:28:04.458628+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Prep
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a6
+  cpee:activity: a6
+  cpee:activity_uuid: aed10614ec27f306ea0253ab8437eda0
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:28:04.514615+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Left
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a7
+  cpee:activity: a7
+  cpee:activity_uuid: 123837c19e3ad808c6e893a866794d4b
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '0'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '3'
+  - name: y_amount
+    value: '9'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/bpmn/s1.html
+  - name: default
+    value:
+  time:timestamp: '2025-11-04T12:28:04.295760+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Left
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a7
+  cpee:activity: a7
+  cpee:activity_uuid: 123837c19e3ad808c6e893a866794d4b
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T12:28:04.332279+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Prep
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a6
+  cpee:activity: a6
+  cpee:activity_uuid: aed10614ec27f306ea0253ab8437eda0
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T12:28:04.477519+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN  Simple Wait
+  concept:endpoint: https-post://cpee.org/services/timeout.php
+  id:id: a5
+  cpee:activity: a5
+  cpee:activity_uuid: d89055a9ac119914f87d8f8c23a4fb13
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: timeout
+    value: '30'
+  - name: data
+    value:
+  time:timestamp: '2025-11-04T12:28:04.573243+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN  Simple Wait
+  concept:endpoint: https-post://cpee.org/services/timeout.php
+  id:id: a5
+  cpee:activity: a5
+  cpee:activity_uuid: d89055a9ac119914f87d8f8c23a4fb13
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: "{}"
+  time:timestamp: '2025-11-04T12:28:34.582827+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN  Simple Wait
+  concept:endpoint: https-post://cpee.org/services/timeout.php
+  id:id: a5
+  cpee:activity: a5
+  cpee:activity_uuid: d89055a9ac119914f87d8f8c23a4fb13
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:28:34.607363+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Solve
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a4
+  cpee:activity: a4
+  cpee:activity_uuid: 21cabaacf023056e9e5ebe2913121559
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '1'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/text.html
+  - name: default
+    value:
+      text: Now solve the tasks as **quickly** as possible.
+  time:timestamp: '2025-11-04T12:28:34.649637+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Solve
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a4
+  cpee:activity: a4
+  cpee:activity_uuid: 21cabaacf023056e9e5ebe2913121559
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:28:34.683850+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Solve
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a4
+  cpee:activity: a4
+  cpee:activity_uuid: 21cabaacf023056e9e5ebe2913121559
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T12:28:34.663717+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a3
+  cpee:activity: a3
+  cpee:activity_uuid: 75be620cdf6c02ee62308581997299a0
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_0: Which data object(s) is task "Confirm Coffee Preferences" connected
+        with?
+      buttons_0: refill;emails;order;items
+  time:timestamp: '2025-11-04T12:28:34.775561+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a3
+  cpee:activity: a3
+  cpee:activity_uuid: 75be620cdf6c02ee62308581997299a0
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_0":{"refill":false,"emails":false,"order":true,"items":true}}'
+  time:timestamp: '2025-11-04T12:29:03.426481+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a3
+  cpee:activity: a3
+  cpee:activity_uuid: 75be620cdf6c02ee62308581997299a0
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:29:03.440862+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a3
+  cpee:activity: a3
+  cpee:activity_uuid: 75be620cdf6c02ee62308581997299a0
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        refill: false
+        emails: false
+        order: true
+        items: true
+  time:timestamp: '2025-11-04T12:29:03.438841+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a9
+  cpee:activity: a9
+  cpee:activity_uuid: a743ab642bfe86d84f03bec8c3fc5b24
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_1: Which data object(s) are read by task "Confirm Coffee Preferences"?
+      buttons_1: refill;emails;order;items
+  time:timestamp: '2025-11-04T12:29:03.507328+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a9
+  cpee:activity: a9
+  cpee:activity_uuid: a743ab642bfe86d84f03bec8c3fc5b24
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_1":{"refill":false,"emails":false,"order":true,"items":false}}'
+  time:timestamp: '2025-11-04T12:29:14.829708+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a9
+  cpee:activity: a9
+  cpee:activity_uuid: a743ab642bfe86d84f03bec8c3fc5b24
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_1:
+        refill: false
+        emails: false
+        order: true
+        items: false
+  time:timestamp: '2025-11-04T12:29:14.896955+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a9
+  cpee:activity: a9
+  cpee:activity_uuid: a743ab642bfe86d84f03bec8c3fc5b24
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:29:14.898207+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a10
+  cpee:activity: a10
+  cpee:activity_uuid: 2d585d14ff3d901427d8ef31dff12731
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_2: Which data object(s) are written by task "Confirm Coffee Preferences"?
+      buttons_2: refill;emails;order;items
+  time:timestamp: '2025-11-04T12:29:15.059030+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a10
+  cpee:activity: a10
+  cpee:activity_uuid: 2d585d14ff3d901427d8ef31dff12731
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_2":{"refill":false,"emails":false,"order":true,"items":true}}'
+  time:timestamp: '2025-11-04T12:29:21.844127+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a10
+  cpee:activity: a10
+  cpee:activity_uuid: 2d585d14ff3d901427d8ef31dff12731
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_1:
+        refill: false
+        emails: false
+        order: true
+        items: false
+    - buttons_2:
+        refill: false
+        emails: false
+        order: true
+        items: true
+  time:timestamp: '2025-11-04T12:29:21.857319+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a10
+  cpee:activity: a10
+  cpee:activity_uuid: 2d585d14ff3d901427d8ef31dff12731
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:29:21.857540+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a11
+  cpee:activity: a11
+  cpee:activity_uuid: 3e2262bf91bb04f84c88738610077776
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_3: Which tasks read and/or write the data object "emails"?
+      buttons_3: a1;a2;a4;a6;a7
+  time:timestamp: '2025-11-04T12:29:21.922632+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a11
+  cpee:activity: a11
+  cpee:activity_uuid: 3e2262bf91bb04f84c88738610077776
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_3":{"a1":true,"a2":false,"a4":true,"a6":false,"a7":true}}'
+  time:timestamp: '2025-11-04T12:29:44.537106+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a11
+  cpee:activity: a11
+  cpee:activity_uuid: 3e2262bf91bb04f84c88738610077776
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:29:44.552849+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a11
+  cpee:activity: a11
+  cpee:activity_uuid: 3e2262bf91bb04f84c88738610077776
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_1:
+        refill: false
+        emails: false
+        order: true
+        items: false
+    - buttons_2:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_3:
+        a1: true
+        a2: false
+        a4: true
+        a6: false
+        a7: true
+  time:timestamp: '2025-11-04T12:29:44.552653+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: 1571c373ad2b273d25862f4e0d8a3869
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_4: Is the data object "emails" used in conditions (as part of loops or
+        decision branches)?
+      select_4: Yes;No;I cant be sure
+  time:timestamp: '2025-11-04T12:29:44.600983+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: 1571c373ad2b273d25862f4e0d8a3869
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"select_4":"No"}'
+  time:timestamp: '2025-11-04T12:30:33.204047+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: 1571c373ad2b273d25862f4e0d8a3869
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:30:33.222656+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: BPMN Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: 1571c373ad2b273d25862f4e0d8a3869
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_1:
+        refill: false
+        emails: false
+        order: true
+        items: false
+    - buttons_2:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_3:
+        a1: true
+        a2: false
+        a4: true
+        a6: false
+        a7: true
+    - select_4: 'No'
+  time:timestamp: '2025-11-04T12:30:33.222453+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: 'CPEE Simple Clear '
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a23
+  cpee:activity: a23
+  cpee:activity_uuid: 3bbe556d3d3c194a1f34f5c0d32aa890
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+  - name: default
+    value:
+  time:timestamp: '2025-11-04T12:30:33.270045+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: 'CPEE Simple Clear '
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a23
+  cpee:activity: a23
+  cpee:activity_uuid: 3bbe556d3d3c194a1f34f5c0d32aa890
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T12:30:33.288695+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: 'CPEE Simple Clear '
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a23
+  cpee:activity: a23
+  cpee:activity_uuid: 3bbe556d3d3c194a1f34f5c0d32aa890
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:30:33.311491+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Left
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a22
+  cpee:activity: a22
+  cpee:activity_uuid: 3acac0b648f63d107c1c8a2fd254651c
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '0'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '3'
+  - name: y_amount
+    value: '9'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/flow/graph.html?monitor=https://cpee.org/flow/engine/5100/
+  - name: default
+    value:
+  time:timestamp: '2025-11-04T12:30:33.360763+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Left
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a22
+  cpee:activity: a22
+  cpee:activity_uuid: 3acac0b648f63d107c1c8a2fd254651c
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T12:30:33.373119+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Left
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a22
+  cpee:activity: a22
+  cpee:activity_uuid: 3acac0b648f63d107c1c8a2fd254651c
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:30:33.406661+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Prep
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a21
+  cpee:activity: a21
+  cpee:activity_uuid: e8980d3e341d4db5367f4df3f4e2ca9e
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '1'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/text.html
+  - name: default
+    value:
+      text: "**Familiarize yourself with the model**\\n\\nIn about 30 seconds, tasks
+        will be shown below. Solve them as **quickly** as possible."
+  time:timestamp: '2025-11-04T12:30:33.471459+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Prep
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a21
+  cpee:activity: a21
+  cpee:activity_uuid: e8980d3e341d4db5367f4df3f4e2ca9e
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T12:30:33.499564+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Prep
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a21
+  cpee:activity: a21
+  cpee:activity_uuid: e8980d3e341d4db5367f4df3f4e2ca9e
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:30:33.535031+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: Simple Wait
+  concept:endpoint: https-post://cpee.org/services/timeout.php
+  id:id: a20
+  cpee:activity: a20
+  cpee:activity_uuid: 2bc2d41768128950f6809461d14ef9e2
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: timeout
+    value: '30'
+  - name: data
+    value:
+  time:timestamp: '2025-11-04T12:30:33.630048+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: Simple Wait
+  concept:endpoint: https-post://cpee.org/services/timeout.php
+  id:id: a20
+  cpee:activity: a20
+  cpee:activity_uuid: 2bc2d41768128950f6809461d14ef9e2
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: "{}"
+  time:timestamp: '2025-11-04T12:31:03.645661+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: Simple Wait
+  concept:endpoint: https-post://cpee.org/services/timeout.php
+  id:id: a20
+  cpee:activity: a20
+  cpee:activity_uuid: 2bc2d41768128950f6809461d14ef9e2
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:31:03.675733+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Solve
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a19
+  cpee:activity: a19
+  cpee:activity_uuid: 2d9d959cfb4bf7d48dccbb51172daa0b
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '1'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/text.html
+  - name: default
+    value:
+      text: Now solve the tasks as **quickly** as possible.
+  time:timestamp: '2025-11-04T12:31:03.743776+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Solve
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a19
+  cpee:activity: a19
+  cpee:activity_uuid: 2d9d959cfb4bf7d48dccbb51172daa0b
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:31:03.788304+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Solve
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a19
+  cpee:activity: a19
+  cpee:activity_uuid: 2d9d959cfb4bf7d48dccbb51172daa0b
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T12:31:03.760615+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a18
+  cpee:activity: a18
+  cpee:activity_uuid: 4c4e2e52e4b643dde9878829a05901fd
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_0: Which data object(s) is task "Get Sun Data" connected with?
+      buttons_0: date;hour;sunrise;sunset;angle
+  time:timestamp: '2025-11-04T12:31:03.855468+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a18
+  cpee:activity: a18
+  cpee:activity_uuid: 4c4e2e52e4b643dde9878829a05901fd
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_1:
+        refill: false
+        emails: false
+        order: true
+        items: false
+    - buttons_2:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_3:
+        a1: true
+        a2: false
+        a4: true
+        a6: false
+        a7: true
+    - select_4: 'No'
+    - buttons_0:
+        date: true
+        hour: false
+        sunrise: true
+        sunset: true
+        angle: false
+  time:timestamp: '2025-11-04T12:31:24.900800+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a18
+  cpee:activity: a18
+  cpee:activity_uuid: 4c4e2e52e4b643dde9878829a05901fd
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_0":{"date":true,"hour":false,"sunrise":true,"sunset":true,"angle":false}}'
+  time:timestamp: '2025-11-04T12:31:24.876864+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a18
+  cpee:activity: a18
+  cpee:activity_uuid: 4c4e2e52e4b643dde9878829a05901fd
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:31:24.901723+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a17
+  cpee:activity: a17
+  cpee:activity_uuid: f524bb025ebf5fbb93fe9af31067d196
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_1: Which data object(s) are read by task "Get Sun Data"?
+      buttons_1: date;hour;sunrise;sunset;angle
+  time:timestamp: '2025-11-04T12:31:25.014408+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a17
+  cpee:activity: a17
+  cpee:activity_uuid: f524bb025ebf5fbb93fe9af31067d196
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_1":{"date":true,"hour":false,"sunrise":false,"sunset":false,"angle":false}}'
+  time:timestamp: '2025-11-04T12:31:47.168328+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a17
+  cpee:activity: a17
+  cpee:activity_uuid: f524bb025ebf5fbb93fe9af31067d196
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:31:47.185495+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a17
+  cpee:activity: a17
+  cpee:activity_uuid: f524bb025ebf5fbb93fe9af31067d196
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_1:
+        refill: false
+        emails: false
+        order: true
+        items: false
+    - buttons_2:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_3:
+        a1: true
+        a2: false
+        a4: true
+        a6: false
+        a7: true
+    - select_4: 'No'
+    - buttons_0:
+        date: true
+        hour: false
+        sunrise: true
+        sunset: true
+        angle: false
+    - buttons_1:
+        date: true
+        hour: false
+        sunrise: false
+        sunset: false
+        angle: false
+  time:timestamp: '2025-11-04T12:31:47.184715+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a16
+  cpee:activity: a16
+  cpee:activity_uuid: 8634691074190ee934023a43ec5add0f
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_2: Which data object(s) are written by task "Get Sun Data"?
+      buttons_2: date;hour;sunrise;sunset;angle
+  time:timestamp: '2025-11-04T12:31:47.243102+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a16
+  cpee:activity: a16
+  cpee:activity_uuid: 8634691074190ee934023a43ec5add0f
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_1:
+        refill: false
+        emails: false
+        order: true
+        items: false
+    - buttons_2:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_3:
+        a1: true
+        a2: false
+        a4: true
+        a6: false
+        a7: true
+    - select_4: 'No'
+    - buttons_0:
+        date: true
+        hour: false
+        sunrise: true
+        sunset: true
+        angle: false
+    - buttons_1:
+        date: true
+        hour: false
+        sunrise: false
+        sunset: false
+        angle: false
+    - buttons_2:
+        date: false
+        hour: false
+        sunrise: true
+        sunset: true
+        angle: false
+  time:timestamp: '2025-11-04T12:31:55.546367+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a15
+  cpee:activity: a15
+  cpee:activity_uuid: 4a3f5713d290937c8ff9803b99275152
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_3: Which tasks read and/or write the data object "hour"?
+      buttons_3: a1;a2;a3;a4;a5;a6;a7;a8;a9
+  time:timestamp: '2025-11-04T12:31:55.671997+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a16
+  cpee:activity: a16
+  cpee:activity_uuid: 8634691074190ee934023a43ec5add0f
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_2":{"date":false,"hour":false,"sunrise":true,"sunset":true,"angle":false}}'
+  time:timestamp: '2025-11-04T12:31:55.521230+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a16
+  cpee:activity: a16
+  cpee:activity_uuid: 8634691074190ee934023a43ec5add0f
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:31:55.547967+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a15
+  cpee:activity: a15
+  cpee:activity_uuid: 4a3f5713d290937c8ff9803b99275152
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_3":{"a1":false,"a2":true,"a3":false,"a4":false,"a5":true,"a6":true,"a7":false,"a8":false,"a9":false}}'
+  time:timestamp: '2025-11-04T12:32:24.451173+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a15
+  cpee:activity: a15
+  cpee:activity_uuid: 4a3f5713d290937c8ff9803b99275152
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:32:24.496015+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a15
+  cpee:activity: a15
+  cpee:activity_uuid: 4a3f5713d290937c8ff9803b99275152
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_1:
+        refill: false
+        emails: false
+        order: true
+        items: false
+    - buttons_2:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_3:
+        a1: true
+        a2: false
+        a4: true
+        a6: false
+        a7: true
+    - select_4: 'No'
+    - buttons_0:
+        date: true
+        hour: false
+        sunrise: true
+        sunset: true
+        angle: false
+    - buttons_1:
+        date: true
+        hour: false
+        sunrise: false
+        sunset: false
+        angle: false
+    - buttons_2:
+        date: false
+        hour: false
+        sunrise: true
+        sunset: true
+        angle: false
+    - buttons_3:
+        a1: false
+        a2: true
+        a3: false
+        a4: false
+        a5: true
+        a6: true
+        a7: false
+        a8: false
+        a9: false
+  time:timestamp: '2025-11-04T12:32:24.495580+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a14
+  cpee:activity: a14
+  cpee:activity_uuid: b947ac6a890998222e6d0352468948ff
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_4: Is the data object "hour" used in conditions (as part of loops or decisions)?
+      select_4: Yes;No;I cant be sure
+  time:timestamp: '2025-11-04T12:32:24.655060+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a14
+  cpee:activity: a14
+  cpee:activity_uuid: b947ac6a890998222e6d0352468948ff
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"select_4":"Yes"}'
+  time:timestamp: '2025-11-04T12:32:55.346137+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a14
+  cpee:activity: a14
+  cpee:activity_uuid: b947ac6a890998222e6d0352468948ff
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:32:55.374257+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: CPEE Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a14
+  cpee:activity: a14
+  cpee:activity_uuid: b947ac6a890998222e6d0352468948ff
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_1:
+        refill: false
+        emails: false
+        order: true
+        items: false
+    - buttons_2:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_3:
+        a1: true
+        a2: false
+        a4: true
+        a6: false
+        a7: true
+    - select_4: 'No'
+    - buttons_0:
+        date: true
+        hour: false
+        sunrise: true
+        sunset: true
+        angle: false
+    - buttons_1:
+        date: true
+        hour: false
+        sunrise: false
+        sunset: false
+        angle: false
+    - buttons_2:
+        date: false
+        hour: false
+        sunrise: true
+        sunset: true
+        angle: false
+    - buttons_3:
+        a1: false
+        a2: true
+        a3: false
+        a4: false
+        a5: true
+        a6: true
+        a7: false
+        a8: false
+        a9: false
+    - select_4: 'Yes'
+  time:timestamp: '2025-11-04T12:32:55.371669+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: Simple Resolve
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a2
+  cpee:activity: a2
+  cpee:activity_uuid: 243b6765afcc7ad58908d2242f8adf27
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '1'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/text.html
+  - name: default
+    value:
+      text: Now answer the questions and give feedback.
+  time:timestamp: '2025-11-04T12:32:55.469280+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: Simple Resolve
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a2
+  cpee:activity: a2
+  cpee:activity_uuid: 243b6765afcc7ad58908d2242f8adf27
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T12:32:55.487822+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: Simple Resolve
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a2
+  cpee:activity: a2
+  cpee:activity_uuid: 243b6765afcc7ad58908d2242f8adf27
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:32:55.514383+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: Final Questions
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: fea525cfe46d9254361782d89790f1ee
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      scale_0: How easy was using the traditional BPMN? _(Easy ++ to Hard --)_
+      scale_1: How easy was using the CPEE BPMN? _(Easy ++ to Hard --)_
+      feedback_0: Did you have any specific problems with one/or both of the approaches?
+  time:timestamp: '2025-11-04T12:32:55.601474+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: Final Questions
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: fea525cfe46d9254361782d89790f1ee
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"scale_0":"0","scale_1":"1","feedback_0":"CEEP is more difficult to understand
+      the diagramm as a hole but more easy to find specifics. "}'
+  time:timestamp: '2025-11-04T12:34:32.892145+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: Final Questions
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: fea525cfe46d9254361782d89790f1ee
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T12:34:32.907271+01:00'
+---
+event:
+  concept:instance: 5336
+  concept:name: Final Questions
+  concept:endpoint: https-put://cpee.org/out/frames/544cbf765aae5275e413/
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: fea525cfe46d9254361782d89790f1ee
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_1:
+        refill: false
+        emails: false
+        order: true
+        items: false
+    - buttons_2:
+        refill: false
+        emails: false
+        order: true
+        items: true
+    - buttons_3:
+        a1: true
+        a2: false
+        a4: true
+        a6: false
+        a7: true
+    - select_4: 'No'
+    - buttons_0:
+        date: true
+        hour: false
+        sunrise: true
+        sunset: true
+        angle: false
+    - buttons_1:
+        date: true
+        hour: false
+        sunrise: false
+        sunset: false
+        angle: false
+    - buttons_2:
+        date: false
+        hour: false
+        sunrise: true
+        sunset: true
+        angle: false
+    - buttons_3:
+        a1: false
+        a2: true
+        a3: false
+        a4: false
+        a5: true
+        a6: true
+        a7: false
+        a8: false
+        a9: false
+    - select_4: 'Yes'
+    - scale_0: '0'
+      scale_1: '1'
+      feedback_0: 'CEEP is more difficult to understand the diagramm as a hole but
+        more easy to find specifics. '
+  time:timestamp: '2025-11-04T12:34:32.907067+01:00'
+---
+event:
+  concept:instance: 5336
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 2bc2639c-b3e2-4386-b3e6-032c6a6092e0
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: state/change
+  cpee:state: finished
+  time:timestamp: '2025-11-04T12:34:32.929963+01:00'

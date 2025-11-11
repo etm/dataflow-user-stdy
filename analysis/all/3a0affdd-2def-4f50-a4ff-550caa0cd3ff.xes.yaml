@@ -1,0 +1,5014 @@
+---
+log:
+  namespaces:
+    stream: https://cpee.org/datastream/
+    ssn: http://www.w3.org/ns/ssn/
+    sosa: http://www.w3.org/ns/sosa/
+  xes:
+    creator: cpee.org
+    features: nested-attributes
+  extension:
+    time: http://www.xes-standard.org/time.xesext
+    concept: http://www.xes-standard.org/concept.xesext
+    id: http://www.xes-standard.org/identity.xesext
+    lifecycle: http://www.xes-standard.org/lifecycle.xesext
+    cpee: http://cpee.org/cpee.xesext
+    stream: https://cpee.org/datastream/datastream.xesext
+  global:
+    trace:
+      concept:name: __NOTSPECIFIED__
+      cpee:name: __NOTSPECIFIED__
+    event:
+      concept:instance: -1
+      concept:name: __NOTSPECIFIED__
+      concept:endpoint: __NOTSPECIFIED__
+      id:id: __NOTSPECIFIED__
+      cpee:uuid: __NOTSPECIFIED__
+      lifecycle:transition: complete
+      cpee:lifecycle:transition: activity/calling
+      time:timestamp: ''
+  trace:
+    concept:name: 5796
+    cpee:name: QuestSub
+    cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+---
+event:
+  concept:instance: 5796
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: state/change
+  cpee:state: ready
+  time:timestamp: '2025-11-04T14:50:55.979439+01:00'
+---
+event:
+  concept:instance: 5796
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: attributes/change
+  data:
+  - name: guarded
+    value: none
+  - name: info
+    value: QuestSub
+  - name: modeltype
+    value: CPEE
+  - name: theme
+    value: extended
+  - name: creator
+    value: Christine Ashcreek
+  - name: guarded_id
+    value: ''
+  - name: author
+    value: Christine Ashcreek
+  - name: model_uuid
+    value: ff71cf54-13f5-455e-8546-64267be4093a
+  - name: model_version
+    value: ''
+  - name: design_dir
+    value: Papers.dir/Dataflow.dir
+  - name: design_stage
+    value: development
+  time:timestamp: '2025-11-04T14:50:55.987450+01:00'
+---
+event:
+  concept:instance: 5796
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: qid
+    value: 944af1c45ca07e072b17
+  - name: d
+    value:
+      cpee: https://cpee.org/flow/graph.html?monitor=https://cpee.org/flow/engine/5096/
+      bpmn: https://cpee.org/quests/dataflow/bpmn/c1.html
+      bpmn_task: Stakeholders
+      bpmn_do: users
+      bpmn_tasks: a1;a2;a3;a4;a6;a7;a8;a10;a12;a13;a14;a15;a16;a18;a23
+      bpmn_dos: all_apps;applications;businessgoals;competitive_landscape;competitor_analysis;counter;countrygoals;cur_app;emails;finance;idea_description;idea_initiator;impact;market_review;mission;pmgoals;portfolio_review;problem_canvas;result;roles;spider_graph;stakeholders;stakes;users
+      cpee_task: Next QR, Order Item, and Tray
+      cpee_do: params
+      cpee_tasks: a7;a8;a9;a10;a12;a13
+      cpee_dos: count;current_tray;from;initial;order;order_id;order_item;order_list;params;programs;qr;seed;state;tray_positions;trays
+      time: 40
+  time:timestamp: '2025-11-04T14:50:55.982692+01:00'
+---
+event:
+  concept:instance: 5796
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: endpoints/change
+  data:
+  - name: frames_display
+    value: https-put://cpee.org/out/frames/
+  - name: timeout
+    value: https-post://cpee.org/services/timeout.php
+  time:timestamp: '2025-11-04T14:50:55.984421+01:00'
+---
+event:
+  concept:instance: 5796
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: description/change
+  cpee:description: |
+    <?xml version="1.0"?>
+    <description xmlns="http://cpee.org/ns/description/1.0">
+      <manipulate id="a13" label="">data.res = []</manipulate>
+      <call id="a8" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Clear </label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls/>
+            <default/>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a7" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Left</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>0</lx>
+            <ly>1</ly>
+            <x_amount>3</x_amount>
+            <y_amount>9</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>!data.d['bpmn']</url>
+              </urls_item>
+            </urls>
+            <default/>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a6" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Prep</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>1</ly>
+            <x_amount>2</x_amount>
+            <y_amount>1</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/text.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text>!"**Familiarize yourself with the model**\\n\\nIn about " + data.d['time'].to_s + " seconds, tasks will be shown below. Solve them as **quickly** as possible."</text>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a5" endpoint="timeout">
+        <parameters>
+          <label>BPMN  Simple Wait</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <timeout>!data.d['time'].to_s</timeout>
+            <data/>
+          </arguments>
+        </parameters>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+        </documentation>
+      </call>
+      <call id="a4" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Solve</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>1</ly>
+            <x_amount>2</x_amount>
+            <y_amount>1</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/text.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text>Now solve the tasks as **quickly** as possible.</text>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a3" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Questions 0</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_0>!"Which data object(s) is task \"" + data.d['bpmn_task'] + "\" connected with?"</text_0>
+              <buttons_0>!data.d['bpmn_dos']</buttons_0>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a9" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Questions 1</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_1>!"Which data object(s) are read by task \"" + data.d['bpmn_task'] + "\"?"</text_1>
+              <buttons_1>!data.d['bpmn_dos']</buttons_1>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a10" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Questions 2</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_2>!"Which data object(s) are written by task \"" + data.d['bpmn_task'] + "\"?"</text_2>
+              <buttons_2>!data.d['bpmn_dos']</buttons_2>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a11" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Questions 3</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_3>!"Which tasks read and/or write the data object \"" + data.d['bpmn_do'] + "\"?"</text_3>
+              <buttons_3>!data.d['bpmn_tasks']</buttons_3>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a12" endpoint="frames_display">
+        <parameters>
+          <label>BPMN Simple Questions 4</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_4>!"Is the data object \"" + data.d['bpmn_do'] + "\" used in conditions (as part of loops or decision branches)?"</text_4>
+              <select_4>Yes;No;I cant be sure</select_4>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a23" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Clear </label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls/>
+            <default/>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a22" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Left</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>0</lx>
+            <ly>1</ly>
+            <x_amount>3</x_amount>
+            <y_amount>9</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>!data.d['cpee']</url>
+              </urls_item>
+            </urls>
+            <default/>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a21" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Prep</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>1</ly>
+            <x_amount>2</x_amount>
+            <y_amount>1</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/text.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text>!"**Familiarize yourself with the model**\\n\\nIn about " + data.d['time'].to_s + " seconds, tasks will be shown below. Solve them as **quickly** as possible."</text>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a20" endpoint="timeout">
+        <parameters>
+          <label>Simple Wait</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <timeout>!data.d['time'].to_s</timeout>
+            <data/>
+          </arguments>
+        </parameters>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+        </documentation>
+      </call>
+      <call id="a19" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Solve</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>1</ly>
+            <x_amount>2</x_amount>
+            <y_amount>1</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/text.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text>Now solve the tasks as **quickly** as possible.</text>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a18" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Questions 0</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_0>!"Which data object(s) is task \"" + data.d['cpee_task'] + "\" connected with?"</text_0>
+              <buttons_0>!data.d['cpee_dos']</buttons_0>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a17" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Questions 1</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_1>!"Which data object(s) are read by task \"" + data.d['cpee_task'] + "\"?"</text_1>
+              <buttons_1>!data.d['cpee_dos']</buttons_1>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a16" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Questions 2</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_2>!"Which data object(s) are written by task \"" + data.d['cpee_task'] + "\"?"</text_2>
+              <buttons_2>!data.d['cpee_dos']</buttons_2>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a15" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Questions 3</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_3>!"Which tasks read and/or write the data object \"" + data.d['cpee_do'] + "\"?"</text_3>
+              <buttons_3>!data.d['cpee_tasks']</buttons_3>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a14" endpoint="frames_display">
+        <parameters>
+          <label>CPEE Simple Questions 4</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text_4>!"Is the data object \"" + data.d['cpee_do'] + "\" used in conditions (as part of loops or decisions)?"</text_4>
+              <select_4>Yes;No;I cant be sure</select_4>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a2" endpoint="frames_display">
+        <parameters>
+          <label>Simple Resolve</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>set</type>
+            <lx>3</lx>
+            <ly>1</ly>
+            <x_amount>2</x_amount>
+            <y_amount>1</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/text.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <text>Now answer the questions and give feedback.</text>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a1" endpoint="frames_display">
+        <parameters>
+          <label>Final Questions</label>
+          <color>#f57aa9</color>
+          <arguments>
+            <type>wait</type>
+            <lx>3</lx>
+            <ly>2</ly>
+            <x_amount>2</x_amount>
+            <y_amount>8</y_amount>
+            <button/>
+            <style/>
+            <urls>
+              <urls_item>
+                <lang>de-at</lang>
+                <url>https://cpee.org/quests/dataflow/questions.html</url>
+              </urls_item>
+            </urls>
+            <default>
+              <scale_0>How easy was using the traditional BPMN? _(Easy ++ to Hard --)_</scale_0>
+              <scale_1>How easy was using the CPEE BPMN? _(Easy ++ to Hard --)_</scale_1>
+              <feedback_0>Did you have any specific problems with one/or both of the approaches?</feedback_0>
+            </default>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare>endpoints.frames_display += data.qid + '/'</prepare>
+          <finalize output="result">data.res &lt;&lt; result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+    </description>
+  cpee:change_uuid: bf034e014bfd2178ffab720879bb8138c7993032
+  time:timestamp: '2025-11-04T14:50:56.014115+01:00'
+---
+event:
+  concept:instance: 5796
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: state/change
+  cpee:state: running
+  time:timestamp: '2025-11-04T14:50:56.373449+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: ''
+  id:id: a13
+  cpee:activity: a13
+  cpee:activity_uuid: 21f7c8fbdf8327a383de302a2c94fd92
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:50:56.402051+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: 'BPMN Simple Clear '
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a8
+  cpee:activity: a8
+  cpee:activity_uuid: 140d072e53fb34301943e8a27c49d6cc
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T14:50:56.481191+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: 'BPMN Simple Clear '
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a8
+  cpee:activity: a8
+  cpee:activity_uuid: 140d072e53fb34301943e8a27c49d6cc
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+  - name: default
+    value:
+  time:timestamp: '2025-11-04T14:50:56.457808+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: 'BPMN Simple Clear '
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a8
+  cpee:activity: a8
+  cpee:activity_uuid: 140d072e53fb34301943e8a27c49d6cc
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:50:56.504151+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Left
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a7
+  cpee:activity: a7
+  cpee:activity_uuid: 4c996166e786f89c2d378b13eb2226ca
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:50:56.593340+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Left
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a7
+  cpee:activity: a7
+  cpee:activity_uuid: 4c996166e786f89c2d378b13eb2226ca
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T14:50:56.569500+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: ''
+  id:id: a13
+  cpee:activity: a13
+  cpee:activity_uuid: 21f7c8fbdf8327a383de302a2c94fd92
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value: []
+  time:timestamp: '2025-11-04T14:50:56.398309+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Left
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a7
+  cpee:activity: a7
+  cpee:activity_uuid: 4c996166e786f89c2d378b13eb2226ca
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '0'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '3'
+  - name: y_amount
+    value: '9'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/bpmn/c1.html
+  - name: default
+    value:
+  time:timestamp: '2025-11-04T14:50:56.556282+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Prep
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a6
+  cpee:activity: a6
+  cpee:activity_uuid: 3010cff500a3f2a0c015b6ab8ce6147a
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T14:50:56.668254+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Prep
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a6
+  cpee:activity: a6
+  cpee:activity_uuid: 3010cff500a3f2a0c015b6ab8ce6147a
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '1'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/text.html
+  - name: default
+    value:
+      text: "**Familiarize yourself with the model**\\n\\nIn about 40 seconds, tasks
+        will be shown below. Solve them as **quickly** as possible."
+  time:timestamp: '2025-11-04T14:50:56.650252+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Prep
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a6
+  cpee:activity: a6
+  cpee:activity_uuid: 3010cff500a3f2a0c015b6ab8ce6147a
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:50:56.693494+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN  Simple Wait
+  concept:endpoint: https-post://cpee.org/services/timeout.php
+  id:id: a5
+  cpee:activity: a5
+  cpee:activity_uuid: 9c60bf8509f8f62b54a0c3b5d41bd57f
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: timeout
+    value: '40'
+  - name: data
+    value:
+  time:timestamp: '2025-11-04T14:50:56.738618+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN  Simple Wait
+  concept:endpoint: https-post://cpee.org/services/timeout.php
+  id:id: a5
+  cpee:activity: a5
+  cpee:activity_uuid: 9c60bf8509f8f62b54a0c3b5d41bd57f
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: "{}"
+  time:timestamp: '2025-11-04T14:51:36.749587+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN  Simple Wait
+  concept:endpoint: https-post://cpee.org/services/timeout.php
+  id:id: a5
+  cpee:activity: a5
+  cpee:activity_uuid: 9c60bf8509f8f62b54a0c3b5d41bd57f
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:51:36.769742+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Solve
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a4
+  cpee:activity: a4
+  cpee:activity_uuid: c33c2de8e63dee9eac8a39c8f2f419b2
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '1'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/text.html
+  - name: default
+    value:
+      text: Now solve the tasks as **quickly** as possible.
+  time:timestamp: '2025-11-04T14:51:36.813116+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Solve
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a4
+  cpee:activity: a4
+  cpee:activity_uuid: c33c2de8e63dee9eac8a39c8f2f419b2
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T14:51:36.823811+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Solve
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a4
+  cpee:activity: a4
+  cpee:activity_uuid: c33c2de8e63dee9eac8a39c8f2f419b2
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:51:36.843323+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a3
+  cpee:activity: a3
+  cpee:activity_uuid: b8a736879111b4b2bfb29f818a498dde
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_0: Which data object(s) is task "Stakeholders" connected with?
+      buttons_0: all_apps;applications;businessgoals;competitive_landscape;competitor_analysis;counter;countrygoals;cur_app;emails;finance;idea_description;idea_initiator;impact;market_review;mission;pmgoals;portfolio_review;problem_canvas;result;roles;spider_graph;stakeholders;stakes;users
+  time:timestamp: '2025-11-04T14:51:36.891695+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a3
+  cpee:activity: a3
+  cpee:activity_uuid: b8a736879111b4b2bfb29f818a498dde
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_0":{"all_apps":false,"applications":false,"businessgoals":false,"competitive_landscape":false,"competitor_analysis":false,"counter":true,"countrygoals":false,"cur_app":true,"emails":false,"finance":false,"idea_description":true,"idea_initiator":false,"impact":false,"market_review":false,"mission":false,"pmgoals":false,"portfolio_review":false,"problem_canvas":false,"result":false,"roles":false,"spider_graph":false,"stakeholders":true,"stakes":true,"users":true,"所有":false,"应用
+      应用":false,"业务目标":false,"竞争格局":false,"竞争对手分析":false,"反制":false,"措施 国家目标 ":false,"Cur_App":false,"
+      电子邮件":false,"财务":false,"创意描述":false,"创意发起人":false,"影响":false,"市场评估":false,"使命
+      ":false,"PM 目标":false,"投资组合评估":false,"问题画布":false,"结果":false,"角色":false,"蜘蛛图":false,"利益相关者":false,"权益":false,"用户":false}}'
+  time:timestamp: '2025-11-04T14:52:57.308215+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a3
+  cpee:activity: a3
+  cpee:activity_uuid: b8a736879111b4b2bfb29f818a498dde
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:52:57.319572+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a3
+  cpee:activity: a3
+  cpee:activity_uuid: b8a736879111b4b2bfb29f818a498dde
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+  time:timestamp: '2025-11-04T14:52:57.319181+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a9
+  cpee:activity: a9
+  cpee:activity_uuid: d9c110f678dff756093d49a5d8b357f3
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_1: Which data object(s) are read by task "Stakeholders"?
+      buttons_1: all_apps;applications;businessgoals;competitive_landscape;competitor_analysis;counter;countrygoals;cur_app;emails;finance;idea_description;idea_initiator;impact;market_review;mission;pmgoals;portfolio_review;problem_canvas;result;roles;spider_graph;stakeholders;stakes;users
+  time:timestamp: '2025-11-04T14:52:57.378421+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a9
+  cpee:activity: a9
+  cpee:activity_uuid: d9c110f678dff756093d49a5d8b357f3
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_1":{"all_apps":false,"applications":false,"businessgoals":false,"competitive_landscape":false,"competitor_analysis":false,"counter":true,"countrygoals":false,"cur_app":true,"emails":false,"finance":false,"idea_description":true,"idea_initiator":false,"impact":false,"market_review":false,"mission":false,"pmgoals":false,"portfolio_review":false,"problem_canvas":false,"result":false,"roles":false,"spider_graph":false,"stakeholders":false,"stakes":false,"users":true,"所有":false,"应用
+      应用":false,"业务目标":false,"竞争格局":false,"竞争对手分析":false,"反制":false,"措施 国家目标 ":false,"Cur_App":false,"
+      电子邮件":false,"财务":false,"创意描述":false,"创意发起人":false,"影响":false,"市场评估":false,"使命
+      ":false,"PM 目标":false,"投资组合评估":false,"问题画布":false,"结果":false,"角色":false,"蜘蛛图":false,"利益相关者":false,"权益":false,"用户":false}}'
+  time:timestamp: '2025-11-04T14:53:25.312864+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a9
+  cpee:activity: a9
+  cpee:activity_uuid: d9c110f678dff756093d49a5d8b357f3
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:53:25.327085+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a9
+  cpee:activity: a9
+  cpee:activity_uuid: d9c110f678dff756093d49a5d8b357f3
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_1:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: false
+        stakes: false
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+  time:timestamp: '2025-11-04T14:53:25.326876+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a10
+  cpee:activity: a10
+  cpee:activity_uuid: 297aac0a1d41a95284443d0af35e1be2
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_2: Which data object(s) are written by task "Stakeholders"?
+      buttons_2: all_apps;applications;businessgoals;competitive_landscape;competitor_analysis;counter;countrygoals;cur_app;emails;finance;idea_description;idea_initiator;impact;market_review;mission;pmgoals;portfolio_review;problem_canvas;result;roles;spider_graph;stakeholders;stakes;users
+  time:timestamp: '2025-11-04T14:53:25.385262+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a10
+  cpee:activity: a10
+  cpee:activity_uuid: 297aac0a1d41a95284443d0af35e1be2
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_2":{"all_apps":false,"applications":false,"businessgoals":false,"competitive_landscape":false,"competitor_analysis":false,"counter":true,"countrygoals":false,"cur_app":false,"emails":false,"finance":false,"idea_description":false,"idea_initiator":false,"impact":false,"market_review":false,"mission":false,"pmgoals":false,"portfolio_review":false,"problem_canvas":false,"result":false,"roles":false,"spider_graph":false,"stakeholders":true,"stakes":true,"users":true,"所有":false,"应用
+      应用":false,"业务目标":false,"竞争格局":false,"竞争对手分析":false,"反制":false,"措施 国家目标 ":false,"Cur_App":false,"
+      电子邮件":false,"财务":false,"创意描述":false,"创意发起人":false,"影响":false,"市场评估":false,"使命
+      ":false,"PM 目标":false,"投资组合评估":false,"问题画布":false,"结果":false,"角色":false,"蜘蛛图":false,"利益相关者":false,"权益":false,"用户":false}}'
+  time:timestamp: '2025-11-04T14:53:43.907067+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a10
+  cpee:activity: a10
+  cpee:activity_uuid: 297aac0a1d41a95284443d0af35e1be2
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:53:43.919741+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a10
+  cpee:activity: a10
+  cpee:activity_uuid: 297aac0a1d41a95284443d0af35e1be2
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_1:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: false
+        stakes: false
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_2:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: false
+        emails: false
+        finance: false
+        idea_description: false
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+  time:timestamp: '2025-11-04T14:53:43.919539+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a11
+  cpee:activity: a11
+  cpee:activity_uuid: 3ab68255b0b1ee28b592754b546d7ab0
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_3: Which tasks read and/or write the data object "users"?
+      buttons_3: a1;a2;a3;a4;a6;a7;a8;a10;a12;a13;a14;a15;a16;a18;a23
+  time:timestamp: '2025-11-04T14:53:43.979446+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a11
+  cpee:activity: a11
+  cpee:activity_uuid: 3ab68255b0b1ee28b592754b546d7ab0
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_3":{"a1":false,"a2":true,"a3":true,"a4":true,"a6":true,"a7":true,"a8":true,"a10":true,"a12":true,"a13":false,"a14":true,"a15":false,"a16":true,"a18":true,"a23":false,"A1":false,"A2":false,"A3":false,"A4":false,"A6":false,"A7":false,"A8":false,"A10":false,"A12":false,"A13":false,"A14":false,"A15":false,"A16":false,"A18":false,"A23":false}}'
+  time:timestamp: '2025-11-04T14:54:46.905396+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a11
+  cpee:activity: a11
+  cpee:activity_uuid: 3ab68255b0b1ee28b592754b546d7ab0
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:54:46.923186+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a11
+  cpee:activity: a11
+  cpee:activity_uuid: 3ab68255b0b1ee28b592754b546d7ab0
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_1:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: false
+        stakes: false
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_2:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: false
+        emails: false
+        finance: false
+        idea_description: false
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_3:
+        a1: false
+        a2: true
+        a3: true
+        a4: true
+        a6: true
+        a7: true
+        a8: true
+        a10: true
+        a12: true
+        a13: false
+        a14: true
+        a15: false
+        a16: true
+        a18: true
+        a23: false
+        A1: false
+        A2: false
+        A3: false
+        A4: false
+        A6: false
+        A7: false
+        A8: false
+        A10: false
+        A12: false
+        A13: false
+        A14: false
+        A15: false
+        A16: false
+        A18: false
+        A23: false
+  time:timestamp: '2025-11-04T14:54:46.922985+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: c0737742fedabd92ecf90bc98ea0dd2c
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_4: Is the data object "users" used in conditions (as part of loops or decision
+        branches)?
+      select_4: Yes;No;I cant be sure
+  time:timestamp: '2025-11-04T14:54:46.975042+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: c0737742fedabd92ecf90bc98ea0dd2c
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"select_4":"I cant be sure"}'
+  time:timestamp: '2025-11-04T14:54:51.780684+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: c0737742fedabd92ecf90bc98ea0dd2c
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_1:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: false
+        stakes: false
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_2:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: false
+        emails: false
+        finance: false
+        idea_description: false
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_3:
+        a1: false
+        a2: true
+        a3: true
+        a4: true
+        a6: true
+        a7: true
+        a8: true
+        a10: true
+        a12: true
+        a13: false
+        a14: true
+        a15: false
+        a16: true
+        a18: true
+        a23: false
+        A1: false
+        A2: false
+        A3: false
+        A4: false
+        A6: false
+        A7: false
+        A8: false
+        A10: false
+        A12: false
+        A13: false
+        A14: false
+        A15: false
+        A16: false
+        A18: false
+        A23: false
+    - select_4: I cant be sure
+  time:timestamp: '2025-11-04T14:54:51.793387+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: BPMN Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: c0737742fedabd92ecf90bc98ea0dd2c
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:54:51.793623+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: 'CPEE Simple Clear '
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a23
+  cpee:activity: a23
+  cpee:activity_uuid: b6f309220a1f8f2ad6a26bd33606e640
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+  - name: default
+    value:
+  time:timestamp: '2025-11-04T14:54:51.837269+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: 'CPEE Simple Clear '
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a23
+  cpee:activity: a23
+  cpee:activity_uuid: b6f309220a1f8f2ad6a26bd33606e640
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T14:54:51.855278+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: 'CPEE Simple Clear '
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a23
+  cpee:activity: a23
+  cpee:activity_uuid: b6f309220a1f8f2ad6a26bd33606e640
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:54:51.872707+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Left
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a22
+  cpee:activity: a22
+  cpee:activity_uuid: a90b87dfd786d37969ff8eeee5eb1b06
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '0'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '3'
+  - name: y_amount
+    value: '9'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/flow/graph.html?monitor=https://cpee.org/flow/engine/5096/
+  - name: default
+    value:
+  time:timestamp: '2025-11-04T14:54:51.916676+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Left
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a22
+  cpee:activity: a22
+  cpee:activity_uuid: a90b87dfd786d37969ff8eeee5eb1b06
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T14:54:51.937716+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Left
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a22
+  cpee:activity: a22
+  cpee:activity_uuid: a90b87dfd786d37969ff8eeee5eb1b06
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:54:51.956240+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Prep
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a21
+  cpee:activity: a21
+  cpee:activity_uuid: 74e2bde9ea9230cc52e17ea5eec960e9
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '1'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/text.html
+  - name: default
+    value:
+      text: "**Familiarize yourself with the model**\\n\\nIn about 40 seconds, tasks
+        will be shown below. Solve them as **quickly** as possible."
+  time:timestamp: '2025-11-04T14:54:52.009909+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Prep
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a21
+  cpee:activity: a21
+  cpee:activity_uuid: 74e2bde9ea9230cc52e17ea5eec960e9
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T14:54:52.025467+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Prep
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a21
+  cpee:activity: a21
+  cpee:activity_uuid: 74e2bde9ea9230cc52e17ea5eec960e9
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:54:52.049694+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: Simple Wait
+  concept:endpoint: https-post://cpee.org/services/timeout.php
+  id:id: a20
+  cpee:activity: a20
+  cpee:activity_uuid: 77e92d568dd6b871bf78411af8be408c
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: timeout
+    value: '40'
+  - name: data
+    value:
+  time:timestamp: '2025-11-04T14:54:52.084316+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: Simple Wait
+  concept:endpoint: https-post://cpee.org/services/timeout.php
+  id:id: a20
+  cpee:activity: a20
+  cpee:activity_uuid: 77e92d568dd6b871bf78411af8be408c
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: "{}"
+  time:timestamp: '2025-11-04T14:55:32.093991+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: Simple Wait
+  concept:endpoint: https-post://cpee.org/services/timeout.php
+  id:id: a20
+  cpee:activity: a20
+  cpee:activity_uuid: 77e92d568dd6b871bf78411af8be408c
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:55:32.114651+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Solve
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a19
+  cpee:activity: a19
+  cpee:activity_uuid: 87405147ce14d04e8014076911ba6e90
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '1'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/text.html
+  - name: default
+    value:
+      text: Now solve the tasks as **quickly** as possible.
+  time:timestamp: '2025-11-04T14:55:32.152597+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Solve
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a19
+  cpee:activity: a19
+  cpee:activity_uuid: 87405147ce14d04e8014076911ba6e90
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T14:55:32.168214+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Solve
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a19
+  cpee:activity: a19
+  cpee:activity_uuid: 87405147ce14d04e8014076911ba6e90
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:55:32.187141+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a18
+  cpee:activity: a18
+  cpee:activity_uuid: '087b141261955de1c864f58e8bf3c06f'
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_0: Which data object(s) is task "Next QR, Order Item, and Tray" connected
+        with?
+      buttons_0: count;current_tray;from;initial;order;order_id;order_item;order_list;params;programs;qr;seed;state;tray_positions;trays
+  time:timestamp: '2025-11-04T14:55:32.237063+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a18
+  cpee:activity: a18
+  cpee:activity_uuid: '087b141261955de1c864f58e8bf3c06f'
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_0":{"count":true,"current_tray":true,"from":true,"initial":true,"order":false,"order_id":false,"order_item":false,"order_list":false,"params":false,"programs":false,"qr":false,"seed":false,"state":false,"tray_positions":false,"trays":false,"根据":false,"初始":false,"订单
+      ":false," 统计":false,"当前托盘":false}}'
+  time:timestamp: '2025-11-04T14:56:24.966705+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a18
+  cpee:activity: a18
+  cpee:activity_uuid: '087b141261955de1c864f58e8bf3c06f'
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:56:24.981729+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 0
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a18
+  cpee:activity: a18
+  cpee:activity_uuid: '087b141261955de1c864f58e8bf3c06f'
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_1:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: false
+        stakes: false
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_2:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: false
+        emails: false
+        finance: false
+        idea_description: false
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_3:
+        a1: false
+        a2: true
+        a3: true
+        a4: true
+        a6: true
+        a7: true
+        a8: true
+        a10: true
+        a12: true
+        a13: false
+        a14: true
+        a15: false
+        a16: true
+        a18: true
+        a23: false
+        A1: false
+        A2: false
+        A3: false
+        A4: false
+        A6: false
+        A7: false
+        A8: false
+        A10: false
+        A12: false
+        A13: false
+        A14: false
+        A15: false
+        A16: false
+        A18: false
+        A23: false
+    - select_4: I cant be sure
+    - buttons_0:
+        count: true
+        current_tray: true
+        from: true
+        initial: true
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+  time:timestamp: '2025-11-04T14:56:24.981469+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a17
+  cpee:activity: a17
+  cpee:activity_uuid: f188af95b8694e0250a5ff15e64548d1
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_1: Which data object(s) are read by task "Next QR, Order Item, and Tray"?
+      buttons_1: count;current_tray;from;initial;order;order_id;order_item;order_list;params;programs;qr;seed;state;tray_positions;trays
+  time:timestamp: '2025-11-04T14:56:25.040353+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a17
+  cpee:activity: a17
+  cpee:activity_uuid: f188af95b8694e0250a5ff15e64548d1
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_1":{"count":false,"current_tray":false,"from":false,"initial":true,"order":false,"order_id":false,"order_item":false,"order_list":false,"params":false,"programs":false,"qr":false,"seed":false,"state":false,"tray_positions":false,"trays":false,"根据":false,"初始":false,"订单
+      ":false," 统计":false,"当前托盘":false}}'
+  time:timestamp: '2025-11-04T14:57:00.876253+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a17
+  cpee:activity: a17
+  cpee:activity_uuid: f188af95b8694e0250a5ff15e64548d1
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:57:00.890040+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 1
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a17
+  cpee:activity: a17
+  cpee:activity_uuid: f188af95b8694e0250a5ff15e64548d1
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_1:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: false
+        stakes: false
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_2:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: false
+        emails: false
+        finance: false
+        idea_description: false
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_3:
+        a1: false
+        a2: true
+        a3: true
+        a4: true
+        a6: true
+        a7: true
+        a8: true
+        a10: true
+        a12: true
+        a13: false
+        a14: true
+        a15: false
+        a16: true
+        a18: true
+        a23: false
+        A1: false
+        A2: false
+        A3: false
+        A4: false
+        A6: false
+        A7: false
+        A8: false
+        A10: false
+        A12: false
+        A13: false
+        A14: false
+        A15: false
+        A16: false
+        A18: false
+        A23: false
+    - select_4: I cant be sure
+    - buttons_0:
+        count: true
+        current_tray: true
+        from: true
+        initial: true
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+    - buttons_1:
+        count: false
+        current_tray: false
+        from: false
+        initial: true
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+  time:timestamp: '2025-11-04T14:57:00.889786+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a16
+  cpee:activity: a16
+  cpee:activity_uuid: 84ccd9244565a059fabbee0a8dbd9da3
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_2: Which data object(s) are written by task "Next QR, Order Item, and Tray"?
+      buttons_2: count;current_tray;from;initial;order;order_id;order_item;order_list;params;programs;qr;seed;state;tray_positions;trays
+  time:timestamp: '2025-11-04T14:57:00.948805+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a16
+  cpee:activity: a16
+  cpee:activity_uuid: 84ccd9244565a059fabbee0a8dbd9da3
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"buttons_2":{"count":false,"current_tray":false,"from":true,"initial":false,"order":false,"order_id":false,"order_item":false,"order_list":false,"params":false,"programs":false,"qr":false,"seed":false,"state":false,"tray_positions":false,"trays":false,"根据":false,"初始":false,"订单
+      ":false," 统计":false,"当前托盘":false}}'
+  time:timestamp: '2025-11-04T14:57:35.335469+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a16
+  cpee:activity: a16
+  cpee:activity_uuid: 84ccd9244565a059fabbee0a8dbd9da3
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:57:35.349374+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 2
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a16
+  cpee:activity: a16
+  cpee:activity_uuid: 84ccd9244565a059fabbee0a8dbd9da3
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_1:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: false
+        stakes: false
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_2:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: false
+        emails: false
+        finance: false
+        idea_description: false
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_3:
+        a1: false
+        a2: true
+        a3: true
+        a4: true
+        a6: true
+        a7: true
+        a8: true
+        a10: true
+        a12: true
+        a13: false
+        a14: true
+        a15: false
+        a16: true
+        a18: true
+        a23: false
+        A1: false
+        A2: false
+        A3: false
+        A4: false
+        A6: false
+        A7: false
+        A8: false
+        A10: false
+        A12: false
+        A13: false
+        A14: false
+        A15: false
+        A16: false
+        A18: false
+        A23: false
+    - select_4: I cant be sure
+    - buttons_0:
+        count: true
+        current_tray: true
+        from: true
+        initial: true
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+    - buttons_1:
+        count: false
+        current_tray: false
+        from: false
+        initial: true
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+    - buttons_2:
+        count: false
+        current_tray: false
+        from: true
+        initial: false
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+  time:timestamp: '2025-11-04T14:57:35.349104+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a15
+  cpee:activity: a15
+  cpee:activity_uuid: 8d4c2ce30816cf4be11519bca6edf8ac
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_3: Which tasks read and/or write the data object "params"?
+      buttons_3: a7;a8;a9;a10;a12;a13
+  time:timestamp: '2025-11-04T14:57:35.412512+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a15
+  cpee:activity: a15
+  cpee:activity_uuid: 8d4c2ce30816cf4be11519bca6edf8ac
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: "{}"
+  time:timestamp: '2025-11-04T14:57:49.231581+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a15
+  cpee:activity: a15
+  cpee:activity_uuid: 8d4c2ce30816cf4be11519bca6edf8ac
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_1:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: false
+        stakes: false
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_2:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: false
+        emails: false
+        finance: false
+        idea_description: false
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_3:
+        a1: false
+        a2: true
+        a3: true
+        a4: true
+        a6: true
+        a7: true
+        a8: true
+        a10: true
+        a12: true
+        a13: false
+        a14: true
+        a15: false
+        a16: true
+        a18: true
+        a23: false
+        A1: false
+        A2: false
+        A3: false
+        A4: false
+        A6: false
+        A7: false
+        A8: false
+        A10: false
+        A12: false
+        A13: false
+        A14: false
+        A15: false
+        A16: false
+        A18: false
+        A23: false
+    - select_4: I cant be sure
+    - buttons_0:
+        count: true
+        current_tray: true
+        from: true
+        initial: true
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+    - buttons_1:
+        count: false
+        current_tray: false
+        from: false
+        initial: true
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+    - buttons_2:
+        count: false
+        current_tray: false
+        from: true
+        initial: false
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+    - {}
+  time:timestamp: '2025-11-04T14:57:49.246444+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 3
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a15
+  cpee:activity: a15
+  cpee:activity_uuid: 8d4c2ce30816cf4be11519bca6edf8ac
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:57:49.246655+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a14
+  cpee:activity: a14
+  cpee:activity_uuid: a637d1b653fc6352c0f3032a4ced57b8
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      text_4: Is the data object "params" used in conditions (as part of loops or
+        decisions)?
+      select_4: Yes;No;I cant be sure
+  time:timestamp: '2025-11-04T14:57:49.300194+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a14
+  cpee:activity: a14
+  cpee:activity_uuid: a637d1b653fc6352c0f3032a4ced57b8
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"select_4":"I cant be sure"}'
+  time:timestamp: '2025-11-04T14:57:52.908591+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a14
+  cpee:activity: a14
+  cpee:activity_uuid: a637d1b653fc6352c0f3032a4ced57b8
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:57:52.924729+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: CPEE Simple Questions 4
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a14
+  cpee:activity: a14
+  cpee:activity_uuid: a637d1b653fc6352c0f3032a4ced57b8
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_1:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: false
+        stakes: false
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_2:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: false
+        emails: false
+        finance: false
+        idea_description: false
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_3:
+        a1: false
+        a2: true
+        a3: true
+        a4: true
+        a6: true
+        a7: true
+        a8: true
+        a10: true
+        a12: true
+        a13: false
+        a14: true
+        a15: false
+        a16: true
+        a18: true
+        a23: false
+        A1: false
+        A2: false
+        A3: false
+        A4: false
+        A6: false
+        A7: false
+        A8: false
+        A10: false
+        A12: false
+        A13: false
+        A14: false
+        A15: false
+        A16: false
+        A18: false
+        A23: false
+    - select_4: I cant be sure
+    - buttons_0:
+        count: true
+        current_tray: true
+        from: true
+        initial: true
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+    - buttons_1:
+        count: false
+        current_tray: false
+        from: false
+        initial: true
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+    - buttons_2:
+        count: false
+        current_tray: false
+        from: true
+        initial: false
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+    - {}
+    - select_4: I cant be sure
+  time:timestamp: '2025-11-04T14:57:52.924534+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: Simple Resolve
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a2
+  cpee:activity: a2
+  cpee:activity_uuid: b6b67df835e555bd468e647c36621daf
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: set
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '1'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '1'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/text.html
+  - name: default
+    value:
+      text: Now answer the questions and give feedback.
+  time:timestamp: '2025-11-04T14:57:52.978939+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: Simple Resolve
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a2
+  cpee:activity: a2
+  cpee:activity_uuid: b6b67df835e555bd468e647c36621daf
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2025-11-04T14:57:52.994125+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: Simple Resolve
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a2
+  cpee:activity: a2
+  cpee:activity_uuid: b6b67df835e555bd468e647c36621daf
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:57:53.017801+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: Final Questions
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: e5a9acb691cb7f4e97484d8d2f640daf
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: type
+    value: wait
+  - name: lx
+    value: '3'
+  - name: ly
+    value: '2'
+  - name: x_amount
+    value: '2'
+  - name: y_amount
+    value: '8'
+  - name: button
+    value:
+  - name: style
+    value:
+  - name: urls
+    value:
+    - lang: de-at
+      url: https://cpee.org/quests/dataflow/questions.html
+  - name: default
+    value:
+      scale_0: How easy was using the traditional BPMN? _(Easy ++ to Hard --)_
+      scale_1: How easy was using the CPEE BPMN? _(Easy ++ to Hard --)_
+      feedback_0: Did you have any specific problems with one/or both of the approaches?
+  time:timestamp: '2025-11-04T14:57:53.058527+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: Final Questions
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: e5a9acb691cb7f4e97484d8d2f640daf
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"scale_0":"-2","scale_1":"-1","feedback_0":"if a complex problem,then
+      cpee is better.But i don not really understand the CPEE"}'
+  time:timestamp: '2025-11-04T14:58:40.845689+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: Final Questions
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: e5a9acb691cb7f4e97484d8d2f640daf
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2025-11-04T14:58:40.861167+01:00'
+---
+event:
+  concept:instance: 5796
+  concept:name: Final Questions
+  concept:endpoint: https-put://cpee.org/out/frames/944af1c45ca07e072b17/
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: e5a9acb691cb7f4e97484d8d2f640daf
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: res
+    value:
+    - buttons_0:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_1:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: true
+        emails: false
+        finance: false
+        idea_description: true
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: false
+        stakes: false
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_2:
+        all_apps: false
+        applications: false
+        businessgoals: false
+        competitive_landscape: false
+        competitor_analysis: false
+        counter: true
+        countrygoals: false
+        cur_app: false
+        emails: false
+        finance: false
+        idea_description: false
+        idea_initiator: false
+        impact: false
+        market_review: false
+        mission: false
+        pmgoals: false
+        portfolio_review: false
+        problem_canvas: false
+        result: false
+        roles: false
+        spider_graph: false
+        stakeholders: true
+        stakes: true
+        users: true
+        所有: false
+        应用 应用: false
+        业务目标: false
+        竞争格局: false
+        竞争对手分析: false
+        反制: false
+        '措施 国家目标 ': false
+        Cur_App: false
+        " 电子邮件": false
+        财务: false
+        创意描述: false
+        创意发起人: false
+        影响: false
+        市场评估: false
+        '使命 ': false
+        PM 目标: false
+        投资组合评估: false
+        问题画布: false
+        结果: false
+        角色: false
+        蜘蛛图: false
+        利益相关者: false
+        权益: false
+        用户: false
+    - buttons_3:
+        a1: false
+        a2: true
+        a3: true
+        a4: true
+        a6: true
+        a7: true
+        a8: true
+        a10: true
+        a12: true
+        a13: false
+        a14: true
+        a15: false
+        a16: true
+        a18: true
+        a23: false
+        A1: false
+        A2: false
+        A3: false
+        A4: false
+        A6: false
+        A7: false
+        A8: false
+        A10: false
+        A12: false
+        A13: false
+        A14: false
+        A15: false
+        A16: false
+        A18: false
+        A23: false
+    - select_4: I cant be sure
+    - buttons_0:
+        count: true
+        current_tray: true
+        from: true
+        initial: true
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+    - buttons_1:
+        count: false
+        current_tray: false
+        from: false
+        initial: true
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+    - buttons_2:
+        count: false
+        current_tray: false
+        from: true
+        initial: false
+        order: false
+        order_id: false
+        order_item: false
+        order_list: false
+        params: false
+        programs: false
+        qr: false
+        seed: false
+        state: false
+        tray_positions: false
+        trays: false
+        根据: false
+        初始: false
+        '订单 ': false
+        " 统计": false
+        当前托盘: false
+    - {}
+    - select_4: I cant be sure
+    - scale_0: "-2"
+      scale_1: "-1"
+      feedback_0: if a complex problem,then cpee is better.But i don not really understand
+        the CPEE
+  time:timestamp: '2025-11-04T14:58:40.860429+01:00'
+---
+event:
+  concept:instance: 5796
+  id:id: external
+  cpee:activity: external
+  cpee:instance: 3a0affdd-2def-4f50-a4ff-550caa0cd3ff
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: state/change
+  cpee:state: finished
+  time:timestamp: '2025-11-04T14:58:40.879471+01:00'
