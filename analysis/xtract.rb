@@ -5,7 +5,7 @@ require 'yaml'
 require 'date'
 require 'csv'
 
-def get_scales(what,io,num) #{{{
+def get_generic(what,io,num) #{{{
   yaml = YAML.load_stream io
 
   begin
@@ -51,7 +51,7 @@ def get_buttons(what,io,sol) #{{{
   dat = dat.sort.join(',')
 
   io.rewind
-  [duration,dat,dat==sol]
+  [duration,dat,(dat==sol).to_s]
 end #}}}
 
 def get_select(what,io,sol) #{{{
@@ -75,7 +75,7 @@ def get_select(what,io,sol) #{{{
   end
 
   io.rewind
-  [duration,dat,dat == sol]
+  [duration,dat,(dat == sol).to_s]
 end #}}}
 
 def get_name(io) #{{{
@@ -100,6 +100,17 @@ def get_name(io) #{{{
   ]
 end #}}}
 
+def get_sub(io) #{{{
+  yaml = YAML.load_stream io
+
+  begin
+    find = yaml.shift
+  end until find.dig('event','cpee:lifecycle:transition') == 'task/instantiation'
+
+  io.rewind
+  find.dig('event','data','CPEE-INSTANCE-UUID')
+end #}}}
+
 def find_solution(what,solution)
   sol = solution.find do |e|
     e.dig('task','name') == what
@@ -113,18 +124,42 @@ def find_solution(what,solution)
   [s0,s1,s2,s3,s4]
 end
 
-results = CSV.open('results.csv','wb')
-
-solution = YAML.load_file 'solution.yaml'
+results = CSV.open('experience.csv','wb')
 
 Dir.glob('finished/*.xes.yaml') do |f|
   io = File.open f
   yaml = YAML.load_stream io
   first = yaml.shift
   io.rewind
-  puts f
+
+  if first.dig('log','trace','cpee:name') == 'Quest'
+    puts 'experience: ' + File.basename(f,'.xes.yaml')
+
+    item = get_generic( 'Experience', io, 5) rescue []
+
+    item << get_sub(io) rescue ''
+    item << get_sub(io) rescue ''
+    item << get_sub(io) rescue ''
+
+    results << item.flatten
+  end
+  io.close
+end
+
+results.close
+
+solution = YAML.load_file 'solution.yaml'
+
+results = CSV.open('results.csv','wb')
+Dir.glob('finished/*.xes.yaml') do |f|
+  io = File.open f
+  yaml = YAML.load_stream io
+  first = yaml.shift
+  io.rewind
 
   if first.dig('log','trace','cpee:name') == 'QuestSub'
+    puts 'result: ' + File.basename(f,'.xes.yaml')
+
     bpmn, cpee, complex = get_name io
     item1 = ['BPMN',bpmn,complex]
     item2 = ['CPEE',cpee,complex]
@@ -146,7 +181,7 @@ Dir.glob('finished/*.xes.yaml') do |f|
     item2 << get_buttons('CPEE Simple Questions 3', io, s3) rescue []
     item2 << get_select( 'CPEE Simple Questions 4', io, s4) rescue []
 
-    item3 << get_scales( 'Final Questions', io, 3) rescue []
+    item3 << get_generic( 'Final Questions', io, 3) rescue []
 
     item1 = item1.flatten
     item2 = item2.flatten
@@ -154,8 +189,7 @@ Dir.glob('finished/*.xes.yaml') do |f|
     0.upto(18){ |i| item1[i] ||= '' }
     0.upto(18){ |i| item2[i] ||= '' }
 
-    results << item1 + item2 + item3
-
+    results << [File.basename(f,'.xes.yaml')] + item1 + item2 + item3.flatten
   end
   io.close
 end
