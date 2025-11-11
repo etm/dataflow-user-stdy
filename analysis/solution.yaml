@@ -1,0 +1,130 @@
+- task:
+    name: Confirm Coffee Preferences
+    element:
+      input:
+        - order
+      output:
+        - order
+        - items
+    dataobject:
+      write:
+        - a1
+      read:
+        - a4
+        - a7
+      conn: No
+
+- task:
+    name: Get Sun Data
+    element:
+      input:
+        - date
+      output:
+        - sunrise
+        - sunset
+    dataobject:
+      write:
+        - a2
+      read:
+        - a5
+        - a6
+      conn: Yes
+
+- task:
+    name: Get Delays
+    element:
+      input:
+        - lineID
+        - line
+        - stops
+        - delay
+      output:
+        - delay
+    dataobject:
+      write:
+        - a8
+        - a9
+      read:
+        - a6
+        - a8
+        - a9
+      conn: No
+
+- task:
+    name: Create Program
+    element:
+      input:
+        - program_params
+        - program_patterns
+        - program_url
+      output:
+        - program
+    dataobject:
+      write:
+      read:
+        - a1
+        - a2
+      conn: No
+
+- task:
+    name: Next QR, Order Item, and Tray
+    element:
+      input:
+        - qr
+        - from
+        - order_id
+        - tray_positions
+        - trays
+        - initial
+        - order_list
+        - count
+      output:
+        - initial
+        - order_item
+        - count
+        - current_tray
+    dataobject:
+      write:
+        - a13
+      read:
+        - a12
+        - a8
+      conn: No
+
+- task:
+    name: Stakeholders
+    element:
+      input:
+        - idea_description
+        - users
+        - counter
+        - cur_app
+      output:
+        - users
+        - counter
+        - stakeholders
+        - stakes
+    dataobject:
+      write:
+        - a14
+        - a16
+        - a4
+        - a2
+        - a3
+        - a10
+        - a12
+        - a6
+        - a7
+        - a8
+      read:
+        - a16
+        - a4
+        - a2
+        - a3
+        - a10
+        - a12
+        - a6
+        - a7
+        - a8
+        - a18
+      conn: No
