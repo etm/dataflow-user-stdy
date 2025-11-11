@@ -18,10 +18,11 @@ def get_scales(what,io,num) #{{{
   duration = Time.parse(find.dig('event','time:timestamp')) - start
 
   dat = JSON::parse(find.dig('event','data',0,'data'))
+
   if dat.length < num
     dat = []
   else
-    dat = dat.first.map{|k,v| k}
+    dat = dat.map{|k,v| v}
   end
 
   io.rewind
@@ -66,6 +67,7 @@ def get_select(what,io,sol) #{{{
   duration = Time.parse(find.dig('event','time:timestamp')) - start
 
   dat = JSON::parse(find.dig('event','data',0,'data'))
+
   if dat.empty?
     dat = ''
   else
@@ -111,8 +113,7 @@ def find_solution(what,solution)
   [s0,s1,s2,s3,s4]
 end
 
-# results = CSV.open('results.csv','wb')
-# satis = CSV.open('satisfaction.csv','wb')
+results = CSV.open('results.csv','wb')
 
 solution = YAML.load_file 'solution.yaml'
 
@@ -147,15 +148,18 @@ Dir.glob('finished/*.xes.yaml') do |f|
 
     item3 << get_scales( 'Final Questions', io, 3) rescue []
 
-    results << item1.flatten
-    results << item2.flatten
+    item1 = item1.flatten
+    item2 = item2.flatten
 
-    satis << item3.flatten
+    0.upto(18){ |i| item1[i] ||= '' }
+    0.upto(18){ |i| item2[i] ||= '' }
+
+    results << item1 + item2 + item3
+
   end
   io.close
 end
 
 results.close
-satis.close
 
 
