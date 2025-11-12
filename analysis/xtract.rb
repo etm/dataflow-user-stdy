@@ -135,13 +135,15 @@ Dir.glob('finished/*.xes.yaml') do |f|
   if first.dig('log','trace','cpee:name') == 'Quest'
     puts 'experience: ' + File.basename(f,'.xes.yaml')
 
-    item = get_generic( 'Experience', io, 5) rescue []
+    item = get_generic('Experience', io, 5) rescue []
 
-    item << get_sub(io) rescue ''
-    item << get_sub(io) rescue ''
-    item << get_sub(io) rescue ''
+    item << get_sub(io) rescue nil
+    item << get_sub(io) rescue nil
+    item << get_sub(io) rescue nil
 
-    results << item.flatten
+    if item.flatten.length == 9
+      results << item.flatten
+    end
   end
   io.close
 end
@@ -181,15 +183,16 @@ Dir.glob('finished/*.xes.yaml') do |f|
     item2 << get_buttons('CPEE Simple Questions 3', io, s3) rescue []
     item2 << get_select( 'CPEE Simple Questions 4', io, s4) rescue []
 
+    p s4
+
     item3 << get_generic( 'Final Questions', io, 3) rescue []
 
     item1 = item1.flatten
     item2 = item2.flatten
 
-    0.upto(18){ |i| item1[i] ||= '' }
-    0.upto(18){ |i| item2[i] ||= '' }
-
-    results << [File.basename(f,'.xes.yaml')] + item1 + item2 + item3.flatten
+    if item1.length == 18 && item2.length == 18
+      results << [File.basename(f,'.xes.yaml')] + item1 + item2 + item3.flatten
+    end
   end
   io.close
 end
