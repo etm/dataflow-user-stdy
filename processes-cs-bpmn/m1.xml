@@ -1,0 +1,618 @@
+<?xml version="1.0"?>
+<testset xmlns="http://cpee.org/ns/properties/2.0">
+  <executionhandler>ruby</executionhandler>
+  <dataelements>
+    <line>71</line>
+  </dataelements>
+  <endpoints>
+    <timeout>https://cpee.org/services/powernap.php</timeout>
+    <fahrwege>http://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-fahrwegverlaeufe.csv</fahrwege>
+    <subprocess>https-post://cpee.org/flow/start/url/</subprocess>
+    <linien>http://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-linien.csv</linien>
+    <send>https-post://cpee.org/ing/correlators/message/send/</send>
+    <monitor>https://www.wienerlinien.at/ogd_realtime/monitor?activateTrafficInfo=stoerungkurz&amp;activateTrafficInfo=stoerunglang</monitor>
+    <receive>https-get://cpee.org/ing/correlators/message/receive/</receive>
+    <user>https-post://cpee.org/services/timeout-user.php</user>
+    <weather>http://api.openweathermap.org/data/2.5/weather?q=Vienna,at&amp;APPID=eb9d3c03fa8f925cc139fb785b0be1fa&amp;units=metric</weather>
+    <auto>https-post://cpee.org/services/timeout-auto.php</auto>
+    <construction_sites>https://data.wien.gv.at/daten/geo?service=WFS&amp;request=GetFeature&amp;version=1.1.0&amp;typeName=ogdwien:BAUSTELLENLINOGD&amp;srsName=EPSG:4326&amp;outputFormat=json</construction_sites>
+    <haltepunkte>http://www.wienerlinien.at/ogd_realtime/doku/ogd/wienerlinien-ogd-haltepunkte.csv</haltepunkte>
+    <traffic_jams>https://lehre.bpm.in.tum.de/ports/64000/status</traffic_jams>
+  </endpoints>
+  <attributes>
+    <guarded>none</guarded>
+    <info>m1</info>
+    <modeltype>CPEE</modeltype>
+    <theme>dataflow</theme>
+    <creator>Christine Ashcreek</creator>
+    <guarded_id/>
+    <author>Christine Ashcreek</author>
+    <model_uuid>b0baf0f0-2bb8-47e0-acba-33fa8f1b0182</model_uuid>
+    <model_version/>
+    <design_dir>Papers.dir/Dataflow.dir/Processes.dir/</design_dir>
+    <design_stage>development</design_stage>
+  </attributes>
+  <description>
+    <description xmlns="http://cpee.org/ns/description/1.0">
+      <call id="a3" endpoint="linien">
+        <parameters>
+          <label>Get LineID</label>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <prepare/>
+          <finalize output="result">result.split("\r\n").each do |line|
+  fields = line.split(';')
+  if fields[1] == data.line.to_s
+     data.lineID =  fields[0]
+     break
+  end
+end</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a4" endpoint="fahrwege">
+        <parameters>
+          <label>Get StopIDs</label>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <prepare/>
+          <finalize output="result">data.stops = []
+result.split("\r\n").each do |line|
+  fields = line.split(';')
+  if fields[0] == data.lineID.to_s &amp;&amp; fields[1] == "1" &amp;&amp; fields[4] == "1"
+     data.stops &lt;&lt; fields[3]
+  end
+end
+data.stops.uniq!</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a9" endpoint="haltepunkte">
+        <parameters>
+          <label>Get StopCoords</label>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <prepare/>
+          <finalize output="result">data.stopcoords = {}
+data.stopnames = {}
+result.split("\r\n").each do |line|
+  fields = line.split(';')
+  
+  if data.stops.include? fields[0]
+    data.stopcoords[fields[0]] = [fields[5],fields[6]]
+    data.stopnames[fields[0]] = fields[2]
+  end
+end</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <loop mode="pre_test" condition="true">
+        <parallel wait="-1" cancel="last">
+          <parallel_branch pass="" local="">
+            <call id="a1" endpoint="monitor">
+              <parameters>
+                <label>Get Delays </label>
+                <method>:get</method>
+                <arguments/>
+              </parameters>
+              <code>
+                <prepare>endpoints.monitor = endpoints.monitor + "&amp;" + data.stops.map{ |e| "stopID=" + e.to_s }.join("&amp;")</prepare>
+                <finalize output="result">data.delay = {}
+return unless result &amp;&amp; result.is_a?(Hash) &amp;&amp; result['data']
+
+result['data']['monitors']&amp;.each do |m|
+  stopId = m.dig("locationStop","properties","attributes","rbl").to_s
+  name = m.dig("locationStop","properties","title")
+
+  data.delay[stopId] ||= {}
+  data.delay[stopId]['name'] = name
+  data.delay[stopId]['delays'] ||= []
+  data.delay[stopId]['reasons'] ||= []
+
+  m.dig('lines').each do |l|
+    lineID = l['lineId'].to_s
+    if lineID == data.lineID.to_s
+      l.dig('departures', 'departure')&amp;.each do |d|
+        dt = d['departureTime']
+        if dt.has_key? 'timeReal' then
+          tp = Time.parse(dt['timePlanned'])
+          tr = Time.parse(dt['timeReal'])
+          delay = tr - tp
+          data.delay[stopId]['delays'] &lt;&lt; delay
+        end
+      end
+    end
+  end
+end
+
+result['data']['trafficInfos']&amp;.each do |ti|
+  if ti['relatedLines'].include? data.line.to_s
+    ti['relatedStops']&amp;.each do |rs|
+      if data.delay.has_key? rs.to_s
+        data.delay[rs.to_s]['reasons'] &lt;&lt; ti['description']
+      end
+    end
+  end
+end</finalize>
+                <update output="result"/>
+                <rescue output="result">"No problem, next time it will work"</rescue>
+              </code>
+              <annotations>
+                <_timing>
+                  <_timing_weight/>
+                  <_timing_avg/>
+                  <explanations/>
+                </_timing>
+                <_context_data_analysis>
+                  <probes>
+                    <probe>
+                      <id>delay</id>
+                      <source>ogd</source>
+                      <extractor_type>intrinsic</extractor_type>
+                      <extractor_code>stops = Stream.new('delays')
+data.delay.each do |stop,delay|
+  s = Stream.new('stop')
+  s.id = stop
+  s.meta = { 'station' =&gt; delay['name'] }
+  stops &lt;&lt; s
+  delay['delays'].each do |d| 
+    de = StreamPoint.new('delay')
+    de.value = d
+    s &lt;&lt; de
+  end
+  delay['reasons'].each do |d| 
+    re = StreamPoint.new('reason')
+    re.value = d
+    s &lt;&lt; re
+  end
+end
+stops</extractor_code>
+                      <extractor_url/>
+                      <extractor_params/>
+                      <visualizer_url/>
+                      <visualizer_params/>
+                    </probe>
+                  </probes>
+                  <ips/>
+                </_context_data_analysis>
+                <report>
+                  <url/>
+                </report>
+                <_notes>
+                  <_notes_general/>
+                </_notes>
+              </annotations>
+              <documentation>
+                <input/>
+                <output/>
+                <implementation>
+                  <description/>
+                </implementation>
+                <code>
+                  <description/>
+                </code>
+              </documentation>
+            </call>
+          </parallel_branch>
+          <parallel_branch pass="" local="">
+            <call id="a7" endpoint="weather">
+              <parameters>
+                <label>Get Weather</label>
+                <method>:post</method>
+                <arguments/>
+              </parameters>
+              <code>
+                <prepare/>
+                <finalize output="result"/>
+                <update output="result"/>
+                <rescue output="result">"No problem, next time it will work"</rescue>
+              </code>
+              <annotations>
+                <_timing>
+                  <_timing_weight/>
+                  <_timing_avg/>
+                  <explanations/>
+                </_timing>
+                <_context_data_analysis>
+                  <probes>
+                    <probe>
+                      <id>temperature</id>
+                      <source>openweathermap</source>
+                      <extractor_type>extrinsic</extractor_type>
+                      <extractor_code>result.dig('main','temp')</extractor_code>
+                      <extractor_url/>
+                      <extractor_params/>
+                      <visualizer_url/>
+                      <visualizer_params/>
+                    </probe>
+                    <probe>
+                      <id>feels_like</id>
+                      <source>openweathermap</source>
+                      <extractor_type>extrinsic</extractor_type>
+                      <extractor_code>result.dig('main','feels_like')</extractor_code>
+                      <extractor_url/>
+                      <extractor_params/>
+                      <visualizer_url/>
+                      <visualizer_params/>
+                    </probe>
+                    <probe>
+                      <id>pressure</id>
+                      <source>openweathermap</source>
+                      <extractor_type>extrinsic</extractor_type>
+                      <extractor_code>result.dig('main','pressure')</extractor_code>
+                      <extractor_url/>
+                      <extractor_params/>
+                      <visualizer_url/>
+                      <visualizer_params/>
+                    </probe>
+                    <probe>
+                      <id>humidity</id>
+                      <source>openweathermap</source>
+                      <extractor_type>extrinsic</extractor_type>
+                      <extractor_code>result.dig('main','humidity')</extractor_code>
+                      <extractor_url/>
+                      <extractor_params/>
+                      <visualizer_url/>
+                      <visualizer_params/>
+                    </probe>
+                    <probe>
+                      <id>visibility</id>
+                      <source>openweathermap</source>
+                      <extractor_type>extrinsic</extractor_type>
+                      <extractor_code>result.dig('visibility')</extractor_code>
+                      <extractor_url/>
+                      <extractor_params/>
+                      <visualizer_url/>
+                      <visualizer_params/>
+                    </probe>
+                    <probe>
+                      <id>wind</id>
+                      <source>openweathermap</source>
+                      <extractor_type>extrinsic</extractor_type>
+                      <extractor_code>result.dig('wind','speed')</extractor_code>
+                      <extractor_url/>
+                      <extractor_params/>
+                      <visualizer_url/>
+                      <visualizer_params/>
+                    </probe>
+                    <probe>
+                      <id>sunrise</id>
+                      <source>openweathermap</source>
+                      <extractor_type>extrinsic</extractor_type>
+                      <extractor_code>Time.at(result.dig('sys','sunrise'))</extractor_code>
+                      <extractor_url/>
+                      <extractor_params/>
+                      <visualizer_url/>
+                      <visualizer_params/>
+                    </probe>
+                    <probe>
+                      <id>sunset</id>
+                      <source>openweathermap</source>
+                      <extractor_type>extrinsic</extractor_type>
+                      <extractor_code>Time.at(result.dig('sys','sunset'))</extractor_code>
+                      <extractor_url/>
+                      <extractor_params/>
+                      <visualizer_url/>
+                      <visualizer_params/>
+                    </probe>
+                  </probes>
+                  <ips/>
+                </_context_data_analysis>
+                <report>
+                  <url/>
+                </report>
+                <_notes>
+                  <_notes_general/>
+                </_notes>
+              </annotations>
+              <documentation>
+                <input/>
+                <output/>
+                <implementation>
+                  <description/>
+                </implementation>
+                <code>
+                  <description/>
+                </code>
+              </documentation>
+            </call>
+          </parallel_branch>
+          <parallel_branch>
+            <call id="a6" endpoint="construction_sites">
+              <parameters>
+                <label>Get Related Construction Sites</label>
+                <method>:get</method>
+                <arguments/>
+              </parameters>
+              <code>
+                <prepare/>
+                <finalize output="result">require 'georuby'
+require 'geo_ruby/geojson'
+
+data.construction_sites = {}
+
+return unless result &amp;&amp; result.is_a?(Hash) &amp;&amp; result['features']
+
+result['features']&amp;.each do |cs|
+  o1 = GeoRuby::SimpleFeatures::Geometry.from_geojson(cs['geometry'].to_json)
+  data.stopcoords.each do |k,sc|
+    o2 = GeoRuby::SimpleFeatures::Point.from_x_y(*sc)
+    res = o1.points.map do |t|
+      o2.ellipsoidal_distance(t)
+    end.min  
+    if res &lt; 300
+      data.construction_sites[k] ||= []
+      data.construction_sites[k] &lt;&lt; cs['properties']['BEZEICHNUNG']
+      data.construction_sites[k].uniq!
+    end
+  end
+end</finalize>
+                <update output="result"/>
+                <rescue output="result">"No problem, next time it will work"</rescue>
+              </code>
+              <annotations>
+                <_timing>
+                  <_timing_weight/>
+                  <_timing_avg/>
+                  <explanations/>
+                </_timing>
+                <_context_data_analysis>
+                  <probes>
+                    <probe>
+                      <id>construction</id>
+                      <source>odg</source>
+                      <extractor_type>intrinsic</extractor_type>
+                      <extractor_code>stops = Stream.new('construction-sites')
+data.construction_sites.each do |stop,desc|
+  s = Stream.new('stop')
+  s.id = stop
+  s.meta = { 'station' =&gt; data.stopnames[stop] }
+  stops &lt;&lt; s
+  desc.each do |d| 
+    de = StreamPoint.new('description')
+    de.value = d
+    s &lt;&lt; de
+  end
+end
+stops</extractor_code>
+                      <extractor_url/>
+                      <extractor_params/>
+                      <visualizer_url/>
+                      <visualizer_params/>
+                    </probe>
+                  </probes>
+                  <ips/>
+                </_context_data_analysis>
+                <report>
+                  <url/>
+                </report>
+                <_notes>
+                  <_notes_general/>
+                </_notes>
+              </annotations>
+              <documentation>
+                <input/>
+                <output/>
+                <implementation>
+                  <description>Get construction sites</description>
+                </implementation>
+                <code>
+                  <description/>
+                </code>
+              </documentation>
+            </call>
+          </parallel_branch>
+          <parallel_branch>
+            <call id="a8" endpoint="traffic_jams">
+              <parameters>
+                <label>Get Traffic status</label>
+                <method>:post</method>
+                <arguments>
+                  <distance>500</distance>
+                  <coords>!data.stopcoords.to_json</coords>
+                </arguments>
+              </parameters>
+              <code>
+                <prepare>data.stopcoords = data.stopcoords.map { |_, coords| coords.map { |e| e.to_f }.reverse }</prepare>
+                <finalize output="result"/>
+                <update output="result"/>
+                <rescue output="result">"No problem, next time it will work"</rescue>
+              </code>
+              <annotations>
+                <_timing>
+                  <_timing_weight/>
+                  <_timing_avg/>
+                  <explanations/>
+                </_timing>
+                <_context_data_analysis>
+                  <probes>
+                    <probe>
+                      <id>traffic</id>
+                      <source>tomtom</source>
+                      <extractor_type>extrinsic</extractor_type>
+                      <extractor_code>base = data.stopcoords.map { |id, coords|
+  [
+    coords.map { |e| e.to_f }.reverse.join(','),
+    [
+      id,
+      data.stopnames[id]
+    ]
+  ]
+}.to_h
+traffic = Stream.new('traffic')
+base.each do |coord,details|
+  s = Stream.new('stop')
+  s.id = details[0]
+  s.meta = { 'station' =&gt; details[1] }
+  sp = StreamPoint.new('trafic')
+  sp.value = result[coord][0]
+  sp.meta = { 'intersections_in_proximity' =&gt; result[coord][1] }
+  s &lt;&lt; sp
+  traffic &lt;&lt; s
+end
+traffic</extractor_code>
+                      <extractor_url/>
+                      <extractor_params/>
+                      <visualizer_url/>
+                      <visualizer_params/>
+                    </probe>
+                  </probes>
+                  <ips/>
+                </_context_data_analysis>
+                <report>
+                  <url/>
+                </report>
+                <_notes>
+                  <_notes_general/>
+                </_notes>
+              </annotations>
+              <documentation>
+                <input/>
+                <output/>
+                <implementation>
+                  <description/>
+                </implementation>
+                <code>
+                  <description/>
+                </code>
+              </documentation>
+            </call>
+          </parallel_branch>
+        </parallel>
+        <call id="a5" endpoint="timeout">
+          <parameters>
+            <label>Wait till next Minute starts</label>
+            <method>:post</method>
+            <arguments>
+              <timeout>1</timeout>
+            </arguments>
+          </parameters>
+          <annotations>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <explanations/>
+            </_timing>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+          </documentation>
+        </call>
+        <_probability>
+          <_probability_min/>
+          <_probability_max/>
+          <_probability_avg/>
+        </_probability>
+      </loop>
+    </description>
+  </description>
+  <transformation>
+    <description type="copy"/>
+    <dataelements type="none"/>
+    <endpoints type="none"/>
+  </transformation>
+</testset>

@@ -1,0 +1,308 @@
+<?xml version="1.0"?>
+<testset xmlns="http://cpee.org/ns/properties/2.0">
+  <executionhandler>ruby</executionhandler>
+  <dataelements>
+    <emails>nataliia.klievtsova@tum.de, n.klievtsova@gmail.com</emails>
+    <order>{"coffee_beans":"3","coffee_pods":"4","milk":"5","sugar":"6","sweetener":"7"}</order>
+    <refill>yes</refill>
+    <items>coffee_beans: 3, coffee_pods: 4, milk: 5, sugar: 6, sweetener: 7</items>
+  </dataelements>
+  <endpoints>
+    <timeout>https://cpee.org/services/timeout.php</timeout>
+    <user>https-post://cpee.org/services/timeout-user.php</user>
+    <auto>https-post://cpee.org/services/timeout-auto.php</auto>
+    <subprocess>https://cpee.org/flow/start/url/</subprocess>
+    <send>https-post://cpee.org/ing/correlators/message/send/</send>
+    <receive>https-get://cpee.org/ing/correlators/message/receive/</receive>
+    <worklist>https-post://cpee.org/worklist/server/</worklist>
+    <send_email>https://cpee.org/~demo/refill/send.php</send_email>
+    <orgmodel>https://cpee.org/~demo/refill/users.xml</orgmodel>
+  </endpoints>
+  <attributes>
+    <guarded>none</guarded>
+    <modeltype>CPEE</modeltype>
+    <guarded_id/>
+    <info>s1</info>
+    <theme>dataflow</theme>
+    <creator>Christine Ashcreek</creator>
+    <author>Christine Ashcreek</author>
+    <model_uuid>f7c66200-1a3c-40c6-83d6-deff50830064</model_uuid>
+    <model_version/>
+    <design_stage>development</design_stage>
+    <design_dir>Papers.dir/Dataflow.dir/Processes.dir/</design_dir>
+  </attributes>
+  <description>
+    <description xmlns="http://cpee.org/ns/description/1.0">
+      <call id="a2" endpoint="worklist">
+        <parameters>
+          <label>Check Coffee Level</label>
+          <arguments>
+            <orgmodel>https://cpee.org/~demo/refill/users.xml</orgmodel>
+            <form>https://cpee.org/~demo/refill/forms/refill.html</form>
+            <role>user</role>
+            <priority>1</priority>
+            <handling>single</handling>
+            <restrictions/>
+            <data/>
+          </arguments>
+        </parameters>
+        <code>
+          <signal_receive>on</signal_receive>
+          <signal_change>on</signal_change>
+          <prepare/>
+          <finalize output="result">data.refill = result["data"]["refill"]</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a1" endpoint="orgmodel">
+        <parameters>
+          <label>Collect Email Addresses</label>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <signal_receive>on</signal_receive>
+          <signal_change>on</signal_change>
+          <prepare/>
+          <finalize output="result">result.register_namespace 'o', 'http://cpee.org/ns/organisation/1.0'
+data.emails = result.find("/o:organisation/o:subjects/o:subject/o:email").map{|e| e.text }.uniq.join(', ')</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <choose mode="exclusive">
+        <alternative condition="data.refill == &quot;no&quot;">
+          <_probability>
+            <_probability_min/>
+            <_probability_max/>
+            <_probability_avg/>
+          </_probability>
+          <call id="a4" endpoint="send_email">
+            <parameters>
+              <label>Send No Coffee Email</label>
+              <method>:get</method>
+              <arguments>
+                <emails>!data.emails</emails>
+                <status>!data.refill</status>
+              </arguments>
+            </parameters>
+            <code>
+              <signal_receive>on</signal_receive>
+              <signal_change>on</signal_change>
+              <prepare/>
+              <finalize output="result"/>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </alternative>
+        <alternative condition="data.refill == &quot;yes&quot;">
+          <_probability>
+            <_probability_min/>
+            <_probability_max/>
+            <_probability_avg/>
+          </_probability>
+          <call id="a6" endpoint="worklist">
+            <parameters>
+              <label>Confirm Coffee Preferences</label>
+              <arguments>
+                <orgmodel>https://cpee.org/~demo/refill/users.xml</orgmodel>
+                <form>https://cpee.org/~demo/refill/forms/order.html</form>
+                <role>user</role>
+                <priority>1</priority>
+                <handling>single</handling>
+                <restrictions/>
+                <data/>
+              </arguments>
+            </parameters>
+            <code>
+              <signal_receive>on</signal_receive>
+              <signal_change>on</signal_change>
+              <prepare/>
+              <finalize output="result">data.order = result["data"];
+data.items = data.order.map { |k, v| "#{k}: #{v}" }.join(', ');</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+          <call id="a7" endpoint="send_email">
+            <parameters>
+              <label>Send Confirmation Email to Office</label>
+              <method>:get</method>
+              <arguments>
+                <status>!data.refill</status>
+                <emails>!data.emails</emails>
+                <items>!data.items</items>
+              </arguments>
+            </parameters>
+            <annotations>
+              <_generic/>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+            </documentation>
+          </call>
+        </alternative>
+        <otherwise>
+          <_probability>
+            <_probability_min/>
+            <_probability_max/>
+            <_probability_avg/>
+          </_probability>
+        </otherwise>
+      </choose>
+    </description>
+  </description>
+  <transformation>
+    <description type="copy"/>
+    <dataelements type="none"/>
+    <endpoints type="none"/>
+  </transformation>
+</testset>

@@ -1,0 +1,807 @@
+<?xml version="1.0"?>
+<testset xmlns="http://cpee.org/ns/properties/2.0">
+  <executionhandler>ruby</executionhandler>
+  <dataelements>
+    <competitive_landscape/>
+    <competitor_analysis/>
+    <counter>2</counter>
+    <cur_app>Art &amp; Culture</cur_app>
+    <emails>nataliia.klievtsova@tum.de</emails>
+    <finance>{"total_nat_sale":"12","net_sale_euro":"13","tann":"15","target_cost":"19","target_margin":"20","capex":"22","development_cost":"28","estimated_project_size":"96","launch date":"888"}</finance>
+    <impact>{"applications":["Health &amp; Care","Education and Science","Presentation and Retail"],"projects":["Aquaforce","Tecton C","CrossSign"]}</impact>
+    <market_review/>
+    <portfolio_review/>
+    <problem_canvas>{"threat":"dsads","cause":"fdsgfsdf","customer":"fdgsf","situation":"fdgfsd","problem":"sdfgfsgs"}</problem_canvas>
+    <result>[{"name":"jobs","value":"khj"},{"name":"struggle","value":"l;l'"},{"name":"jobs","value":"'[p'p["},{"name":"struggle","value":"'[p'p["},{"name":"jobs","value":"'[p'p["},{"name":"struggle","value":"'p['p["},{"name":"jobs","value":"'[pp["},{"name":"struggle","value":"'p['p["}]</result>
+    <mission>{"customer_improvement":"fdgfd","success_job":"sfdgsfdgfd","where_improve":"gsdfgfd","when_improve":"fdsgfdgfsd","mission":"sdfgfdgf","strategic_fit":"dfsgfdgsfdgf","pmgoals":"gggg","businessgoals":"aaaaaaaaaaaa","countrygoals":"eeeeeeeeee"}</mission>
+    <roles>["Polarion Administrator","Product Manager","Resource Head","Rating Board","Head Manager"]</roles>
+    <pmgoals>["gggg","gggg"]</pmgoals>
+    <spider_graph>[[null,"Thorn","Comp 1","Comp 2","Comp 3","Comp 4","Comp 5"],["range breadth",9,7,9,6,8,9],["aesthetics",9,7,6,5,7,7],["market price",9,5,9,4,4,5],["efficiency",8,7,9,8,5,3],["lifetime",8,5,8,2,3,8],["controlability",9,3,6,6,0,5]]</spider_graph>
+    <stakeholders>["kgjhkjhg","gjhkgjhkghj","kjghkjgh","ghjkjghhjgkgjh"]</stakeholders>
+    <users>["klievtsova","klievtsova","klievtsova","klievtsova","klievtsova","klievtsova","klievtsova","klievtsova","klievtsova","klievtsova","klievtsova","klievtsova"]</users>
+    <all_apps>[{"Retail":[["aaaaaa","none","kgjhg","jkgjhkh"],["dsadfsadfas","low","jkghjkgjh","hjgkjhhg"],["dsfdsfsdfds","middle","jhgkghjkghj","hjkjhg"],["hhjjjjjjjuiku","high","hjgkgjh","kghjkjghkjgh"]]},{"Art &amp; Culture":[["kgjhkjhg","none","khj","l;l'"],["gjhkgjhkghj","high","'[p'p[","'[p'p["],["kjghkjgh","middle","'[p'p[","'p['p["],["ghjkjghhjgkgjh","high","'[pp[","'p['p["]]}]</all_apps>
+    <applications>["Retail","Art &amp; Culture"]</applications>
+    <businessgoals>["aaaaaaaaa","aaaaaaaaaa","aaaaaaaaaaaa"]</businessgoals>
+    <stakes>[["kgjhkjhg","none"],["gjhkgjhkghj","high"],["kjghkjgh","middle"],["ghjkjghhjgkgjh","high"]]</stakes>
+    <countrygoals>["eeeeeeeeee"]</countrygoals>
+    <idea_description>{"acronym":"test","idea_type":"product","idea_impact":"fdfsdf","brand":"thorn","applications":"Retail,Art &amp; Culture","description":"fdsfsd","reason":"sdfsd","audience":"fsdfsd","quo":"fsdfsd","status":"submitted"}</idea_description>
+    <idea_initiator>klievtsova</idea_initiator>
+  </dataelements>
+  <endpoints>
+    <worklist>http-post://localhost/worklist/server/</worklist>
+    <orgmodel>http://localhost/data/ideas_phase1/zt.xml</orgmodel>
+    <send_email>http://localhost/data/ideas_phase1/send.php</send_email>
+    <subprocess>http://localhost/flow/start/url/</subprocess>
+    <impact>http://localhost/data/ideas_phase1/application_list.json</impact>
+  </endpoints>
+  <attributes>
+    <creator>Christine Ashcreek</creator>
+    <guarded>none</guarded>
+    <modeltype>CPEE</modeltype>
+    <guarded_id/>
+    <author>Christine Ashcreek</author>
+    <info>c1</info>
+    <model_uuid>8cb19bff-bd3c-4768-b5b7-6e698fd12675</model_uuid>
+    <model_version/>
+    <theme>dataflow</theme>
+    <design_stage>development</design_stage>
+    <design_dir>Papers.dir/Dataflow.dir/Processes.dir/</design_dir>
+  </attributes>
+  <description>
+    <description xmlns="http://cpee.org/ns/description/1.0">
+      <call id="a14" endpoint="orgmodel">
+        <parameters>
+          <label>Get All Roles </label>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <prepare/>
+          <finalize output="result">result.register_namespace 'o', 'http://cpee.org/ns/organisation/1.0'
+data.roles = result.find('/o:organisation/o:roles/o:role/@id').map {|e|  e.value }
+data.users = [ data.idea_initiator ]
+applications = data.idea_description["applications"]
+data.applications = applications.split(',')
+data.counter = 0
+data.all_apps</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a23" endpoint="impact">
+        <parameters>
+          <label>Get Impact List</label>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <prepare/>
+          <finalize output="result">data.impact = result</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <parallel wait="-1" cancel="last">
+        <parallel_branch>
+          <call id="a16" endpoint="worklist">
+            <parameters>
+              <label>Competitive Landscape</label>
+              <arguments>
+                <orgmodel>!endpoints.orgmodel</orgmodel>
+                <form>/data/ideas_phase1/ui/spider-graph.html</form>
+                <role>Product Manager</role>
+                <priority>2</priority>
+                <handling>single</handling>
+                <restrictions/>
+                <prioritization>!data.users.join(', ')</prioritization>
+                <label>1/15</label>
+                <label_details>!"https://cpee.org/flow/graph.html?monitor=" + cpee.instance_url_encoded + "&amp;theme=reduced&amp;position=false&amp;highlight=" + task.id + ",57e38966"</label_details>
+                <data>
+                  <idea_description>!data.idea_description</idea_description>
+                </data>
+              </arguments>
+            </parameters>
+            <code>
+              <prepare/>
+              <finalize output="result">data.competitive_landscape = result["data"]["competitive_landscape"]
+data.spider_graph = result["data"]["spider"]
+data.users &lt;&lt; result["user"]</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch>
+          <call id="a4" endpoint="worklist">
+            <parameters>
+              <label>Application Trends</label>
+              <arguments>
+                <orgmodel>!endpoints.orgmodel</orgmodel>
+                <form>/data/ideas_phase1/ui/market-review.html</form>
+                <role>Product Manager</role>
+                <priority>2</priority>
+                <handling>single</handling>
+                <restrictions/>
+                <prioritization>!data.users.join(', ')</prioritization>
+                <label>1/15</label>
+                <label_details>!"https://cpee.org/flow/graph.html?monitor=" + cpee.instance_url_encoded + "&amp;theme=reduced&amp;position=false&amp;highlight=" + task.id + ",57e38966"</label_details>
+                <data>
+                  <idea_description>!data.idea_description</idea_description>
+                </data>
+              </arguments>
+            </parameters>
+            <code>
+              <prepare/>
+              <finalize output="result">data.market_review = result["data"]["market_review"]
+data.users &lt;&lt; result["user"]</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch pass="" local="">
+          <call id="a2" endpoint="worklist">
+            <parameters>
+              <label>Financial Data</label>
+              <arguments>
+                <orgmodel>!endpoints.orgmodel</orgmodel>
+                <form>/data/ideas_phase1/ui/portfolio-review.html</form>
+                <role>Product Manager</role>
+                <priority>2</priority>
+                <handling>single</handling>
+                <restrictions/>
+                <prioritization>!data.users.join(', ')</prioritization>
+                <label>2/15</label>
+                <label_details>!"https://cpee.org/flow/graph.html?monitor=" + cpee.instance_url_encoded + "&amp;theme=reduced&amp;position=false&amp;highlight=" + task.id + ",57e38966"</label_details>
+                <data>
+                  <idea_description>!data.idea_description</idea_description>
+                </data>
+              </arguments>
+            </parameters>
+            <code>
+              <prepare/>
+              <finalize output="result">data.portfolio_review = result["data"]["portfolio_review"]
+data.users &lt;&lt; result["user"]</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch pass="" local="">
+          <call id="a3" endpoint="worklist">
+            <parameters>
+              <label>Competitive Benchmarking</label>
+              <arguments>
+                <orgmodel>!endpoints.orgmodel</orgmodel>
+                <form>/data/ideas_phase1/ui/competitior-analysis.html</form>
+                <role>Product Manager</role>
+                <priority>2</priority>
+                <handling>single</handling>
+                <restrictions/>
+                <prioritization>!data.users.join(', ')</prioritization>
+                <label>3/15</label>
+                <label_details>!"https://cpee.org/flow/graph.html?monitor=" + cpee.instance_url_encoded + "&amp;theme=reduced&amp;position=false&amp;highlight=" + task.id + ",57e38966"</label_details>
+                <data>
+                  <idea_description>!data.idea_description</idea_description>
+                </data>
+              </arguments>
+            </parameters>
+            <code>
+              <prepare/>
+              <finalize output="result">data.competitor_analysis = result["data"]["competitor_analysis"]
+data.users &lt;&lt; result["user"]</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+      </parallel>
+      <manipulate id="a13" label="Empty">data.counter = 0
+data.all_apps = []</manipulate>
+      <loop mode="post_test" condition="data.counter &lt; data.applications.length()">
+        <manipulate id="a15" label="preparation">data.cur_app = data.applications[data.counter]</manipulate>
+        <_probability>
+          <_probability_min/>
+          <_probability_max/>
+          <_probability_avg/>
+        </_probability>
+        <call id="a10" endpoint="worklist">
+          <parameters>
+            <label>Stakeholders</label>
+            <arguments>
+              <orgmodel>!endpoints.orgmodel</orgmodel>
+              <form>/data/ideas_phase1/ui/stakeholders.html</form>
+              <role>Product Manager</role>
+              <priority>2</priority>
+              <handling>single</handling>
+              <restrictions/>
+              <prioritization>!data.users.join(', ')</prioritization>
+              <label>4/15</label>
+              <label_details>!"https://cpee.org/flow/graph.html?monitor=" + cpee.instance_url_encoded + "&amp;theme=reduced&amp;position=false&amp;highlight=" + task.id + ",57e38966"</label_details>
+              <data>
+                <idea_description>!data.idea_description</idea_description>
+                <application>!data.cur_app</application>
+              </data>
+            </arguments>
+          </parameters>
+          <code>
+            <prepare/>
+            <finalize output="result">data.users &lt;&lt; result["user"]
+data.counter = data.counter + 1
+
+buyer = result["raw"].select{|item| item["name"] == "buyer"}.map{|item| item["value"]}
+stakeholders = result["raw"].select{|item| item["name"] == "influencer"}.map{|item| item["value"]}
+data.stakeholders = buyer.concat(stakeholders)
+
+temp = result["raw"].each_with_index.select{ |val, index| val["name"] == "influencer"}.map{ |val, index| [val["value"], result["raw"][index+1]["value"]] }
+temp.unshift([buyer[0], "none"])
+data.stakes = temp</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+        <call id="a12" endpoint="worklist">
+          <parameters>
+            <label>Jobs</label>
+            <arguments>
+              <orgmodel>!endpoints.orgmodel</orgmodel>
+              <form>/data/ideas_phase1/ui/jobs_done.html</form>
+              <role>Product Manager</role>
+              <priority>2</priority>
+              <handling>single</handling>
+              <restrictions/>
+              <prioritization>!data.users.join(', ')</prioritization>
+              <label>4/15</label>
+              <label_details>!"https://cpee.org/flow/graph.html?monitor=" + cpee.instance_url_encoded + "&amp;theme=reduced&amp;position=false&amp;highlight=" + task.id + ",57e38966"</label_details>
+              <data>
+                <idea_description>!data.idea_description</idea_description>
+                <stakeholders>!data.stakeholders</stakeholders>
+                <application>!data.cur_app</application>
+              </data>
+            </arguments>
+          </parameters>
+          <code>
+            <prepare/>
+            <finalize output="result">data.result = result["raw"]
+data.users &lt;&lt; result["user"]
+
+job_struggle_pairs = data.result.each_slice(2).map { |job, struggle| [job["value"], struggle["value"]] }
+combined = data.stakes.zip(job_struggle_pairs).map { |(stake, level), (job, struggle)| [stake, level, job, struggle] }
+data.all_apps &lt;&lt; [[data.cur_app,combined]].to_h</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+      </loop>
+      <call id="a6" endpoint="worklist">
+        <parameters>
+          <label>Analysing Underlying Problem </label>
+          <arguments>
+            <orgmodel>!endpoints.orgmodel</orgmodel>
+            <form>/data/ideas_phase1/ui/problem_canvas.html</form>
+            <role>Product Manager</role>
+            <priority>2</priority>
+            <handling>single</handling>
+            <restrictions/>
+            <prioritization>!data.users.join(', ')</prioritization>
+            <label>4/15</label>
+            <label_details>!"https://cpee.org/flow/graph.html?monitor=" + cpee.instance_url_encoded + "&amp;theme=reduced&amp;position=false&amp;highlight=" + task.id + ",57e38966"</label_details>
+            <data>
+              <idea_description>!data.idea_description</idea_description>
+              <market_review>!data.market_review</market_review>
+              <portfolio_review>!data.portfolio_review</portfolio_review>
+              <competitor_analysis>!data.competitor_analysis</competitor_analysis>
+            </data>
+          </arguments>
+        </parameters>
+        <code>
+          <prepare/>
+          <finalize output="result">data.problem_canvas = result["data"]
+data.users &lt;&lt; result["user"]</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a7" endpoint="worklist">
+        <parameters>
+          <label>Define Misson Goals</label>
+          <arguments>
+            <orgmodel>!endpoints.orgmodel</orgmodel>
+            <form>/data/ideas_phase1/ui/mission_one.html</form>
+            <role>Product Manager</role>
+            <priority>2</priority>
+            <handling>single</handling>
+            <restrictions/>
+            <prioritization>!data.users.join(', ')</prioritization>
+            <label>5/15</label>
+            <label_details>!"https://cpee.org/flow/graph.html?monitor=" + cpee.instance_url_encoded + "&amp;theme=reduced&amp;position=false&amp;highlight=" + task.id + ",57e38966"</label_details>
+            <data>
+              <idea_description>!data.idea_description</idea_description>
+              <problem_canvas>!data.problem_canvas</problem_canvas>
+            </data>
+          </arguments>
+        </parameters>
+        <code>
+          <prepare/>
+          <finalize output="result">data.users &lt;&lt; result["user"]
+data.mission = result["data"]
+raw = result["raw"]
+data.pmgoals = raw.select{|item| item["name"] === "pmgoals"}.map{|item| item["value"]}
+data.businessgoals = raw.select{|item| item["name"] === "businessgoals"}.map{|item| item["value"]}
+data.countrygoals = raw.select{|item| item["name"] === "countrygoals"}.map{|item| item["value"]}</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a8" endpoint="worklist">
+        <parameters>
+          <label>Financial</label>
+          <color/>
+          <arguments>
+            <orgmodel>!endpoints.orgmodel</orgmodel>
+            <form>/data/ideas_phase1/ui/finantial.html</form>
+            <role>Product Manager</role>
+            <priority>2</priority>
+            <handling>single</handling>
+            <restrictions/>
+            <prioritization>!data.users.join(', ')</prioritization>
+            <label>5/15</label>
+            <label_details>!"https://cpee.org/flow/graph.html?monitor=" + cpee.instance_url_encoded + "&amp;theme=reduced&amp;position=false&amp;highlight=" + task.id + ",57e38966"</label_details>
+            <data>
+              <idea_description>!data.idea_description</idea_description>
+              <problem_canvas>!data.problem_canvas</problem_canvas>
+            </data>
+          </arguments>
+        </parameters>
+        <code>
+          <signal/>
+          <prepare/>
+          <finalize output="result">data.users &lt;&lt; result["user"]
+data.finance = result["data"]</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a18" endpoint="orgmodel">
+        <parameters>
+          <label>Get All Involved eMails</label>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <prepare/>
+          <finalize output="result">tmpusers = data.users.uniq.map{|e| "@uid='#{e}'"}.join(" or ")
+result.register_namespace 'o', 'http://cpee.org/ns/organisation/1.0'
+data.emails = result.find("/o:organisation/o:subjects/o:subject[#{tmpusers}]/o:email").map{|e| e.text }.uniq.join(', ')</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a1" endpoint="send_email">
+        <parameters>
+          <label>Send an Email</label>
+          <method>:get</method>
+          <arguments>
+            <emails>!data.emails</emails>
+            <link>!"https://ideas.zumtobelgroup.com/data/ideas_phase1/email/one_pager.html?content=" + File.join(cpee.instance_url,'properties','dataelements')</link>
+            <idea>!data.idea_description['acronym'] + " (" + cpee.instance.to_s + ")"</idea>
+          </arguments>
+        </parameters>
+        <code>
+          <prepare/>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+    </description>
+  </description>
+  <transformation>
+    <description type="copy"/>
+    <dataelements type="none"/>
+    <endpoints type="none"/>
+  </transformation>
+</testset>

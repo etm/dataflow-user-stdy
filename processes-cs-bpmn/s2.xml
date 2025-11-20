@@ -1,0 +1,364 @@
+<?xml version="1.0"?>
+<testset xmlns="http://cpee.org/ns/properties/2.0">
+  <executionhandler>ruby</executionhandler>
+  <dataelements>
+    <angle>297.99043062200957</angle>
+    <date>2025-10-05</date>
+    <hour>4</hour>
+    <sunrise>7.32</sunrise>
+    <sunset>18.78</sunset>
+  </dataelements>
+  <endpoints>
+    <user>https-post://cpee.org/services/timeout-user.php</user>
+    <auto>https-post://cpee.org/services/timeout-auto.php</auto>
+    <subprocess>https-post://cpee.org/flow/start/url/</subprocess>
+    <timeout>https-post://cpee.org/services/timeout.php</timeout>
+    <send>https-post://cpee.org/ing/correlators/message/send/</send>
+    <receive>https-get://cpee.org/ing/correlators/message/receive/</receive>
+    <sun>https://api.sunrisesunset.io/json/</sun>
+    <setAngle>https-put://cpee.org/dtc/7/sensors/angle/</setAngle>
+    <setDate>https-put://cpee.org/dtc/7/environment/date/</setDate>
+    <setHour>https-put://cpee.org/dtc/7/environment/hour/</setHour>
+    <setSunrise>https-put://cpee.org/dtc/7/environment/sunrise/</setSunrise>
+    <setSunset>https-put://cpee.org/dtc/7/environment/sunset/</setSunset>
+  </endpoints>
+  <attributes>
+    <guarded>none</guarded>
+    <modeltype>CPEE</modeltype>
+    <guarded_id/>
+    <theme>dataflow</theme>
+    <info>s2</info>
+    <creator>Christine Ashcreek</creator>
+    <author>Christine Ashcreek</author>
+    <model_uuid>2979b8a7-07b1-45a9-a8f0-745b115c8bf5</model_uuid>
+    <model_version/>
+    <design_dir>Papers.dir/Dataflow.dir/Processes.dir/</design_dir>
+    <design_stage>development</design_stage>
+  </attributes>
+  <description>
+    <description xmlns="http://cpee.org/ns/description/1.0">
+      <loop mode="pre_test" condition="true">
+        <manipulate id="a2" label="Calculate Date">if data.date.nil?
+  data.date = '2025-01-01'
+else
+  tmp = Time.parse(data.date)
+  tmp = tmp + 60*60*26
+  if tmp.year &gt; 2025
+    data.date = '2025-01-01'
+  else
+    data.date =  tmp.strftime('%Y-%m-%d')  
+  end
+end
+data.hour = 0</manipulate>
+        <call id="a8" endpoint="setDate">
+          <parameters>
+            <label>Set Date</label>
+            <arguments>
+              <string>!data.date</string>
+            </arguments>
+          </parameters>
+          <annotations>
+            <_generic/>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+          </documentation>
+        </call>
+        <_probability>
+          <_probability_min/>
+          <_probability_max/>
+          <_probability_avg/>
+        </_probability>
+        <call id="a1" endpoint="sun">
+          <parameters>
+            <label>Get Sun Data</label>
+            <method>:get</method>
+            <arguments>
+              <lat>48.1372</lat>
+              <lng>11.5755</lng>
+              <date>!data.date</date>
+            </arguments>
+          </parameters>
+          <code>
+            <prepare/>
+            <finalize output="result">sunrise = Time.parse(result['results']['sunrise'])
+data.sunrise = (sunrise.hour + sunrise.min / 60.0).round(2)
+
+sunset = Time.parse(result['results']['sunset'])
+data.sunset = (sunset.hour + sunset.min / 60.0).round(2)</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+        <call id="a4" endpoint="setSunrise">
+          <parameters>
+            <label>Set Sunrise</label>
+            <arguments>
+              <string>!data.sunrise</string>
+            </arguments>
+          </parameters>
+          <annotations>
+            <_generic/>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+          </documentation>
+        </call>
+        <call id="a9" endpoint="setSunset">
+          <parameters>
+            <label>Set Sunset</label>
+            <arguments>
+              <string>!data.sunset</string>
+            </arguments>
+          </parameters>
+          <annotations>
+            <_generic/>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+          </documentation>
+        </call>
+        <loop mode="pre_test" condition="data.hour &lt; 24">
+          <_probability>
+            <_probability_min/>
+            <_probability_max/>
+            <_probability_avg/>
+          </_probability>
+          <call id="a5" endpoint="setHour">
+            <parameters>
+              <label>Set Hour</label>
+              <arguments>
+                <int>!data.hour</int>
+              </arguments>
+            </parameters>
+            <annotations>
+              <_generic/>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+            </documentation>
+          </call>
+          <manipulate id="a6" label="Calculate Angle">hour = data.hour
+sunrise = data.sunrise
+sunset = data.sunset
+
+day_length = sunset - sunrise
+night_length = 24 - day_length
+
+if sunrise &lt;= hour &amp;&amp; hour &lt;= sunset
+  data.angle = (hour - sunrise) * (180 / day_length)
+elsif hour &lt; sunrise
+  data.angle = 360 - ((sunrise - hour) * (180 / night_length))
+else
+  data.angle = 180 + ((hour - sunset) * (180 / night_length))
+end</manipulate>
+          <call id="a7" endpoint="setAngle">
+            <parameters>
+              <label>Set Angle</label>
+              <arguments>
+                <float>!data.angle</float>
+              </arguments>
+            </parameters>
+            <annotations>
+              <_generic/>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+            </documentation>
+          </call>
+          <call id="a3" endpoint="timeout">
+            <parameters>
+              <label>Wait</label>
+              <arguments>
+                <timeout>1</timeout>
+              </arguments>
+            </parameters>
+            <code>
+              <prepare/>
+              <finalize output="result">data.hour += 1</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </loop>
+      </loop>
+    </description>
+  </description>
+  <transformation>
+    <description type="copy"/>
+    <dataelements type="none"/>
+    <endpoints type="none"/>
+  </transformation>
+</testset>
