@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:i18n="http://www.omg.org/spec/BPMN/non-normative/extensions/i18n/1.0" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:signavio="http://www.signavio.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="Signavio Process Editor, http://www.signavio.com" exporterVersion="26.17.0-20260426220445+0b7fe11" expressionLanguage="http://www.w3.org/TR/XPath" id="sid-d0a9f30f-757e-47df-99ae-6b4651d251ae" targetNamespace="http://www.signavio.com" typeLanguage="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd">
+   <process id="sid-37ae9f07-52c4-4597-ae89-1dca6848a971" isClosed="false" isExecutable="false" processType="None">
+      <extensionElements>
+         <signavio:signavioDiagramMetaData metaKey="revisionid" metaValue="6c63a2f944f54b65bad233669da86425"/>
+      </extensionElements>
+      <dataObject id="sid-d665c2f6-6948-4fdb-b3e6-125ef5a70941" isCollection="false" name="date"/>
+      <dataObject id="sid-07ebf5c3-0695-4044-a178-147429f8138a" isCollection="false" name="hour"/>
+      <dataObject id="sid-d3e267a6-72f8-4e1d-b786-d25ed6a2e208" isCollection="false" name="sunrise"/>
+      <dataObject id="sid-959921ee-7535-4304-9d83-73704657e2bd" isCollection="false" name="sunset"/>
+      <dataObject id="sid-4c3be7bc-f8aa-4da1-b8a1-d580e7eb96a8" isCollection="false" name="angle"/>
+      <startEvent id="sid-412E3ECE-ED2F-437B-A06F-66AEC3879FFA" isInterrupting="true" name="">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+         <outgoing>sid-9E7ED76A-DCCB-4F23-BD51-C59E1E269AEB</outgoing>
+         <dataOutput id="sid-abbd83fc-d894-4109-a1c9-78b8891be14c"/>
+         <dataOutputAssociation id="sid-0DCBE41B-7350-44E0-B5BE-F161D2314901">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-abbd83fc-d894-4109-a1c9-78b8891be14c</sourceRef>
+            <targetRef>sid-3A9EC3A9-2B5F-4071-A883-03271282EDE7</targetRef>
+         </dataOutputAssociation>
+         <outputSet id="sid-412E3ECE-ED2F-437B-A06F-66AEC3879FFA_outset" name="DefaultOutputSet">
+            <dataOutputRefs>sid-abbd83fc-d894-4109-a1c9-78b8891be14c</dataOutputRefs>
+         </outputSet>
+         <messageEventDefinition id="sid-29290668-29f5-4b5e-adfd-c713efb06b26"/>
+      </startEvent>
+      <exclusiveGateway gatewayDirection="Converging" id="sid-D380550D-2720-41ED-AF5F-373CF4E6C75E" name="">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+         <incoming>sid-9E7ED76A-DCCB-4F23-BD51-C59E1E269AEB</incoming>
+         <incoming>sid-1C1722CD-67A8-45E9-B098-33E205A566F1</incoming>
+         <outgoing>sid-817E1C3C-8C84-48E6-B66C-B586524C686A</outgoing>
+      </exclusiveGateway>
+      <exclusiveGateway default="sid-2BAC9E40-F355-4816-AFFC-08CDF47DF538" gatewayDirection="Diverging" id="sid-0E1A232E-E7F5-4825-97FF-01896E95C37F" name="Run forever!">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            <signavio:signavioLabel align="right" bottom="false" left="true" ref="text_name" right="false" top="false" valign="middle" x="-7.0" y="20.0"/>
+         </extensionElements>
+         <incoming>sid-817E1C3C-8C84-48E6-B66C-B586524C686A</incoming>
+         <outgoing>sid-2BAC9E40-F355-4816-AFFC-08CDF47DF538</outgoing>
+         <outgoing>sid-339BF9F7-DC1F-4397-9770-99D0F02C0766</outgoing>
+      </exclusiveGateway>
+      <task completionQuantity="1" id="sid-81B24345-112F-414A-A215-069E3516E21C" isForCompensation="false" name="a2: Calculate Date" startQuantity="1">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+         <incoming>sid-339BF9F7-DC1F-4397-9770-99D0F02C0766</incoming>
+         <outgoing>sid-84C9391E-C8D7-4D92-AC08-F74213A943F1</outgoing>
+         <ioSpecification id="sid-81B24345-112F-414A-A215-069E3516E21C_iospec">
+            <dataInput id="sid-7518efeb-4745-4e89-ab40-e44d45004ae9"/>
+            <dataOutput id="sid-38192c05-8ba4-46b9-99b7-724b08095de5"/>
+            <inputSet id="sid-81B24345-112F-414A-A215-069E3516E21C_inset" name="DefaultInputSet">
+               <dataInputRefs>sid-7518efeb-4745-4e89-ab40-e44d45004ae9</dataInputRefs>
+               <outputSetRefs>sid-81B24345-112F-414A-A215-069E3516E21C_outset</outputSetRefs>
+            </inputSet>
+            <outputSet id="sid-81B24345-112F-414A-A215-069E3516E21C_outset" name="DefaultOutputSet">
+               <dataOutputRefs>sid-38192c05-8ba4-46b9-99b7-724b08095de5</dataOutputRefs>
+               <inputSetRefs>sid-81B24345-112F-414A-A215-069E3516E21C_inset</inputSetRefs>
+            </outputSet>
+         </ioSpecification>
+         <dataInputAssociation id="sid-1AAC6CEF-092B-4078-9E1C-7AC221955D3B">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-3A9EC3A9-2B5F-4071-A883-03271282EDE7</sourceRef>
+            <targetRef>sid-7518efeb-4745-4e89-ab40-e44d45004ae9</targetRef>
+         </dataInputAssociation>
+         <dataOutputAssociation id="sid-2C3B3CA4-5E4E-443F-A862-4FE65B42F8B7">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-38192c05-8ba4-46b9-99b7-724b08095de5</sourceRef>
+            <targetRef>sid-DC30BE4A-6641-4697-9E45-6D8FCDF47C4C</targetRef>
+         </dataOutputAssociation>
+      </task>
+      <task completionQuantity="1" id="sid-27E23778-A6B8-4574-8E17-0570BE3BA490" isForCompensation="false" name="a8: Set Date" startQuantity="1">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+         <incoming>sid-84C9391E-C8D7-4D92-AC08-F74213A943F1</incoming>
+         <outgoing>sid-E9C778E6-1BBA-4468-92D8-620E4A537F92</outgoing>
+         <ioSpecification id="sid-27E23778-A6B8-4574-8E17-0570BE3BA490_iospec">
+            <dataInput id="sid-92a2f240-dd23-48cb-a601-fdb39f083474"/>
+            <inputSet id="sid-27E23778-A6B8-4574-8E17-0570BE3BA490_inset" name="DefaultInputSet">
+               <dataInputRefs>sid-92a2f240-dd23-48cb-a601-fdb39f083474</dataInputRefs>
+               <outputSetRefs>sid-27E23778-A6B8-4574-8E17-0570BE3BA490_outset</outputSetRefs>
+            </inputSet>
+            <outputSet id="sid-27E23778-A6B8-4574-8E17-0570BE3BA490_outset" name="DefaultOutputSet">
+               <inputSetRefs>sid-27E23778-A6B8-4574-8E17-0570BE3BA490_inset</inputSetRefs>
+            </outputSet>
+         </ioSpecification>
+         <dataInputAssociation id="sid-0B311224-5B1C-4BC5-B396-C382F23CE5C4">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-3A9EC3A9-2B5F-4071-A883-03271282EDE7</sourceRef>
+            <targetRef>sid-92a2f240-dd23-48cb-a601-fdb39f083474</targetRef>
+         </dataInputAssociation>
+      </task>
+      <task completionQuantity="1" id="sid-E75C2901-AFA5-46DB-BEC6-630EAF4F176E" isForCompensation="false" name="a1: Get Sun Data" startQuantity="1">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+         <incoming>sid-E9C778E6-1BBA-4468-92D8-620E4A537F92</incoming>
+         <outgoing>sid-33CE92F7-8B95-4D86-B7E3-5007168C11B0</outgoing>
+         <ioSpecification id="sid-E75C2901-AFA5-46DB-BEC6-630EAF4F176E_iospec">
+            <dataInput id="sid-44f80ec5-852f-448c-922c-b25d23324470"/>
+            <dataOutput id="sid-c8cecee5-6624-4417-a2bd-e1cf12c7ead6"/>
+            <dataOutput id="sid-960f1bd5-0852-4a80-ab42-5e90606d6249"/>
+            <inputSet id="sid-E75C2901-AFA5-46DB-BEC6-630EAF4F176E_inset" name="DefaultInputSet">
+               <dataInputRefs>sid-44f80ec5-852f-448c-922c-b25d23324470</dataInputRefs>
+               <outputSetRefs>sid-E75C2901-AFA5-46DB-BEC6-630EAF4F176E_outset</outputSetRefs>
+            </inputSet>
+            <outputSet id="sid-E75C2901-AFA5-46DB-BEC6-630EAF4F176E_outset" name="DefaultOutputSet">
+               <dataOutputRefs>sid-c8cecee5-6624-4417-a2bd-e1cf12c7ead6</dataOutputRefs>
+               <dataOutputRefs>sid-960f1bd5-0852-4a80-ab42-5e90606d6249</dataOutputRefs>
+               <inputSetRefs>sid-E75C2901-AFA5-46DB-BEC6-630EAF4F176E_inset</inputSetRefs>
+            </outputSet>
+         </ioSpecification>
+         <dataInputAssociation id="sid-9BC2E368-5DCC-4308-8E50-139523EA0954">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-3A9EC3A9-2B5F-4071-A883-03271282EDE7</sourceRef>
+            <targetRef>sid-44f80ec5-852f-448c-922c-b25d23324470</targetRef>
+         </dataInputAssociation>
+         <dataOutputAssociation id="sid-7979ACA2-F5AB-45DF-896D-3BDBE0C31231">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-c8cecee5-6624-4417-a2bd-e1cf12c7ead6</sourceRef>
+            <targetRef>sid-1DA991AF-3DEF-4539-9DD8-74E5E5A16092</targetRef>
+         </dataOutputAssociation>
+         <dataOutputAssociation id="sid-545D2FAF-7D50-454A-BBD2-EF9148EDBE32">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-960f1bd5-0852-4a80-ab42-5e90606d6249</sourceRef>
+            <targetRef>sid-F787FF4E-E938-4A45-B949-AB7F4F5CC628</targetRef>
+         </dataOutputAssociation>
+      </task>
+      <task completionQuantity="1" id="sid-ECB4091A-0ABB-4A77-9D07-6071EBA92379" isForCompensation="false" name="a4: Set Sunrise" startQuantity="1">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+         <incoming>sid-33CE92F7-8B95-4D86-B7E3-5007168C11B0</incoming>
+         <outgoing>sid-5EDEC483-58CD-4A43-931F-419FEDF4F7D4</outgoing>
+         <ioSpecification id="sid-ECB4091A-0ABB-4A77-9D07-6071EBA92379_iospec">
+            <dataInput id="sid-130c95aa-b944-4f11-9766-981b35cf510d"/>
+            <inputSet id="sid-ECB4091A-0ABB-4A77-9D07-6071EBA92379_inset" name="DefaultInputSet">
+               <dataInputRefs>sid-130c95aa-b944-4f11-9766-981b35cf510d</dataInputRefs>
+               <outputSetRefs>sid-ECB4091A-0ABB-4A77-9D07-6071EBA92379_outset</outputSetRefs>
+            </inputSet>
+            <outputSet id="sid-ECB4091A-0ABB-4A77-9D07-6071EBA92379_outset" name="DefaultOutputSet">
+               <inputSetRefs>sid-ECB4091A-0ABB-4A77-9D07-6071EBA92379_inset</inputSetRefs>
+            </outputSet>
+         </ioSpecification>
+         <dataInputAssociation id="sid-4BC4BFCA-2E29-42DC-9F89-659911F34C5F">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-1DA991AF-3DEF-4539-9DD8-74E5E5A16092</sourceRef>
+            <targetRef>sid-130c95aa-b944-4f11-9766-981b35cf510d</targetRef>
+         </dataInputAssociation>
+      </task>
+      <task completionQuantity="1" id="sid-2963DA8B-7462-4C87-B018-1C5FBC81CCBB" isForCompensation="false" name="a9: Set Sunset" startQuantity="1">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+         <incoming>sid-5EDEC483-58CD-4A43-931F-419FEDF4F7D4</incoming>
+         <outgoing>sid-8AC353EB-D3E0-48D6-8378-A6C1B55CFD27</outgoing>
+         <ioSpecification id="sid-2963DA8B-7462-4C87-B018-1C5FBC81CCBB_iospec">
+            <dataInput id="sid-55c2359e-c9d8-449a-bf89-1d65ec16bc1d"/>
+            <inputSet id="sid-2963DA8B-7462-4C87-B018-1C5FBC81CCBB_inset" name="DefaultInputSet">
+               <dataInputRefs>sid-55c2359e-c9d8-449a-bf89-1d65ec16bc1d</dataInputRefs>
+               <outputSetRefs>sid-2963DA8B-7462-4C87-B018-1C5FBC81CCBB_outset</outputSetRefs>
+            </inputSet>
+            <outputSet id="sid-2963DA8B-7462-4C87-B018-1C5FBC81CCBB_outset" name="DefaultOutputSet">
+               <inputSetRefs>sid-2963DA8B-7462-4C87-B018-1C5FBC81CCBB_inset</inputSetRefs>
+            </outputSet>
+         </ioSpecification>
+         <dataInputAssociation id="sid-1AB6E5A9-16C2-4C08-BF85-2B8628138FE0">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-F787FF4E-E938-4A45-B949-AB7F4F5CC628</sourceRef>
+            <targetRef>sid-55c2359e-c9d8-449a-bf89-1d65ec16bc1d</targetRef>
+         </dataInputAssociation>
+      </task>
+      <exclusiveGateway gatewayDirection="Converging" id="sid-CD404014-5C41-4C12-9720-CF02688D8CEF" name="">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+         <incoming>sid-8AC353EB-D3E0-48D6-8378-A6C1B55CFD27</incoming>
+         <incoming>sid-E181814D-972F-4978-832E-4C251E70A2F6</incoming>
+         <outgoing>sid-69859680-9916-417D-8DA2-7A9142518BF0</outgoing>
+      </exclusiveGateway>
+      <exclusiveGateway default="sid-1C1722CD-67A8-45E9-B098-33E205A566F1" gatewayDirection="Diverging" id="sid-F7B6AA71-ECE9-4BFC-A19E-C016AEE36252" name="Check while not&#10;midnight">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            <signavio:signavioLabel align="center" bottom="false" left="false" ref="text_name" right="false" top="true" valign="bottom" x="20.0" y="-8.0"/>
+         </extensionElements>
+         <incoming>sid-69859680-9916-417D-8DA2-7A9142518BF0</incoming>
+         <outgoing>sid-1C1722CD-67A8-45E9-B098-33E205A566F1</outgoing>
+         <outgoing>sid-E4BE8E2F-0415-4259-B43B-693A3EEF3AF3</outgoing>
+      </exclusiveGateway>
+      <task completionQuantity="1" id="sid-19E88704-AD31-4D5B-BB15-AA8088C2FB4E" isForCompensation="false" name="a5: Set Hour" startQuantity="1">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+         <incoming>sid-E4BE8E2F-0415-4259-B43B-693A3EEF3AF3</incoming>
+         <outgoing>sid-8DB986D0-85C7-4746-8F1E-8B5CB967F87B</outgoing>
+         <ioSpecification id="sid-19E88704-AD31-4D5B-BB15-AA8088C2FB4E_iospec">
+            <dataInput id="sid-d2f39457-087b-44d9-acad-10ead0096966"/>
+            <inputSet id="sid-19E88704-AD31-4D5B-BB15-AA8088C2FB4E_inset" name="DefaultInputSet">
+               <dataInputRefs>sid-d2f39457-087b-44d9-acad-10ead0096966</dataInputRefs>
+               <outputSetRefs>sid-19E88704-AD31-4D5B-BB15-AA8088C2FB4E_outset</outputSetRefs>
+            </inputSet>
+            <outputSet id="sid-19E88704-AD31-4D5B-BB15-AA8088C2FB4E_outset" name="DefaultOutputSet">
+               <inputSetRefs>sid-19E88704-AD31-4D5B-BB15-AA8088C2FB4E_inset</inputSetRefs>
+            </outputSet>
+         </ioSpecification>
+         <dataInputAssociation id="sid-46A5A0D1-C1F1-4419-BD01-A146F62F8498">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-DC30BE4A-6641-4697-9E45-6D8FCDF47C4C</sourceRef>
+            <targetRef>sid-d2f39457-087b-44d9-acad-10ead0096966</targetRef>
+         </dataInputAssociation>
+      </task>
+      <task completionQuantity="1" id="sid-99B7C7AC-F338-4FD5-971D-B1F31BEB7FF3" isForCompensation="false" name="a6: Calculate Angle" startQuantity="1">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+         <incoming>sid-8DB986D0-85C7-4746-8F1E-8B5CB967F87B</incoming>
+         <outgoing>sid-20757086-B3E2-4087-B12B-B874DB910F8D</outgoing>
+         <ioSpecification id="sid-99B7C7AC-F338-4FD5-971D-B1F31BEB7FF3_iospec">
+            <dataInput id="sid-4886f628-a8ef-4ce6-bff5-f03004e37565"/>
+            <dataInput id="sid-a8d74444-a6d1-4452-931c-4f613d0f4855"/>
+            <dataInput id="sid-56399e83-296c-4e97-8f03-099f1a351f17"/>
+            <dataOutput id="sid-4822189d-327a-418a-944e-9a0fb842d46f"/>
+            <inputSet id="sid-99B7C7AC-F338-4FD5-971D-B1F31BEB7FF3_inset" name="DefaultInputSet">
+               <dataInputRefs>sid-4886f628-a8ef-4ce6-bff5-f03004e37565</dataInputRefs>
+               <dataInputRefs>sid-a8d74444-a6d1-4452-931c-4f613d0f4855</dataInputRefs>
+               <dataInputRefs>sid-56399e83-296c-4e97-8f03-099f1a351f17</dataInputRefs>
+               <outputSetRefs>sid-99B7C7AC-F338-4FD5-971D-B1F31BEB7FF3_outset</outputSetRefs>
+            </inputSet>
+            <outputSet id="sid-99B7C7AC-F338-4FD5-971D-B1F31BEB7FF3_outset" name="DefaultOutputSet">
+               <dataOutputRefs>sid-4822189d-327a-418a-944e-9a0fb842d46f</dataOutputRefs>
+               <inputSetRefs>sid-99B7C7AC-F338-4FD5-971D-B1F31BEB7FF3_inset</inputSetRefs>
+            </outputSet>
+         </ioSpecification>
+         <dataInputAssociation id="sid-AA45964A-58D8-49AE-8552-0EE009673CEF">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-DC30BE4A-6641-4697-9E45-6D8FCDF47C4C</sourceRef>
+            <targetRef>sid-4886f628-a8ef-4ce6-bff5-f03004e37565</targetRef>
+         </dataInputAssociation>
+         <dataInputAssociation id="sid-148A77C2-22CE-4D17-AAEC-019565F42A6E">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-F787FF4E-E938-4A45-B949-AB7F4F5CC628</sourceRef>
+            <targetRef>sid-a8d74444-a6d1-4452-931c-4f613d0f4855</targetRef>
+         </dataInputAssociation>
+         <dataInputAssociation id="sid-DE115497-C319-44F4-BB3E-4C956EE0CB31">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-1DA991AF-3DEF-4539-9DD8-74E5E5A16092</sourceRef>
+            <targetRef>sid-56399e83-296c-4e97-8f03-099f1a351f17</targetRef>
+         </dataInputAssociation>
+         <dataOutputAssociation id="sid-C29E0228-482D-4C76-A251-1F92C1B8110A">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-4822189d-327a-418a-944e-9a0fb842d46f</sourceRef>
+            <targetRef>sid-16E38269-8343-4356-BE78-632F9484B65D</targetRef>
+         </dataOutputAssociation>
+      </task>
+      <task completionQuantity="1" id="sid-98C6F4FE-33B7-4733-BFC4-5379D9D6A473" isForCompensation="false" name="a7: Set Angle" startQuantity="1">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+         <incoming>sid-20757086-B3E2-4087-B12B-B874DB910F8D</incoming>
+         <outgoing>sid-DD4D9C4A-803B-4E85-91DA-19C80DD48517</outgoing>
+         <ioSpecification id="sid-98C6F4FE-33B7-4733-BFC4-5379D9D6A473_iospec">
+            <dataInput id="sid-6a1d828b-dcee-4cec-a8d1-3d57b254c497"/>
+            <inputSet id="sid-98C6F4FE-33B7-4733-BFC4-5379D9D6A473_inset" name="DefaultInputSet">
+               <dataInputRefs>sid-6a1d828b-dcee-4cec-a8d1-3d57b254c497</dataInputRefs>
+               <outputSetRefs>sid-98C6F4FE-33B7-4733-BFC4-5379D9D6A473_outset</outputSetRefs>
+            </inputSet>
+            <outputSet id="sid-98C6F4FE-33B7-4733-BFC4-5379D9D6A473_outset" name="DefaultOutputSet">
+               <inputSetRefs>sid-98C6F4FE-33B7-4733-BFC4-5379D9D6A473_inset</inputSetRefs>
+            </outputSet>
+         </ioSpecification>
+         <dataInputAssociation id="sid-F6E65DF4-0F19-4860-8671-4BC819F8A276">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-16E38269-8343-4356-BE78-632F9484B65D</sourceRef>
+            <targetRef>sid-6a1d828b-dcee-4cec-a8d1-3d57b254c497</targetRef>
+         </dataInputAssociation>
+      </task>
+      <intermediateCatchEvent id="sid-7E7C1F92-E500-49BC-9FA5-B4D8DEC933CC" name="a3: Wait">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            <signavio:signavioLabel align="right" bottom="false" left="true" ref="text_name" right="false" top="false" valign="middle" x="-7.0" y="15.0"/>
+         </extensionElements>
+         <incoming>sid-DD4D9C4A-803B-4E85-91DA-19C80DD48517</incoming>
+         <outgoing>sid-E181814D-972F-4978-832E-4C251E70A2F6</outgoing>
+         <dataOutput id="sid-c2037a24-3015-467f-a2dd-aacc1e2f17d7"/>
+         <dataOutputAssociation id="sid-7CF1907F-13AD-4980-B943-F661D41196C1">
+            <extensionElements>
+               <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+            </extensionElements>
+            <sourceRef>sid-c2037a24-3015-467f-a2dd-aacc1e2f17d7</sourceRef>
+            <targetRef>sid-DC30BE4A-6641-4697-9E45-6D8FCDF47C4C</targetRef>
+         </dataOutputAssociation>
+         <outputSet id="sid-7E7C1F92-E500-49BC-9FA5-B4D8DEC933CC_outset" name="DefaultOutputSet">
+            <dataOutputRefs>sid-c2037a24-3015-467f-a2dd-aacc1e2f17d7</dataOutputRefs>
+         </outputSet>
+         <timerEventDefinition id="sid-134cd525-fc0d-4ebd-834f-9a049dba1c54"/>
+      </intermediateCatchEvent>
+      <endEvent id="sid-00CD0113-B780-43B3-BF5D-E474E3AD6EDA" name="">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+         <incoming>sid-2BAC9E40-F355-4816-AFFC-08CDF47DF538</incoming>
+      </endEvent>
+      <sequenceFlow id="sid-9E7ED76A-DCCB-4F23-BD51-C59E1E269AEB" name="" sourceRef="sid-412E3ECE-ED2F-437B-A06F-66AEC3879FFA" targetRef="sid-D380550D-2720-41ED-AF5F-373CF4E6C75E">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-817E1C3C-8C84-48E6-B66C-B586524C686A" name="" sourceRef="sid-D380550D-2720-41ED-AF5F-373CF4E6C75E" targetRef="sid-0E1A232E-E7F5-4825-97FF-01896E95C37F">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-84C9391E-C8D7-4D92-AC08-F74213A943F1" name="" sourceRef="sid-81B24345-112F-414A-A215-069E3516E21C" targetRef="sid-27E23778-A6B8-4574-8E17-0570BE3BA490">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-33CE92F7-8B95-4D86-B7E3-5007168C11B0" name="" sourceRef="sid-E75C2901-AFA5-46DB-BEC6-630EAF4F176E" targetRef="sid-ECB4091A-0ABB-4A77-9D07-6071EBA92379">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-E9C778E6-1BBA-4468-92D8-620E4A537F92" name="" sourceRef="sid-27E23778-A6B8-4574-8E17-0570BE3BA490" targetRef="sid-E75C2901-AFA5-46DB-BEC6-630EAF4F176E">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-5EDEC483-58CD-4A43-931F-419FEDF4F7D4" name="" sourceRef="sid-ECB4091A-0ABB-4A77-9D07-6071EBA92379" targetRef="sid-2963DA8B-7462-4C87-B018-1C5FBC81CCBB">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-8AC353EB-D3E0-48D6-8378-A6C1B55CFD27" name="" sourceRef="sid-2963DA8B-7462-4C87-B018-1C5FBC81CCBB" targetRef="sid-CD404014-5C41-4C12-9720-CF02688D8CEF">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-69859680-9916-417D-8DA2-7A9142518BF0" name="" sourceRef="sid-CD404014-5C41-4C12-9720-CF02688D8CEF" targetRef="sid-F7B6AA71-ECE9-4BFC-A19E-C016AEE36252">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-8DB986D0-85C7-4746-8F1E-8B5CB967F87B" name="" sourceRef="sid-19E88704-AD31-4D5B-BB15-AA8088C2FB4E" targetRef="sid-99B7C7AC-F338-4FD5-971D-B1F31BEB7FF3">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-20757086-B3E2-4087-B12B-B874DB910F8D" name="" sourceRef="sid-99B7C7AC-F338-4FD5-971D-B1F31BEB7FF3" targetRef="sid-98C6F4FE-33B7-4733-BFC4-5379D9D6A473">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-DD4D9C4A-803B-4E85-91DA-19C80DD48517" name="" sourceRef="sid-98C6F4FE-33B7-4733-BFC4-5379D9D6A473" targetRef="sid-7E7C1F92-E500-49BC-9FA5-B4D8DEC933CC">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-E181814D-972F-4978-832E-4C251E70A2F6" name="" sourceRef="sid-7E7C1F92-E500-49BC-9FA5-B4D8DEC933CC" targetRef="sid-CD404014-5C41-4C12-9720-CF02688D8CEF">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-2BAC9E40-F355-4816-AFFC-08CDF47DF538" name="" sourceRef="sid-0E1A232E-E7F5-4825-97FF-01896E95C37F" targetRef="sid-00CD0113-B780-43B3-BF5D-E474E3AD6EDA">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-1C1722CD-67A8-45E9-B098-33E205A566F1" name="" sourceRef="sid-F7B6AA71-ECE9-4BFC-A19E-C016AEE36252" targetRef="sid-D380550D-2720-41ED-AF5F-373CF4E6C75E">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-339BF9F7-DC1F-4397-9770-99D0F02C0766" name="true" sourceRef="sid-0E1A232E-E7F5-4825-97FF-01896E95C37F" targetRef="sid-81B24345-112F-414A-A215-069E3516E21C">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="sid-E4BE8E2F-0415-4259-B43B-693A3EEF3AF3" name="hour &lt; 24" sourceRef="sid-F7B6AA71-ECE9-4BFC-A19E-C016AEE36252" targetRef="sid-19E88704-AD31-4D5B-BB15-AA8088C2FB4E">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </sequenceFlow>
+      <dataObjectReference dataObjectRef="sid-d665c2f6-6948-4fdb-b3e6-125ef5a70941" id="sid-3A9EC3A9-2B5F-4071-A883-03271282EDE7" name="date">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </dataObjectReference>
+      <dataObjectReference dataObjectRef="sid-07ebf5c3-0695-4044-a178-147429f8138a" id="sid-DC30BE4A-6641-4697-9E45-6D8FCDF47C4C" name="hour">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </dataObjectReference>
+      <dataObjectReference dataObjectRef="sid-d3e267a6-72f8-4e1d-b786-d25ed6a2e208" id="sid-1DA991AF-3DEF-4539-9DD8-74E5E5A16092" name="sunrise">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </dataObjectReference>
+      <dataObjectReference dataObjectRef="sid-959921ee-7535-4304-9d83-73704657e2bd" id="sid-F787FF4E-E938-4A45-B949-AB7F4F5CC628" name="sunset">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </dataObjectReference>
+      <dataObjectReference dataObjectRef="sid-4c3be7bc-f8aa-4da1-b8a1-d580e7eb96a8" id="sid-16E38269-8343-4356-BE78-632F9484B65D" name="angle">
+         <extensionElements>
+            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
+            <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000"/>
+         </extensionElements>
+      </dataObjectReference>
+   </process>
+   <bpmndi:BPMNDiagram id="sid-35381cd8-d7a5-4050-8232-0af9fc3b3f6c">
+      <bpmndi:BPMNPlane bpmnElement="sid-37ae9f07-52c4-4597-ae89-1dca6848a971" id="sid-ea324d9e-4921-4ee3-906e-c847d21d4040">
+         <bpmndi:BPMNShape bpmnElement="sid-412E3ECE-ED2F-437B-A06F-66AEC3879FFA" id="sid-412E3ECE-ED2F-437B-A06F-66AEC3879FFA_gui">
+            <omgdc:Bounds height="30.0" width="30.0" x="220.0" y="125.0"/>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-D380550D-2720-41ED-AF5F-373CF4E6C75E" id="sid-D380550D-2720-41ED-AF5F-373CF4E6C75E_gui" isMarkerVisible="true">
+            <omgdc:Bounds height="40.0" width="40.0" x="215.0" y="200.0"/>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-0E1A232E-E7F5-4825-97FF-01896E95C37F" id="sid-0E1A232E-E7F5-4825-97FF-01896E95C37F_gui" isMarkerVisible="true">
+            <omgdc:Bounds height="40.0" width="40.0" x="215.0" y="1200.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-a1fec209-5fb5-4078-acdc-c8f1cd8710f9">
+               <omgdc:Bounds height="12.0" width="68.65714263916016" x="139.34285736083984" y="1212.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-81B24345-112F-414A-A215-069E3516E21C" id="sid-81B24345-112F-414A-A215-069E3516E21C_gui">
+            <omgdc:Bounds height="80.0" width="100.0" x="260.0" y="1110.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-759a550d-8995-46dc-86c0-d41c74632541">
+               <omgdc:Bounds height="24.0" width="69.42857360839844" x="275.2857131958008" y="1136.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-27E23778-A6B8-4574-8E17-0570BE3BA490" id="sid-27E23778-A6B8-4574-8E17-0570BE3BA490_gui">
+            <omgdc:Bounds height="80.0" width="100.0" x="260.0" y="1000.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-759a550d-8995-46dc-86c0-d41c74632541">
+               <omgdc:Bounds height="12.0" width="69.42857360839844" x="275.2857131958008" y="1032.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-E75C2901-AFA5-46DB-BEC6-630EAF4F176E" id="sid-E75C2901-AFA5-46DB-BEC6-630EAF4F176E_gui">
+            <omgdc:Bounds height="80.0" width="100.0" x="260.0" y="890.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-759a550d-8995-46dc-86c0-d41c74632541">
+               <omgdc:Bounds height="24.0" width="66.34285736083984" x="276.8285713195801" y="916.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-ECB4091A-0ABB-4A77-9D07-6071EBA92379" id="sid-ECB4091A-0ABB-4A77-9D07-6071EBA92379_gui">
+            <omgdc:Bounds height="80.0" width="100.0" x="260.0" y="780.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-759a550d-8995-46dc-86c0-d41c74632541">
+               <omgdc:Bounds height="12.0" width="84.85714721679688" x="267.57142639160156" y="812.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-2963DA8B-7462-4C87-B018-1C5FBC81CCBB" id="sid-2963DA8B-7462-4C87-B018-1C5FBC81CCBB_gui">
+            <omgdc:Bounds height="80.0" width="100.0" x="260.0" y="670.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-759a550d-8995-46dc-86c0-d41c74632541">
+               <omgdc:Bounds height="12.0" width="82.5428466796875" x="268.72857666015625" y="702.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-CD404014-5C41-4C12-9720-CF02688D8CEF" id="sid-CD404014-5C41-4C12-9720-CF02688D8CEF_gui" isMarkerVisible="true">
+            <omgdc:Bounds height="40.0" width="40.0" x="290.0" y="600.0"/>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-F7B6AA71-ECE9-4BFC-A19E-C016AEE36252" id="sid-F7B6AA71-ECE9-4BFC-A19E-C016AEE36252_gui" isMarkerVisible="true">
+            <omgdc:Bounds height="40.0" width="40.0" x="290.0" y="200.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-a1fec209-5fb5-4078-acdc-c8f1cd8710f9">
+               <omgdc:Bounds height="24.0" width="84.85713958740234" x="267.5714302062988" y="168.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-19E88704-AD31-4D5B-BB15-AA8088C2FB4E" id="sid-19E88704-AD31-4D5B-BB15-AA8088C2FB4E_gui">
+            <omgdc:Bounds height="80.0" width="100.0" x="345.0" y="255.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-759a550d-8995-46dc-86c0-d41c74632541">
+               <omgdc:Bounds height="12.0" width="70.19999694824219" x="359.9000015258789" y="287.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-99B7C7AC-F338-4FD5-971D-B1F31BEB7FF3" id="sid-99B7C7AC-F338-4FD5-971D-B1F31BEB7FF3_gui">
+            <omgdc:Bounds height="80.0" width="100.0" x="345.0" y="360.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-759a550d-8995-46dc-86c0-d41c74632541">
+               <omgdc:Bounds height="24.0" width="69.42857360839844" x="360.2857131958008" y="386.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-98C6F4FE-33B7-4733-BFC4-5379D9D6A473" id="sid-98C6F4FE-33B7-4733-BFC4-5379D9D6A473_gui">
+            <omgdc:Bounds height="80.0" width="100.0" x="345.0" y="465.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-759a550d-8995-46dc-86c0-d41c74632541">
+               <omgdc:Bounds height="12.0" width="74.05714416503906" x="357.97142791748047" y="497.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-7E7C1F92-E500-49BC-9FA5-B4D8DEC933CC" id="sid-7E7C1F92-E500-49BC-9FA5-B4D8DEC933CC_gui">
+            <omgdc:Bounds height="30.0" width="30.0" x="380.0" y="570.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-a1fec209-5fb5-4078-acdc-c8f1cd8710f9">
+               <omgdc:Bounds height="11.0" width="42.42856979370117" x="330.5714302062988" y="578.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-00CD0113-B780-43B3-BF5D-E474E3AD6EDA" id="sid-00CD0113-B780-43B3-BF5D-E474E3AD6EDA_gui">
+            <omgdc:Bounds height="28.0" width="28.0" x="221.0" y="1285.0"/>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-3A9EC3A9-2B5F-4071-A883-03271282EDE7" id="sid-3A9EC3A9-2B5F-4071-A883-03271282EDE7_gui">
+            <omgdc:Bounds height="97.0" width="88.0" x="82.0" y="91.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-759a550d-8995-46dc-86c0-d41c74632541">
+               <omgdc:Bounds height="12.0" width="23.914283752441406" x="114.0428581237793" y="131.5"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-DC30BE4A-6641-4697-9E45-6D8FCDF47C4C" id="sid-DC30BE4A-6641-4697-9E45-6D8FCDF47C4C_gui">
+            <omgdc:Bounds height="97.0" width="88.0" x="420.0" y="1101.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-759a550d-8995-46dc-86c0-d41c74632541">
+               <omgdc:Bounds height="12.0" width="25.45714569091797" x="451.271427154541" y="1141.5"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-1DA991AF-3DEF-4539-9DD8-74E5E5A16092" id="sid-1DA991AF-3DEF-4539-9DD8-74E5E5A16092_gui">
+            <omgdc:Bounds height="97.0" width="88.0" x="420.0" y="826.5"/>
+            <bpmndi:BPMNLabel labelStyle="sid-759a550d-8995-46dc-86c0-d41c74632541">
+               <omgdc:Bounds height="12.0" width="39.342857360839844" x="444.3285713195801" y="867.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-F787FF4E-E938-4A45-B949-AB7F4F5CC628" id="sid-F787FF4E-E938-4A45-B949-AB7F4F5CC628_gui">
+            <omgdc:Bounds height="97.0" width="88.0" x="420.0" y="936.5"/>
+            <bpmndi:BPMNLabel labelStyle="sid-759a550d-8995-46dc-86c0-d41c74632541">
+               <omgdc:Bounds height="12.0" width="37.02857208251953" x="445.48571395874023" y="977.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-16E38269-8343-4356-BE78-632F9484B65D" id="sid-16E38269-8343-4356-BE78-632F9484B65D_gui">
+            <omgdc:Bounds height="97.0" width="88.0" x="470.0" y="456.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-759a550d-8995-46dc-86c0-d41c74632541">
+               <omgdc:Bounds height="12.0" width="28.54285430908203" x="499.728572845459" y="496.5"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNEdge bpmnElement="sid-9E7ED76A-DCCB-4F23-BD51-C59E1E269AEB" id="sid-9E7ED76A-DCCB-4F23-BD51-C59E1E269AEB_gui">
+            <omgdi:waypoint x="235.09316770186336" y="155.0"/>
+            <omgdi:waypoint x="235.37267080745343" y="200.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-817E1C3C-8C84-48E6-B66C-B586524C686A" id="sid-817E1C3C-8C84-48E6-B66C-B586524C686A_gui">
+            <omgdi:waypoint x="235.5" y="240.0"/>
+            <omgdi:waypoint x="235.5" y="1200.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-84C9391E-C8D7-4D92-AC08-F74213A943F1" id="sid-84C9391E-C8D7-4D92-AC08-F74213A943F1_gui">
+            <omgdi:waypoint x="310.0" y="1110.0"/>
+            <omgdi:waypoint x="310.0" y="1080.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-33CE92F7-8B95-4D86-B7E3-5007168C11B0" id="sid-33CE92F7-8B95-4D86-B7E3-5007168C11B0_gui">
+            <omgdi:waypoint x="310.0" y="890.0"/>
+            <omgdi:waypoint x="310.0" y="860.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-E9C778E6-1BBA-4468-92D8-620E4A537F92" id="sid-E9C778E6-1BBA-4468-92D8-620E4A537F92_gui">
+            <omgdi:waypoint x="310.0" y="1000.0"/>
+            <omgdi:waypoint x="310.0" y="970.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-5EDEC483-58CD-4A43-931F-419FEDF4F7D4" id="sid-5EDEC483-58CD-4A43-931F-419FEDF4F7D4_gui">
+            <omgdi:waypoint x="310.0" y="780.0"/>
+            <omgdi:waypoint x="310.0" y="750.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-8AC353EB-D3E0-48D6-8378-A6C1B55CFD27" id="sid-8AC353EB-D3E0-48D6-8378-A6C1B55CFD27_gui">
+            <omgdi:waypoint x="310.22346368715085" y="670.0"/>
+            <omgdi:waypoint x="310.39106145251395" y="640.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-69859680-9916-417D-8DA2-7A9142518BF0" id="sid-69859680-9916-417D-8DA2-7A9142518BF0_gui">
+            <omgdi:waypoint x="310.5" y="600.0"/>
+            <omgdi:waypoint x="310.5" y="240.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-8DB986D0-85C7-4746-8F1E-8B5CB967F87B" id="sid-8DB986D0-85C7-4746-8F1E-8B5CB967F87B_gui">
+            <omgdi:waypoint x="395.0" y="335.0"/>
+            <omgdi:waypoint x="395.0" y="360.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-20757086-B3E2-4087-B12B-B874DB910F8D" id="sid-20757086-B3E2-4087-B12B-B874DB910F8D_gui">
+            <omgdi:waypoint x="395.0" y="440.0"/>
+            <omgdi:waypoint x="395.0" y="465.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-DD4D9C4A-803B-4E85-91DA-19C80DD48517" id="sid-DD4D9C4A-803B-4E85-91DA-19C80DD48517_gui">
+            <omgdi:waypoint x="395.0" y="545.0"/>
+            <omgdi:waypoint x="395.0" y="570.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-E181814D-972F-4978-832E-4C251E70A2F6" id="sid-E181814D-972F-4978-832E-4C251E70A2F6_gui">
+            <omgdi:waypoint x="395.0" y="600.0"/>
+            <omgdi:waypoint x="395.0" y="620.5"/>
+            <omgdi:waypoint x="330.0" y="620.5"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-2BAC9E40-F355-4816-AFFC-08CDF47DF538" id="sid-2BAC9E40-F355-4816-AFFC-08CDF47DF538_gui">
+            <omgdi:waypoint x="235.37579617834396" y="1240.0"/>
+            <omgdi:waypoint x="235.0891719745223" y="1285.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-1C1722CD-67A8-45E9-B098-33E205A566F1" id="sid-1C1722CD-67A8-45E9-B098-33E205A566F1_gui">
+            <omgdi:waypoint x="290.0" y="220.5"/>
+            <omgdi:waypoint x="255.0" y="220.5"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-0DCBE41B-7350-44E0-B5BE-F161D2314901" id="sid-0DCBE41B-7350-44E0-B5BE-F161D2314901_gui">
+            <omgdi:waypoint x="220.0" y="139.93119266055047"/>
+            <omgdi:waypoint x="170.0" y="139.7018348623853"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-0B311224-5B1C-4BC5-B396-C382F23CE5C4" id="sid-0B311224-5B1C-4BC5-B396-C382F23CE5C4_gui">
+            <omgdi:waypoint x="126.0" y="188.0"/>
+            <omgdi:waypoint x="126.0" y="1040.0"/>
+            <omgdi:waypoint x="260.0" y="1040.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-9BC2E368-5DCC-4308-8E50-139523EA0954" id="sid-9BC2E368-5DCC-4308-8E50-139523EA0954_gui">
+            <omgdi:waypoint x="146.0" y="188.0"/>
+            <omgdi:waypoint x="146.0" y="930.0"/>
+            <omgdi:waypoint x="260.0" y="930.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-1AAC6CEF-092B-4078-9E1C-7AC221955D3B" id="sid-1AAC6CEF-092B-4078-9E1C-7AC221955D3B_gui">
+            <omgdi:waypoint x="103.0" y="188.0"/>
+            <omgdi:waypoint x="103.0" y="1150.0"/>
+            <omgdi:waypoint x="260.0" y="1150.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-2C3B3CA4-5E4E-443F-A862-4FE65B42F8B7" id="sid-2C3B3CA4-5E4E-443F-A862-4FE65B42F8B7_gui">
+            <omgdi:waypoint x="360.0" y="1149.8376623376623"/>
+            <omgdi:waypoint x="420.0" y="1149.642857142857"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-7979ACA2-F5AB-45DF-896D-3BDBE0C31231" id="sid-7979ACA2-F5AB-45DF-896D-3BDBE0C31231_gui">
+            <omgdi:waypoint x="360.0" y="912.1428571428571"/>
+            <omgdi:waypoint x="420.0" y="890.7142857142857"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-545D2FAF-7D50-454A-BBD2-EF9148EDBE32" id="sid-545D2FAF-7D50-454A-BBD2-EF9148EDBE32_gui">
+            <omgdi:waypoint x="360.0" y="947.8571428571429"/>
+            <omgdi:waypoint x="420.0" y="969.2857142857143"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-4BC4BFCA-2E29-42DC-9F89-659911F34C5F" id="sid-4BC4BFCA-2E29-42DC-9F89-659911F34C5F_gui">
+            <omgdi:waypoint x="464.0" y="826.5"/>
+            <omgdi:waypoint x="464.0" y="820.0"/>
+            <omgdi:waypoint x="360.0" y="820.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-1AB6E5A9-16C2-4C08-BF85-2B8628138FE0" id="sid-1AB6E5A9-16C2-4C08-BF85-2B8628138FE0_gui">
+            <omgdi:waypoint x="508.0" y="985.0"/>
+            <omgdi:waypoint x="523.0" y="985.0"/>
+            <omgdi:waypoint x="523.0" y="710.0"/>
+            <omgdi:waypoint x="360.0" y="710.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-AA45964A-58D8-49AE-8552-0EE009673CEF" id="sid-AA45964A-58D8-49AE-8552-0EE009673CEF_gui">
+            <omgdi:waypoint x="508.0" y="1132.0"/>
+            <omgdi:waypoint x="601.0" y="1132.0"/>
+            <omgdi:waypoint x="601.0" y="380.0"/>
+            <omgdi:waypoint x="445.0" y="380.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-148A77C2-22CE-4D17-AAEC-019565F42A6E" id="sid-148A77C2-22CE-4D17-AAEC-019565F42A6E_gui">
+            <omgdi:waypoint x="508.0" y="1005.0"/>
+            <omgdi:waypoint x="591.0" y="1005.0"/>
+            <omgdi:waypoint x="591.0" y="400.0"/>
+            <omgdi:waypoint x="445.0" y="400.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-DE115497-C319-44F4-BB3E-4C956EE0CB31" id="sid-DE115497-C319-44F4-BB3E-4C956EE0CB31_gui">
+            <omgdi:waypoint x="508.0" y="875.0"/>
+            <omgdi:waypoint x="581.0" y="875.0"/>
+            <omgdi:waypoint x="581.0" y="420.0"/>
+            <omgdi:waypoint x="445.0" y="420.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-C29E0228-482D-4C76-A251-1F92C1B8110A" id="sid-C29E0228-482D-4C76-A251-1F92C1B8110A_gui">
+            <omgdi:waypoint x="440.55023923444975" y="440.0"/>
+            <omgdi:waypoint x="470.0" y="465.8613445378151"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-F6E65DF4-0F19-4860-8671-4BC819F8A276" id="sid-F6E65DF4-0F19-4860-8671-4BC819F8A276_gui">
+            <omgdi:waypoint x="470.0" y="504.6848739495798"/>
+            <omgdi:waypoint x="445.0" y="504.78991596638656"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-46A5A0D1-C1F1-4419-BD01-A146F62F8498" id="sid-46A5A0D1-C1F1-4419-BD01-A146F62F8498_gui">
+            <omgdi:waypoint x="508.0" y="1149.5"/>
+            <omgdi:waypoint x="611.0" y="1149.5"/>
+            <omgdi:waypoint x="611.0" y="295.0"/>
+            <omgdi:waypoint x="445.0" y="295.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-7CF1907F-13AD-4980-B943-F661D41196C1" id="sid-7CF1907F-13AD-4980-B943-F661D41196C1_gui">
+            <omgdi:waypoint x="410.0" y="585.0"/>
+            <omgdi:waypoint x="570.0" y="585.0"/>
+            <omgdi:waypoint x="570.0" y="1119.0"/>
+            <omgdi:waypoint x="508.0" y="1119.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-339BF9F7-DC1F-4397-9770-99D0F02C0766" id="sid-339BF9F7-DC1F-4397-9770-99D0F02C0766_gui">
+            <omgdi:waypoint x="255.0" y="1220.5"/>
+            <omgdi:waypoint x="310.0" y="1220.5"/>
+            <omgdi:waypoint x="310.0" y="1190.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-a1fec209-5fb5-4078-acdc-c8f1cd8710f9">
+               <omgdc:Bounds height="12.0" width="22.371429443359375" x="263.0" y="1200.5"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-E4BE8E2F-0415-4259-B43B-693A3EEF3AF3" id="sid-E4BE8E2F-0415-4259-B43B-693A3EEF3AF3_gui">
+            <omgdi:waypoint x="330.0" y="220.5"/>
+            <omgdi:waypoint x="395.0" y="220.5"/>
+            <omgdi:waypoint x="395.0" y="255.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-a1fec209-5fb5-4078-acdc-c8f1cd8710f9">
+               <omgdc:Bounds height="12.0" width="55.5428466796875" x="338.0" y="200.5"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNEdge>
+      </bpmndi:BPMNPlane>
+      <bpmndi:BPMNLabelStyle id="sid-a1fec209-5fb5-4078-acdc-c8f1cd8710f9">
+         <omgdc:Font isBold="false" isItalic="false" isStrikeThrough="false" isUnderline="false" name="Arial" size="11.0"/>
+      </bpmndi:BPMNLabelStyle>
+      <bpmndi:BPMNLabelStyle id="sid-759a550d-8995-46dc-86c0-d41c74632541">
+         <omgdc:Font isBold="false" isItalic="false" isStrikeThrough="false" isUnderline="false" name="Arial" size="12.0"/>
+      </bpmndi:BPMNLabelStyle>
+   </bpmndi:BPMNDiagram>
+</definitions>
