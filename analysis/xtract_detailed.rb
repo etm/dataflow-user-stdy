@@ -88,7 +88,7 @@ def get_name(io) #{{{
     find = yaml.shift
   end until find.dig('event','cpee:lifecycle:transition') == 'dataelements/change'
   data = find.dig('event','data')
-  complex = data.dig(1,'value','time')
+  complex = data.dig(2,'value','time')
   complex = case complex
     when 30; 'simple'
     when 35; 'medium'
@@ -97,8 +97,8 @@ def get_name(io) #{{{
 
   io.rewind
   return [
-    data.dig(1,'value','bpmn_task'),
-    data.dig(1,'value','cpee_task'),
+    data.dig(2,'value','bpmn_task'),
+    data.dig(2,'value','cpee_task'),
     complex
   ]
 end #}}}
