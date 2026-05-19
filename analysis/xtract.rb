@@ -85,7 +85,7 @@ def get_name(io) #{{{
     find = yaml.shift
   end until find.dig('event','cpee:lifecycle:transition') == 'dataelements/change'
   data = find.dig('event','data')
-  complex = data.dig(1,'value','time')
+  complex = data.dig(2,'value','time')
   complex = case complex
     when 30; 'simple'
     when 35; 'medium'
@@ -94,8 +94,8 @@ def get_name(io) #{{{
 
   io.rewind
   return [
-    data.dig(1,'value','bpmn_task'),
-    data.dig(1,'value','cpee_task'),
+    data.dig(2,'value','bpmn_task'),
+    data.dig(2,'value','cpee_task'),
     complex
   ]
 end #}}}
@@ -166,6 +166,7 @@ Dir.glob('finished/*.xes.yaml') do |f|
     item1 = ['BPMN',bpmn,complex]
     item2 = ['CPEE',cpee,complex]
     item3 = [bpmn,cpee,complex]
+    item4 = []
 
     next if bpmn.nil? || cpee.nil?
 
@@ -174,7 +175,7 @@ Dir.glob('finished/*.xes.yaml') do |f|
     item1 << get_buttons('BPMN Simple Questions 1', io, s1) rescue []
     item1 << get_buttons('BPMN Simple Questions 2', io, s2) rescue []
     item1 << get_buttons('BPMN Simple Questions 3', io, s3) rescue []
-    item1 << get_select( 'BPMN Simple Questions 4', io, 'I cant be sure') rescue []
+    item1 << get_select( 'BPMN Simple Questions 4', io, s4) rescue []
 
     s0, s1, s2, s3, s4 = find_solution(cpee,solution)
     item2 << get_buttons('CPEE Simple Questions 0', io, s0) rescue []
@@ -183,15 +184,14 @@ Dir.glob('finished/*.xes.yaml') do |f|
     item2 << get_buttons('CPEE Simple Questions 3', io, s3) rescue []
     item2 << get_select( 'CPEE Simple Questions 4', io, s4) rescue []
 
-    p s4
-
     item3 << get_generic( 'Final Questions', io, 3) rescue []
+    item4 << get_generic( 'BPMN Simple Questions 5', io, 1) rescue []
 
     item1 = item1.flatten
     item2 = item2.flatten
 
     if item1.length == 18 && item2.length == 18
-      results << [File.basename(f,'.xes.yaml')] + item1 + item2 + item3.flatten
+      results << [File.basename(f,'.xes.yaml')] + item1 + item2 + item3.flatten + item4.flatten
     end
   end
   io.close
