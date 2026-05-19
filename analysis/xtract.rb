@@ -124,31 +124,31 @@ def find_solution(what,solution)
   [s0,s1,s2,s3,s4]
 end
 
-# results = CSV.open('experience.csv','wb')
-#
-# Dir.glob('finished/*.xes.yaml') do |f|
-#   io = File.open f
-#   yaml = YAML.load_stream io
-#   first = yaml.shift
-#   io.rewind
-#
-#   if first.dig('log','trace','cpee:name') == 'Quest'
-#     puts 'experience: ' + File.basename(f,'.xes.yaml')
-#
-#     item = get_generic('Experience', io, 5) rescue []
-#
-#     item << get_sub(io) rescue nil
-#     item << get_sub(io) rescue nil
-#     item << get_sub(io) rescue nil
-#
-#     if item.flatten.length == 9
-#       results << item.flatten
-#     end
-#   end
-#   io.close
-# end
-#
-# results.close
+results = CSV.open('experience.csv','wb')
+
+Dir.glob('finished/*.xes.yaml') do |f|
+  io = File.open f
+  yaml = YAML.load_stream io
+  first = yaml.shift
+  io.rewind
+
+  if first.dig('log','trace','cpee:name') == 'Quest'
+    puts 'experience: ' + File.basename(f,'.xes.yaml')
+
+    item = get_generic('Experience', io, 5) rescue []
+
+    item << get_sub(io) rescue nil
+    item << get_sub(io) rescue nil
+    item << get_sub(io) rescue nil
+
+    if item.flatten.length == 9
+      results << item.flatten
+    end
+  end
+  io.close
+end
+
+results.close
 
 solution = YAML.load_file 'solution.yaml'
 
@@ -166,6 +166,7 @@ Dir.glob('finished/*.xes.yaml') do |f|
     item1 = ['BPMN',bpmn,complex]
     item2 = ['CPEE',cpee,complex]
     item3 = [bpmn,cpee,complex]
+    item4 = []
 
     next if bpmn.nil? || cpee.nil?
 
@@ -184,12 +185,13 @@ Dir.glob('finished/*.xes.yaml') do |f|
     item2 << get_select( 'CPEE Simple Questions 4', io, s4) rescue []
 
     item3 << get_generic( 'Final Questions', io, 3) rescue []
+    item4 << get_generic( 'BPMN Simple Questions 5', io, 1) rescue []
 
     item1 = item1.flatten
     item2 = item2.flatten
 
     if item1.length == 18 && item2.length == 18
-      results << [File.basename(f,'.xes.yaml')] + item1 + item2 + item3.flatten
+      results << [File.basename(f,'.xes.yaml')] + item1 + item2 + item3.flatten + item4.flatten
     end
   end
   io.close
