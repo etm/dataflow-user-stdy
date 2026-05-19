@@ -6,9 +6,9 @@
   <attributes>
     <guarded>none</guarded>
     <modeltype>CPEE</modeltype>
+    <theme>dataflow</theme>
     <guarded_id/>
     <info>Intro</info>
-    <theme>dataflow</theme>
     <creator>Christine Ashcreek</creator>
     <author>Christine Ashcreek</author>
     <model_uuid>9cf55ef8-9c14-46d6-a3d8-a1d2fc6d8058</model_uuid>
@@ -74,14 +74,19 @@
           </arguments>
         </parameters>
         <code>
-          <signal/>
+          <signal>false</signal>
           <prepare/>
-          <finalize output="result">data.existing = [true,false].sample</finalize>
+          <finalize output="result">data.existing = [true,false].sample
+data.checked = data.checked + ',yes'</finalize>
           <update output="result"/>
           <rescue output="result"/>
         </code>
         <annotations>
           <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
           <_timing>
             <_timing_weight/>
             <_timing_avg/>
