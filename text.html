@@ -5,14 +5,13 @@
     <title>Text</title>
     <script type="text/javascript" src="/js_libs/jquery.min.js"></script>
     <script type="text/javascript" src="/js_libs/marked.min.js"></script>
-    <script type="text/javascript" src="/js_libs/parsequery.js"></script>
+    <script type="text/javascript" src="/out/frames/js/frames.js"></script>
 
     <link rel="stylesheet" href="index.css" type="text/css"/>
 
     <script>
-      $(document).ready(function() {
-        let q = $.parseQuerySimple();
-        $('#text').html(marked.parseInline(q.text.replace(/\\n/g,'<br>')));
+      $(document).on('cpee:message',function() {
+        $('#text').html(marked.parseInline(cpee.data.text.replace(/\\n/g,'<br>')));
       });
     </script>
   </head>

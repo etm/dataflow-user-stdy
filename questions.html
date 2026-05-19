@@ -5,7 +5,7 @@
     <title>Questions</title>
     <script type="text/javascript" src="/js_libs/jquery.min.js"></script>
     <script type="text/javascript" src="/js_libs/marked.min.js"></script>
-    <script type="text/javascript" src="/js_libs/parsequery.js"></script>
+    <script type="text/javascript" src="/out/frames/js/frames.js"></script>
 
     <link rel="stylesheet" href="index.css" type="text/css"/>
 
@@ -112,15 +112,15 @@
         };
         $.ajax({
           type: "PUT",
-          url: window.name,
+          url: cpee.callback,
           contentType: "application/json",
           data: JSON.stringify(ret)
         });
       }
 
-      $(document).ready(function() {
-        let q = $.parseQuery();
-        q.forEach((ele,_) => {
+      $(document).on('cpee:message',function() {
+        Object.entries(cpee.data).forEach((e,_) => {
+          let ele = { name: e[0], value: e[1] };
           if (ele.name.match(/^text_(.*)/)) {
             let clone = document.importNode(document.querySelector('template#text').content,true);
             $('.container',clone).attr('id',ele.name);

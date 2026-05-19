@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Text</title>
+    <script type="text/javascript" src="/js_libs/jquery.min.js"></script>
+    <script type="text/javascript" src="/js_libs/marked.min.js"></script>
+    <script type="text/javascript" src="/out/frames/js/frames.js"></script>
+
+    <link rel="stylesheet" href="index.css" type="text/css"/>
+    <link rel="stylesheet" href="final.css" type="text/css"/>
+
+    <script>
+      $(document).on('cpee:message',function() {
+        $('#text').html(marked.parseInline(cpee.data.text.replace(/\\n/g,'<br>')));
+      });
+    </script>
+  </head>
+  <body>
+    <p id='text'></p>
+  </body>
+</html>
