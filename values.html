@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Buttons</title>
     <script type="text/javascript" src="/js_libs/jquery.min.js"></script>
+    <script type="text/javascript" src="/js_libs/uidash_util.js"></script>
     <script type="text/javascript" src="/js_libs/marked.min.js"></script>
-    <script type="text/javascript" src="/js_libs/parsequery.js"></script>
 
     <link rel="stylesheet" href="index.css" type="text/css"/>
 
@@ -48,7 +48,7 @@
       }
 
       $(document).ready(function() {
-        let q = $.parseQuerySimple();
+        let q = $.query_params();
         $('#head').html(marked.parse(q.text));
         q.buttons.split(',').forEach((ele)=>{
           ele = ele.trim();
